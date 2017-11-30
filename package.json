@@ -21,27 +21,23 @@
     "beautify"
   ],
   "contributes": {
-    "languages": [
-      {
-        "id": "simvolio",
-        "aliases": [
-          "simvolio",
-          "protypo"
-        ],
-        "extensions": [
-          ".sim",
-          ".pt"
-        ],
-        "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "simvolio",
-        "scopeName": "source.simvolio",
-        "path": "./syntaxes/simvolio.tmLanguage.json"
-      }
-    ]
+    "languages": [{
+      "id": "simvolio",
+      "aliases": [
+        "simvolio",
+        "protypo"
+      ],
+      "extensions": [
+        ".sim",
+        ".pt"
+      ],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "simvolio",
+      "scopeName": "source.simvolio",
+      "path": "./syntaxes/simvolio.tmLanguage.json"
+    }]
   },
   "activationEvents": [
     "onLanguage:simvolio",
@@ -49,11 +45,9 @@
   ],
   "main": "src/extension",
   "devDependencies": {
-    "prettydiff2": "^2.2.7",
     "vscode": "^1.1.8"
   },
   "dependencies": {
-    "prettydiff2": "^2.2.7",
     "vscode-languageclient": "^3.5.0",
     "vscode-languageserver": "^3.5.0"
   }
