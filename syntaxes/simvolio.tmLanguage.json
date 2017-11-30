@@ -1,0 +1,255 @@
+{
+	"fileTypes": [
+		"simvolio"
+	],
+	"name": "simvolio",
+	"patterns": [{
+		"include": "#expression"
+	}],
+	"repository": {
+		"assignment-operator": {
+			"match": "=",
+			"name": "keyword.operator.assignment.simvolio"
+		},
+		"contract-block": {
+			"begin": "\\b(contract|conditions|action|data)\\s+\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"name": "meta.block.simvolio",
+			"patterns": [{
+				"include": "#expression"
+			}]
+		},
+		"type-literal": {
+			"name": "entity.name.type.simvolio",
+			"match": "\\B(bool|bytes|int|address|array|map|money|float|string)\\b"
+		},
+		"comparison-operator": {
+			"match": "==|!=|>|<",
+			"name": "keyword.operator.comparison.simvolio"
+		},
+		"condition-operator": {
+			"match": "!|&&|\\|\\||:|([^A-Za-z0-9]|\\b)and([^A-Za-z0-9]|\\b)|([^A-Za-z0-9])or([^A-Za-z0-9])",
+			"name": "keyword.operator.condition.simvolio"
+		},
+		"control-statement": {
+			"name": "keyword.control.simvolio",
+			"begin": "\\s*(if|while|func|else)"
+		},
+		"decl-block": {
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"name": "meta.decl.block.simvolio",
+			"patterns": [{
+				"include": "#expression"
+			}]
+		},
+		"block-params": {
+			"name": "variable.language.vobject.simvolio",
+			"match": "\\b(Class|Body|Source|Name|Contract)\\b"
+		},
+		"simvolio": {
+			"name": "entity.name.function.simvolio",
+			"match": "\\b(DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|LangRes|DBInsertReport|DBUpdate|DBUpdateExt|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|var)\\b"
+		},
+		"common-constants": {
+			"name": "entity.name.type.simvolio",
+			"match": "\\B\\$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
+		},
+		"select-variables": {
+			"name": "variable.other.private.simvolio",
+			"match": "\\B\\$(\\w+)\\b"
+		},
+		"protypo": {
+			"name": "entity.name.function.simvolio",
+			"match": "\\b(Div|Span|Button|Table|Address|SetVar|AddToolButton|And|Alert|Style|CmpTime|Data|DateTime|Columns|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|EcosysParam|Em|Form|GetVar|If|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|Or|P|RadioGroup|Select|SetTitle|Strong|Page|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|LangRes|DBInsertReport|DBUpdate|DBUpdateExt|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam)\\b"
+		},
+
+		"expression": {
+			"name": "meta.expression.simvolio",
+			"patterns": [{
+					"include": "#string"
+				},
+				{
+					"include": "#literal"
+				},
+				{
+					"include": "#contract-block"
+				},
+				{
+					"include": "#comparison-operator"
+				},
+				{
+					"include": "#condition-operator"
+				},
+				{
+					"include": "#manipulative-operator"
+				},
+				{
+					"include": "#assignment-operator"
+				},
+				{
+					"include": "#control-statement"
+				},
+				{
+					"include": "#statements"
+				},
+				{
+					"include": "#declaration"
+				}
+			]
+		},
+		"statements": {
+			"name": "meta.expression.simvolio",
+			"patterns": [{
+					"include": "#block-params"
+				},
+				{
+					"include": "#simvolio"
+				},
+				{
+					"include": "#protypo"
+				},
+				{
+					"include": "#common-constants"
+				}
+			]
+		},
+		"declaration": {
+			"name": "meta.declaration.simvolio",
+			"patterns": [{
+					"include": "#fnc-declaration"
+				},
+				{
+					"include": "#var-declaration-priv"
+				},
+				{
+					"include": "#var-declaration"
+				},
+				{
+					"include": "#var-call"
+				},
+				{
+					"include": "#select-variables"
+				}
+			]
+		},
+		"var-declaration": {
+			"begin": "([_a-zA-Z_0-9]+)(\\s*)(=+)",
+			"beginCaptures": {
+				"1": {
+					"name": "variable.other.simvolio"
+				},
+				"3": {
+					"name": "keyword.operator.assignment.simvolio"
+				}
+			},
+			"end": " |{|}|\t|=|(|)",
+			"endCaptures": {
+				"1": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"name": "meta.declaration.object.simvolio"
+		},
+		"var-declaration-priv": {
+			"begin": "(_+)([_a-zA-Z_0-9]+)(\\s*)(=+)",
+			"beginCaptures": {
+				"1": {
+					"name": "variable.other.private.simvolio"
+				},
+				"2": {
+					"name": "variable.other.private.simvolio"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.simvolio"
+				}
+			},
+			"end": " |{|}|\t|=|(|)",
+			"endCaptures": {
+				"1": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"name": "meta.declaration.object.simvolio"
+		},
+		"fnc-declaration": {
+			"begin": "(\\s*)([_a-zA-Z_0-9]+)(\\s*)(=)(\\s*)({)",
+			"beginCaptures": {
+				"2": {
+					"name": "support.function.simvolio"
+				},
+				"4": {
+					"name": "keyword.operator.assignment.simvolio"
+				},
+				"6": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"end": " |{|}|\t",
+			"endCaptures": {
+				"1": {
+					"name": "meta.brace.curly.simvolio"
+				}
+			},
+			"name": "meta.declaration.object.simvolio"
+		},
+		"var-call": {
+			"begin": "(\\s*)([a-zA-Z_0-9]+)([^a-zA-Z_0-9]|\\s+)",
+			"beginCaptures": {
+				"2": {
+					"name": "variable.other.simvolio"
+				}
+			},
+			"end": " |{|}|(|)",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.operator.simvolio"
+				}
+			},
+			"name": "meta.declaration.object.simvolio"
+		},
+		"literal": {
+			"name": "literal.simvolio",
+			"patterns": [{
+					"include": "#numeric-literal"
+				},
+				{
+					"include": "#type-literal"
+				}
+			]
+		},
+		"manipulative-operator": {
+			"match": "\\*|/|\\-|\\+|%|\\^|\\%",
+			"name": "keyword.operator.manipulative.simvolio"
+		},
+		"numeric-literal": {
+			"match": "\\s*(?<=[^$])((0(x|X)[0-9a-fA-F]+)|([0-9]+(\\.[0-9]+)?))\\b",
+			"name": "constant.numeric.simvolio"
+		},
+		"string": {
+			"name": "string.simvolio",
+			"match": "(:?\\#|\\$)([a-zA-Z0-9_-]*)(:?\\#|\\$)"
+		}
+	},
+	"scopeName": "source.simvolio"
+}
