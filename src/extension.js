@@ -19,7 +19,6 @@ const prettyDiff = (document, range, options) => {
     return result
 }
 
-
 function activate(context) {
     const active = vscode.window.activeTextEditor
     if (!active || !active.document) return
@@ -39,7 +38,9 @@ function activate(context) {
                     }
                 })
         )
-
+        // context.subscriptions.push(
+        //     vscode.languages.registerCompletionItemProvider(CONFIG, new GoCompletionItemProvider(), '.', '\"')
+        // )
         context.subscriptions.push(
             vscode.languages.registerDocumentRangeFormattingEditProvider(
                 type, {

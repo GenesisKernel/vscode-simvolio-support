@@ -2,7 +2,7 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "hy6",
   "author": {
     "name": "Andrey Voronkov",
@@ -29,7 +29,7 @@
       ],
       "extensions": [
         ".sim",
-        ".pt"
+        ".ptl"
       ],
       "configuration": "./language-configuration.json"
     }],
