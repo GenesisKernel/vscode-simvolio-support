@@ -1,22 +1,60 @@
-const vscode = require('vscode')
-const pretty = require('./jspretty')
+const vscode = require('vscode'),
+    completions = require('./protypo_defs').completions,
+    completionsKeys = Object.keys(completions),
+    completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
 
-const CONFIG = vscode.workspace.getConfiguration("simvolio-support")
-
-const prettyDiff = (document, range, options) => {
-    const result = []
-    const content = document.getText(range)
-
-    const newText = pretty({
-        source: content,
-        insize: options.tabSize
-    })
-    // .replace(/;/g, '')
-    // .replace(/\s*(-|:)\s*/g, '$1')
-    // .replace(/([ \t]+)(.*)(\)|\])\s([a-zA-Z-_])/g, '$1$2$3\n$1$4')
-
-    result.push(vscode.TextEdit.replace(range, newText))
-    return result
+// console.log(completionsKeys)
+const completeProvider = (document, position, token) => {
+    const lineText = document.lineAt(position.line).text,
+        lineTill = lineText.substr(0, position.character)
+    if (lineTill.match(/^\d+$/)) {
+        return []
+    }
+    const paramsMatch = lineTill.match(completionPattern),
+        items = []
+    if (paramsMatch && paramsMatch[1]) {
+        let el = paramsMatch[1]
+        completionsKeys.forEach(key => {
+            if (key === el) {
+                completions[key].params.forEach(it => {
+                    items.push(new vscode.CompletionItem(it.insertText))
+                })
+            } else if (key.indexOf(el) > -1) {
+                items.push(new vscode.CompletionItem(completions[key].insertText))
+            }
+        })
+    } else {
+        completionsKeys.forEach(key => {
+            items.push(new vscode.CompletionItem(completions[key].insertText))
+        })
+    }
+    return items
+}
+const signatureProvider = (document, position, token) => {
+    const lineText = document.lineAt(position.line).text,
+        lineTill = lineText.substr(0, position.character)
+    if (lineTill.match(/^\d+$/)) {
+        return []
+    }
+    const paramsMatch = lineTill.match(completionPattern),
+        items = []
+    if (paramsMatch && paramsMatch[1]) {
+        let el = paramsMatch[1]
+        completionsKeys.forEach(key => {
+            if (key === el) {
+                completions[key].params.forEach(it => {
+                    items.push(new vscode.CompletionItem(it.insertText))
+                })
+            } else if (key.indexOf(el) > -1) {
+                items.push(new vscode.CompletionItem(completions[key].insertText))
+            }
+        })
+    } else {
+        completionsKeys.forEach(key => {
+            items.push(new vscode.CompletionItem(completions[key].insertText))
+        })
+    }
+    return items
 }
 
 function activate(context) {
@@ -25,39 +63,14 @@ function activate(context) {
 
     function registerDocType(type) {
         context.subscriptions.push(
-            vscode.languages.registerDocumentFormattingEditProvider(
-                type, {
-                    provideDocumentFormattingEdits: (document, options, token) => {
-                        const start = new vscode.Position(0, 0)
-                        const end = new vscode.Position(
-                            document.lineCount - 1,
-                            document.lineAt(document.lineCount - 1).text.length
-                        )
-                        const rng = new vscode.Range(start, end)
-                        return prettyDiff(document, rng, options)
-                    }
-                })
+            vscode.languages.registerCompletionItemProvider(type, {
+                provideCompletionItems: (document, position, token) => completeProvider(document, position, token)
+            }, '.')
         )
-        // context.subscriptions.push(
-        //     vscode.languages.registerCompletionItemProvider(CONFIG, new GoCompletionItemProvider(), '.', '\"')
-        // )
         context.subscriptions.push(
-            vscode.languages.registerDocumentRangeFormattingEditProvider(
-                type, {
-                    provideDocumentRangeFormattingEdits: (document, range, options, token) => {
-                        let end = range.end
-                        if (end.character === 0) {
-                            end = end.translate(-1, Number.MAX_VALUE)
-                        } else {
-                            end = end.translate(0, Number.MAX_VALUE)
-                        }
-
-                        const rng = new vscode.Range(new vscode.Position(range.start.line, 0), end)
-
-                        return prettyDiff(document, rng, options)
-                    }
-                }
-            )
+            vscode.languages.registerSignatureHelpProvider(type, {
+                provideSignatureHelp: (document, position, token) => signatureProvider(document, position, token)
+            }, '.')
         )
     }
     registerDocType('simvolio')
