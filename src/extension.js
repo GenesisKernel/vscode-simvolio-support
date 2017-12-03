@@ -5,57 +5,37 @@ const vscode = require('vscode'),
 
 // console.log(completionsKeys)
 const completeProvider = (document, position, token) => {
-    const lineText = document.lineAt(position.line).text,
-        lineTill = lineText.substr(0, position.character)
-    if (lineTill.match(/^\d+$/)) {
+    const text = document.lineAt(position.line).text,
+        currentText = text.substr(0, position.character),
+        tokens = currentText.split(') '),
+        textToken = tokens.length ? tokens[tokens.length - 1] : currentText
+
+    if (textToken.match(/^\d+$/)) {
         return []
     }
-    const paramsMatch = lineTill.match(completionPattern),
+    const paramsMatch = textToken.match(completionPattern),
         items = []
     if (paramsMatch && paramsMatch[1]) {
         let el = paramsMatch[1]
         completionsKeys.forEach(key => {
-            if (key === el) {
+            if (key === el) { // Element complete - params helper
                 completions[key].params.forEach(it => {
-                    items.push(new vscode.CompletionItem(it.insertText))
+                    if (textToken.indexOf(it.insertText) < 0) { // not repeat params
+                        items.push(new vscode.CompletionItem(it.insertText))
+                    }
                 })
-            } else if (key.indexOf(el) > -1) {
+            } else if (key.indexOf(el) > -1) { // Element NOT complete - element helper
                 items.push(new vscode.CompletionItem(completions[key].insertText))
             }
         })
     } else {
-        completionsKeys.forEach(key => {
+        completionsKeys.forEach(key => { // Element NOT exist - list all elements
             items.push(new vscode.CompletionItem(completions[key].insertText))
         })
     }
     return items
 }
-const signatureProvider = (document, position, token) => {
-    const lineText = document.lineAt(position.line).text,
-        lineTill = lineText.substr(0, position.character)
-    if (lineTill.match(/^\d+$/)) {
-        return []
-    }
-    const paramsMatch = lineTill.match(completionPattern),
-        items = []
-    if (paramsMatch && paramsMatch[1]) {
-        let el = paramsMatch[1]
-        completionsKeys.forEach(key => {
-            if (key === el) {
-                completions[key].params.forEach(it => {
-                    items.push(new vscode.CompletionItem(it.insertText))
-                })
-            } else if (key.indexOf(el) > -1) {
-                items.push(new vscode.CompletionItem(completions[key].insertText))
-            }
-        })
-    } else {
-        completionsKeys.forEach(key => {
-            items.push(new vscode.CompletionItem(completions[key].insertText))
-        })
-    }
-    return items
-}
+
 
 function activate(context) {
     const active = vscode.window.activeTextEditor
@@ -65,11 +45,6 @@ function activate(context) {
         context.subscriptions.push(
             vscode.languages.registerCompletionItemProvider(type, {
                 provideCompletionItems: (document, position, token) => completeProvider(document, position, token)
-            }, '.')
-        )
-        context.subscriptions.push(
-            vscode.languages.registerSignatureHelpProvider(type, {
-                provideSignatureHelp: (document, position, token) => signatureProvider(document, position, token)
             }, '.')
         )
     }
