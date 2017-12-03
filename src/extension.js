@@ -35,6 +35,60 @@ const completeProvider = (document, position, token) => {
     }
     return items
 }
+// const signatureProvider = (document, position, token) => {
+//     const text = document.lineAt(position.line).text,
+//         currentText = text.substr(0, position.character),
+//         tokens = currentText.split(') '),
+//         textToken = tokens.length ? tokens[tokens.length - 1] : currentText
+
+//     if (textToken.match(/^\d+$/)) {
+//         return []
+//     }
+//     const paramsMatch = textToken.match(completionPattern),
+//         items = []
+//     if (paramsMatch && paramsMatch[1]) {
+//         let el = paramsMatch[1]
+
+//         completionsKeys.forEach(key => {
+//             if (key === el) { // Element complete - params helper
+//                 completions[key].params.forEach(it => {
+//                     if (textToken.indexOf(it.documentation) < 0) { // not repeat params
+//                         let itParams = it.params.map(p => new vscode.ParameterInformation(p.label, p.documentation)),
+//                             si = new vscode.SignatureInformation(it.label, it.documentation)
+//                         if (itParams) {
+//                             si.parameters = itParams
+//                         }
+//                         items.push(si)
+
+//                     }
+//                 })
+//             } else if (key.indexOf(el) > -1) { // Element NOT complete - element helper
+//                 let it = completions[key],
+//                     itParams = it.params.map(p => new vscode.ParameterInformation(p.label, p.documentation)),
+//                     si = new vscode.SignatureInformation(it.label, it.documentation)
+//                 if (itParams) {
+//                     si.parameters = itParams
+//                 }
+//                 items.push(si)
+//             }
+//         })
+//     } else {
+//         completionsKeys.forEach(key => { // Element NOT exist - list all elements
+//             let it = completions[key],
+//                 itParams = it.params.map(p => new vscode.ParameterInformation(p.label, p.documentation)),
+//                 si = new vscode.SignatureInformation(it.label, it.documentation)
+//             if (itParams) {
+//                 si.parameters = itParams
+//             }
+//             items.push(si)
+//         })
+//     }
+//     const help = new vscode.SignatureHelp()
+//     help.signatures = items
+//     help.activeSignature = 0
+//     console.log(help)
+//     return help
+// }
 
 
 function activate(context) {
@@ -47,6 +101,11 @@ function activate(context) {
                 provideCompletionItems: (document, position, token) => completeProvider(document, position, token)
             }, '.')
         )
+        // context.subscriptions.push(
+        //     vscode.languages.registerSignatureHelpProvider(type, {
+        //         provideSignatureHelp: (document, position, token) => signatureProvider(document, position, token)
+        //     }, '.')
+        // )
     }
     registerDocType('simvolio')
 }
