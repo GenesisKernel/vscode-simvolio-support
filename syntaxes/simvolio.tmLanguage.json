@@ -41,7 +41,7 @@
 		},
 		"defined-var": {
 			"name": "variable.other.private.simvolio",
-			"match": "(\\$\\w+\\b)"
+			"match": "\\b(\\$\\w+)\\b"
 		},
 		"protypo": {
 			"name": "entity.name.function.simvolio",
@@ -52,12 +52,12 @@
 			"match": "\\b(DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b"
 		},
 		"variable": {
-			"name": "string.simvolio",
-			"match": "\\#[a-zA-Z0-9_-]*\\#"
+			"name": "variable.other.simvolio",
+			"match": "(#[a-zA-Z0-9_-]*#)"
 		},
 		"lang-res": {
-			"name": "string.simvolio",
-			"match": "\\$[a-zA-Z0-9_-]+\\$"
+			"name": "variable.parameter.simvolio",
+			"match": "(\\$[a-zA-Z0-9_-]+\\$)"
 		},
 		"class-name": {
 			"name": "string.simvolio",
@@ -97,6 +97,12 @@
 				},
 				{
 					"include": "#type-literal"
+				},
+				{
+					"include": "#lang-res"
+				},
+				{
+					"include": "#variable"
 				}
 			]
 		}
