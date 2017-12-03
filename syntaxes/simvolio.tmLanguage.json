@@ -29,7 +29,7 @@
 		},
 		"block-params": {
 			"name": "variable.language.vobject.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title)\\b"
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Params|Type)\\b"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
