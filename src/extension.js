@@ -36,62 +36,34 @@ class SimvolioCompleteProvider {
         return items
     }
 }
-// class SimvolioSignatureProvider{
-//  provideSignatureHelp (document, position, token){
-//     const text = document.lineAt(position.line).text,
-//         currentText = text.substr(0, position.character),
-//         tokens = currentText.split(') '),
-//         textToken = tokens.length ? tokens[tokens.length - 1] : currentText
+class SimvolioSignatureProvider {
+    provideSignatureHelp(document, position, token) {
+        const text = document.lineAt(position.line).text
+        const currentText = text.substr(0, position.character).trim()
 
-//     if (textToken.match(/^\d+$/)) {
-//         return []
-//     }
-//     const paramsMatch = textToken.match(completionPattern),
-//         items = []
-//     if (paramsMatch && paramsMatch[1]) {
-//         let el = paramsMatch[1]
-
-//         completionsKeys.forEach(key => {
-//             if (key === el) { // Element complete - params helper
-//                 completions[key].params.forEach(it => {
-//                     if (textToken.indexOf(it.documentation) < 0) { // not repeat params
-//                         let itParams = it.params.map(p => new vscode.ParameterInformation(p.label, p.documentation)),
-//                             si = new vscode.SignatureInformation(it.label, it.documentation)
-//                         if (itParams) {
-//                             si.parameters = itParams
-//                         }
-//                         items.push(si)
-
-//                     }
-//                 })
-//             } else if (key.indexOf(el) > -1) { // Element NOT complete - element helper
-//                 let it = completions[key],
-//                     itParams = it.params.map(p => new vscode.ParameterInformation(p.label, p.documentation)),
-//                     si = new vscode.SignatureInformation(it.label, it.documentation)
-//                 if (itParams) {
-//                     si.parameters = itParams
-//                 }
-//                 items.push(si)
-//             }
-//         })
-//     } else {
-//         completionsKeys.forEach(key => { // Element NOT exist - list all elements
-//             let it = completions[key],
-//                 itParams = it.params.map(p => new vscode.ParameterInformation(p.label, p.documentation)),
-//                 si = new vscode.SignatureInformation(it.label, it.documentation)
-//             if (itParams) {
-//                 si.parameters = itParams
-//             }
-//             items.push(si)
-//         })
-//     }
-//     const help = new vscode.SignatureHelp()
-//     help.signatures = items
-//     help.activeSignature = 0
-//     console.log(help)
-//     return help
-//   }
-// }
+        if (currentText.match(/^\d+$/)) {
+            return []
+        }
+        const paramsMatch = currentText.match(completionPattern)
+        const items = []
+        if (paramsMatch && paramsMatch[1]) {
+            let el = paramsMatch[1]
+            completionsKeys.forEach(key => {
+                if (key.indexOf(el) > -1) {
+                    let it = completions[key]
+                    let label = it.label
+                    let doc = [it.documentation]
+                    it.params.forEach(p => doc.push(`${p.label}: ${p.documentation}`))
+                    items.push(new vscode.SignatureInformation(label, doc.join('\n')))
+                }
+            })
+        }
+        const help = new vscode.SignatureHelp()
+        help.signatures = items
+        help.activeSignature = 0
+        return help
+    }
+}
 
 // class SimvolioFormatRangeProvider {
 //     provideDocumentRangeFormattingEdits(document, range, options, token) {
@@ -117,9 +89,9 @@ function activate(context) {
         // context.subscriptions.push(
         //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatRangeProvider())
         // )
-        // context.subscriptions.push(
-        //     vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(document, position, token), '.')
-        // )
+        context.subscriptions.push(
+            vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
+        )
         // context.subscriptions.push(
         //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()));
 
