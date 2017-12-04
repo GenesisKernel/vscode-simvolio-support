@@ -29,7 +29,7 @@
 		},
 		"block-params": {
 			"name": "variable.language.vobject.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Params|Type)\\b"
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Page|Params|Type)\\b"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
@@ -45,7 +45,7 @@
 		},
 		"protypo": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(Div|Span|Button|Table|Address|SetVar|AddToolButton|And|Alert|Style|CmpTime|Data|DateTime|Columns|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|EcosysParam|Em|Form|GetVar|If|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|Or|P|RadioGroup|Select|SetTitle|Strong|Page|LangRes)\\b|\\.(Else|ElseIf)\\b"
+			"match": "\\b(Div|Span|Button|Table|Address|SetVar|AddToolButton|And|Alert|Style|CmpTime|Data|DateTime|Columns|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|EcosysParam|Em|Form|GetVar|If|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|Or|P|RadioGroup|Select|SetTitle|Strong|LangRes)\\b|\\.(Else|ElseIf)\\b"
 		},
 		"db-func": {
 			"name": "entity.name.function.simvolio",
