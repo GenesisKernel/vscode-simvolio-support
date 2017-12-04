@@ -25,7 +25,7 @@
 		},
 		"control-statement": {
 			"name": "keyword.control.simvolio",
-			"begin": "\\s*(if|while|func|else)"
+			"begin": "\\b(if|while|func|else)\\b"
 		},
 		"block-params": {
 			"name": "variable.language.vobject.simvolio",
