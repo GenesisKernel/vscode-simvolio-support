@@ -65,11 +65,29 @@ class SimvolioSignatureProvider {
     }
 }
 
-// class SimvolioFormatRangeProvider {
-//     provideDocumentRangeFormattingEdits(document, range, options, token) {
-//         
-//     }
-// }
+class SimvolioFormatProvider {
+    provideDocumentFormattingEdits(document, options, token) {
+        return this.format(0, document.lineCount, document)
+    }
+
+    provideDocumentRangeFormattingEdits(document, range, options, token) {
+        // console.log('provideDocumentRangeFormattingEdits', document)
+        // return new vscode.TextEdit()
+    }
+    format(start, end, text) {
+        const lines = []
+        for (let i = start; i < end; i++) {
+            let line = text.lineAt(i).text
+            let lineLength = line.length
+            line = line.replace(/\s*(,)\s*/, '$1 ') // normalize comma space
+                .replace(/\s*(\()\s*/, '$1') // remove space after '('
+                .replace(/\s*(\))\s*/, '$1') // remove space before ')'
+                .replace(/(.*?)\s*$/, '$1') // strip right spaces
+            lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
+        }
+        return lines
+    }
+}
 
 
 // class SimvolioDefinitionProvider {
@@ -86,14 +104,17 @@ function activate(context) {
         context.subscriptions.push(
             vscode.languages.registerCompletionItemProvider(type, new SimvolioCompleteProvider(), '.')
         )
+        context.subscriptions.push(
+            vscode.languages.registerDocumentFormattingEditProvider(type, new SimvolioFormatProvider())
+        )
         // context.subscriptions.push(
-        //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatRangeProvider())
+        //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatProvider())
         // )
         context.subscriptions.push(
             vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
         )
         // context.subscriptions.push(
-        //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()));
+        //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()))
 
     }
     registerDocType('simvolio')
