@@ -1,7 +1,15 @@
-const vscode = require('vscode'),
-    completions = require('./protypo_defs').completions,
-    completionsKeys = Object.keys(completions),
-    completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
+const vscode = require('vscode')
+const completions = require('./protypo_defs').completions
+const completionsKeys = Object.keys(completions)
+
+const completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
+const curveOpenClosePattern = /.*\{.*\}.*/
+const spaceBeforeBracePattern = /\s*(\))\s*/g
+const spaceBeforeCloseBracePattern = /\s*(\))\s*/g
+const spaceAfterOpenBracePattern = /\s*(\()\s*/g
+const spaceNormalizePattern = /\s*([,:])\s*/g
+const capAfterBracePattern = /([\)\}])([A-Z])/g
+
 
 class SimvolioCompleteProvider {
     provideCompletionItems(document, position, token) {
@@ -82,25 +90,24 @@ class SimvolioFormatProvider {
                 if (tabs < 0) tabs = 0
                 let line = text.lineAt(i).text
                 let lineLength = line.length
-                line = line.replace(/\s*([,:])\s*/g, '$1 ') // normalize spaces
-                    .replace(/\s*(\()\s*/g, '$1') // remove space after '('
-                    .replace(/\s*(\))\s*/g, '$1') // remove space before ')'
+                line = line.replace(spaceNormalizePattern, '$1 ') // normalize spaces
+                    .replace(spaceAfterOpenBracePattern, '$1') // remove space after '('
+                    .replace(spaceBeforeCloseBracePattern, '$1')
                     .trim()
 
                 if (line.indexOf('}') > -1) {
-                    if (!(/.*\{.*\}.*/).test(line)) {
+                    if (!curveOpenClosePattern.test(line)) {
                         --tabs
                     }
                 }
 
-                // if (!(/^(.*\{.*\})$/g).test(line)) {
                 let spaceLength = (tabs * options.tabSize) + 1
                 let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
                 line = spaces + line
-                line = line.replace(/([\)\}])([A-Z])/, '$1\n' + spaces + '$2')
-                // }
+                line = line.replace(capAfterBracePattern, '$1\n' + spaces + '$2')
+
                 if (line.indexOf('{') > -1) {
-                    if (!(/.*\{.*\}.*/).test(line)) {
+                    if (!curveOpenClosePattern.test(line)) {
                         ++tabs
                     }
                 }
