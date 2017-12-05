@@ -144,9 +144,9 @@ function activate(context) {
         // context.subscriptions.push(
         //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatProvider())
         // )
-        context.subscriptions.push(
-            vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
-        )
+        // context.subscriptions.push(
+        //     vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
+        // )
         // context.subscriptions.push(
         //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()))
 
