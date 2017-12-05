@@ -65,7 +65,7 @@
 		},
 		"strings": {
 			"name": "string.quoted.double.simvolio",
-			"match": "\".*\""
+			"match": "\".*?\""
 		},
 		"expression": {
 			"name": "meta.expression.simvolio",
