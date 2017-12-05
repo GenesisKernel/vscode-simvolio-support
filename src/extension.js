@@ -79,6 +79,7 @@ class SimvolioFormatProvider {
             const lines = []
             let tabs = 0
             for (let i = start; i < end; i++) {
+                if (tabs < 0) tabs = 0
                 let line = text.lineAt(i).text
                 let lineLength = line.length
                 line = line.replace(/\s*([,:])\s*/g, '$1 ') // normalize spaces
