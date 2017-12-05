@@ -17,7 +17,7 @@
 		},
 		"type-literal": {
 			"name": "entity.name.type.simvolio",
-			"match": "\\b(bool|bytes|int|address|array|map|money|float|string)\\b"
+			"match": "(:?[a-zA-Z0-9_]+\\s+)\\b(bool|bytes|int|address|array|map|money|float|string)\\b"
 		},
 		"comparsion-operator": {
 			"name": "keyword.operator.comparison.simvolio",
@@ -29,7 +29,7 @@
 		},
 		"block-params": {
 			"name": "variable.language.vobject.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Page|Params|Type)\\b"
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Page|Params|Type)\\b|\\.(Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Alert)"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
@@ -45,7 +45,7 @@
 		},
 		"protypo": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(Div|Span|Button|Table|Address|SetVar|AddToolButton|And|Alert|Style|CmpTime|Data|DateTime|Columns|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|EcosysParam|Em|Form|GetVar|If|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|Or|P|RadioGroup|Select|SetTitle|Strong|LangRes)\\b|\\.(Else|ElseIf)\\b"
+			"match": "\\b(Div|Span|Button|Table|Address|SetVar|AddToolButton|And|Style|CmpTime|Data|DateTime|EcosysParam|Em|Form|GetVar|If|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|Or|P|RadioGroup|Select|SetTitle|Strong|LangRes)\\b|\\.(Else|ElseIf)\\b"
 		},
 		"db-func": {
 			"name": "entity.name.function.simvolio",
@@ -60,13 +60,17 @@
 			"match": "(\\$[a-zA-Z0-9_-]+\\$)"
 		},
 		"class-name": {
-			"name": "string.simvolio",
-			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\'\\`\\sa-zA-Z0-9_-]*"
+			"name": "string.html.simvolio",
+			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\`\\'\\sa-zA-Z0-9_]*"
+		},
+		"strings": {
+			"name": "string.quoted.double.simvolio",
+			"match": "\".*\""
 		},
 		"expression": {
 			"name": "meta.expression.simvolio",
 			"patterns": [{
-					"include": "#class-name"
+					"include": "#strings"
 				},
 				{
 					"include": "#contract"
