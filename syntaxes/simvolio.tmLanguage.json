@@ -27,10 +27,6 @@
 			"name": "keyword.control.simvolio",
 			"begin": "\\b(if|while|func|else)\\b"
 		},
-		"block-params": {
-			"name": "variable.language.vobject.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Page|Params|Type|NameColumn|ValueColumn)\\b|\\.(Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Alert)"
-		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
 			"match": "\\b(LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|var)\\b"
@@ -44,16 +40,20 @@
 			"match": "\\b(\\$\\w+)\\b"
 		},
 		"protypo": {
-			"name": "entity.name.function.simvolio",
-			"match": "\\b(Div|Span|Button|Table|Address|SetVar|AddToolButton|And|Style|CmpTime|Data|DateTime|EcosysParam|Em|Form|GetVar|If|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|Or|P|RadioGroup|Select|SetTitle|Strong|LangRes)\\b|\\.(Else|ElseIf)\\b"
+			"name": "entity.name.class.simvolio",
+			"match": "\\b(Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong|LangRes)\\b|\\.(Alert|Style)\\b"
 		},
-		"db-func": {
+		"protypo-params": {
+			"name": "variable.language.vobject.simvolio",
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|PageParams|Page|Params|Type|NameColumn|ValueColumn)\\b"
+		},
+		"protypo-func": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b"
+			"match": "\\b(ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|EcosysParam|SetTitle|GetVar|If|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
-			"match": "(#[a-zA-Z0-9_-]*#)"
+			"match": "([a-zA-Z0-9_-]*#[a-zA-Z0-9_-]*)+"
 		},
 		"lang-res": {
 			"name": "variable.parameter.simvolio",
@@ -85,7 +85,7 @@
 					"include": "#control-statement"
 				},
 				{
-					"include": "#block-params"
+					"include": "#protypo-params"
 				},
 				{
 					"include": "#simvolio"
@@ -97,7 +97,7 @@
 					"include": "#common-constants"
 				},
 				{
-					"include": "#db-func"
+					"include": "#protypo-func"
 				},
 				{
 					"include": "#type-literal"
