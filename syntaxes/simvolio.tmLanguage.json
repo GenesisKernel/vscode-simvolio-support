@@ -29,7 +29,7 @@
 		},
 		"block-params": {
 			"name": "variable.language.vobject.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Page|Params|Type)\\b|\\.(Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Alert)"
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|Columns|PageParams|Page|Params|Type|NameColumn|ValueColumn)\\b|\\.(Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Alert)"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
