@@ -67,25 +67,51 @@ class SimvolioSignatureProvider {
 
 class SimvolioFormatProvider {
     provideDocumentFormattingEdits(document, options, token) {
-        return this.format(0, document.lineCount, document)
+        return this.format(0, document.lineCount, document, options)
     }
 
     provideDocumentRangeFormattingEdits(document, range, options, token) {
         // console.log('provideDocumentRangeFormattingEdits', document)
         // return new vscode.TextEdit()
     }
-    format(start, end, text) {
-        const lines = []
-        for (let i = start; i < end; i++) {
-            let line = text.lineAt(i).text
-            let lineLength = line.length
-            line = line.replace(/\s*(,)\s*/, '$1 ') // normalize comma space
-                .replace(/\s*(\()\s*/, '$1') // remove space after '('
-                .replace(/\s*(\))\s*/, '$1') // remove space before ')'
-                .replace(/(.*?)\s*$/, '$1') // strip right spaces
-            lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
+    format(start, end, text, options) {
+        try {
+            const lines = []
+            let tabs = 0
+            for (let i = start; i < end; i++) {
+                let line = text.lineAt(i).text
+                let lineLength = line.length
+                line = line.replace(/\s*([,:])\s*/g, '$1 ') // normalize spaces
+                    .replace(/\s*(\()\s*/g, '$1') // remove space after '('
+                    .replace(/\s*(\))\s*/g, '$1') // remove space before ')'
+                    .trim()
+
+                if (line.indexOf('}') > -1) {
+                    if (!(/.*\{.*\}.*/).test(line)) {
+                        --tabs
+                    }
+                }
+
+                // if (!(/^(.*\{.*\})$/g).test(line)) {
+                let spaceLength = (tabs * options.tabSize) + 1
+                let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
+                line = spaces + line
+                line = line.replace(/([\)\}])([A-Z])/, '$1\n' + spaces + '$2')
+                // }
+                if (line.indexOf('{') > -1) {
+                    if (!(/.*\{.*\}.*/).test(line)) {
+                        ++tabs
+                    }
+                }
+
+
+
+                lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
+            }
+            return lines
+        } catch (e) {
+            console.log(e)
         }
-        return lines
     }
 }
 
