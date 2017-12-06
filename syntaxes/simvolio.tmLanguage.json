@@ -9,43 +9,43 @@
 	"repository": {
 		"assignment-operator": {
 			"name": "keyword.operator.assignment.simvolio",
-			"match": "[=:]"
+			"match": "="
 		},
 		"contract": {
-			"name": "meta.block.simvolio",
-			"match": "\\b(contract|conditions|action|data)(:?\\s*\\{)"
+			"name": "keyword.simvolio",
+			"match": "(:?func\\s+)?\\b(contract|conditions|action|data).*"
 		},
 		"type-literal": {
 			"name": "entity.name.type.simvolio",
-			"match": "(:?[a-zA-Z0-9_]+\\s+)\\b(bool|bytes|int|address|array|map|money|float|string)\\b"
+			"match": "\\b([a-zA-Z0-9_]+)\\s+\\b(bool|bytes|int|address|array|map|money|float|string)\\b"
 		},
 		"comparsion-operator": {
 			"name": "keyword.operator.comparison.simvolio",
-			"match": "==|!=|>|<"
+			"match": "\\b(==|!=|>|<|<=|>=)\\b"
 		},
 		"control-statement": {
 			"name": "keyword.control.simvolio",
-			"begin": "\\b(if|while|func|else)\\b"
+			"match": "\\b(if|while|func|else)\\b"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
 			"match": "\\b(LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|var)\\b"
 		},
 		"common-constants": {
-			"name": "entity.name.type.simvolio",
-			"match": "\\$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
+			"name": "variable.language.simvolio",
+			"match": "\\B\\$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
 		},
 		"defined-var": {
-			"name": "variable.other.private.simvolio",
-			"match": "\\b(\\$\\w+)\\b"
+			"name": "variable.other.simvolio",
+			"match": "\\B\\$([a-zA-Z0-9_]*)\\b"
 		},
 		"protypo": {
 			"name": "entity.name.class.simvolio",
 			"match": "\\b(Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong|LangRes)\\b|\\.(Alert|Style)\\b"
 		},
 		"protypo-params": {
-			"name": "variable.language.vobject.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|PageParams|Page|Params|Type|NameColumn|ValueColumn)\\b"
+			"name": "variable.language.simvolio",
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns)\\b"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.simvolio",
@@ -67,6 +67,10 @@
 			"name": "string.quoted.double.simvolio",
 			"match": "\".*?\""
 		},
+		"simvolio-comments": {
+			"name": "comment.line.simvolio",
+			"match": "//.*$"
+		},
 		"expression": {
 			"name": "meta.expression.simvolio",
 			"patterns": [{
@@ -74,6 +78,9 @@
 				},
 				{
 					"include": "#contract"
+				},
+				{
+					"include": "#simvolio-comments"
 				},
 				{
 					"include": "#comparsion-operator"
@@ -107,6 +114,9 @@
 				},
 				{
 					"include": "#variable"
+				},
+				{
+					"include": "#defined-var"
 				}
 			]
 		}
