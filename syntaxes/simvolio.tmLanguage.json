@@ -41,7 +41,7 @@
 		},
 		"protypo-params": {
 			"name": "variable.language.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|Data|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns)\\b"
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns)\\b"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.simvolio",
