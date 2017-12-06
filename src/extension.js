@@ -3,12 +3,6 @@ const completions = require('./protypo_defs').completions
 const completionsKeys = Object.keys(completions)
 
 const completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
-const curveOpenClosePattern = /.*\{.*\}.*/
-const spaceBeforeBracePattern = /\s*(\))\s*/g
-const spaceBeforeCloseBracePattern = /\s*(\))\s*/g
-const spaceAfterOpenBracePattern = /\s*(\()\s*/g
-const spaceNormalizePattern = /\s*([,:])\s*/g
-const capAfterBracePattern = /([\)\}])([A-Z])/g
 
 
 class SimvolioCompleteProvider {
@@ -83,6 +77,12 @@ class SimvolioFormatProvider {
         // return new vscode.TextEdit()
     }
     format(start, end, text, options) {
+        const curveOpenClosePattern = /.*\{.*\}.*/
+        const spaceBeforeBracePattern = /\s*(\))\s*/g
+        const spaceBeforeCloseBracePattern = /\s*(\))\s*/g
+        const spaceAfterOpenBracePattern = /\s*(\()\s*/g
+        const commaSpacePattern = /\s*(,)\s*/g
+        const capAfterBracePattern = /([\)\}])([A-Z])/g
         try {
             const lines = []
             let tabs = 0
@@ -90,8 +90,8 @@ class SimvolioFormatProvider {
                 if (tabs < 0) tabs = 0
                 let line = text.lineAt(i).text
                 let lineLength = line.length
-                line = line.replace(spaceNormalizePattern, '$1 ') // normalize spaces
-                    .replace(spaceAfterOpenBracePattern, '$1') // remove space after '('
+                line = line.replace(commaSpacePattern, '$1 ')
+                    .replace(spaceAfterOpenBracePattern, '$1')
                     .replace(spaceBeforeCloseBracePattern, '$1')
                     .trim()
 
