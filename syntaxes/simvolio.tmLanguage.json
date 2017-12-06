@@ -11,10 +11,6 @@
 			"name": "keyword.operator.assignment.simvolio",
 			"match": "="
 		},
-		"contract": {
-			"name": "keyword.simvolio",
-			"match": "(:?func\\s+)?\\b(contract|conditions|action|data).*"
-		},
 		"type-literal": {
 			"name": "entity.name.type.simvolio",
 			"match": "\\b([a-zA-Z0-9_]+)\\s+\\b(bool|bytes|int|address|array|map|money|float|string)\\b"
@@ -75,9 +71,6 @@
 			"name": "meta.expression.simvolio",
 			"patterns": [{
 					"include": "#strings"
-				},
-				{
-					"include": "#contract"
 				},
 				{
 					"include": "#simvolio-comments"
