@@ -7,13 +7,18 @@
 		"include": "#expression"
 	}],
 	"repository": {
-		"assignment-operator": {
-			"name": "keyword.operator.assignment.simvolio",
-			"match": "="
-		},
 		"type-literal": {
-			"name": "entity.name.type.simvolio",
-			"match": "\\b(bool|bytes|int|address|array|map|money|float|string)\\b"
+			"name": "const.simvolio",
+			"begin": "^\\s*(var)\\s+([a-zA-Z0-9-_])+\\s+\\b(bool|bytes|int|address|array|map|money|float|string)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.control.simvolio"
+				},
+				"3": {
+					"name": "entity.name.type.simvolio"
+				}
+			},
+			"end": "$"
 		},
 		"comparsion-operator": {
 			"name": "keyword.operator.comparison.simvolio",
@@ -25,11 +30,11 @@
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|var)\\b"
+			"match": "\\b(LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam)\\b"
 		},
 		"common-constants": {
 			"name": "variable.language.simvolio",
-			"match": "\\B\\$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
+			"match": "\\B\\$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)[^\\w\\$]"
 		},
 		"defined-var": {
 			"name": "variable.other.simvolio",
@@ -41,11 +46,11 @@
 		},
 		"protypo-params": {
 			"name": "variable.language.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns)\\b"
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index)\\b:\\s*"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|EcosysParam|SetTitle|GetVar|If|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
+			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
@@ -77,9 +82,6 @@
 				},
 				{
 					"include": "#comparsion-operator"
-				},
-				{
-					"include": "#assignment-operator"
 				},
 				{
 					"include": "#control-statement"
