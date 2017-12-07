@@ -4,6 +4,24 @@ const monaco = {
         CompletionItemKind: vscode.CompletionItemKind
     }
 }
+
+// *** https://github.com/AplaProject/apla-front/blob/master/src/components/Editor/protypo/index.ts
+// Copyright 2017 The apla-front Authors
+// This file is part of the apla-front library.
+// 
+// The apla-front library is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// The apla-front library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with the apla-front library. If not, see <http://www.gnu.org/licenses/>.
+
 const staticParamTypes = {
     Body: {
         label: 'Body',
@@ -565,7 +583,7 @@ const functionDefs = {
     },
     Strong: {
         label: 'Strong',
-        documentation: 'Generic container for the content that will give text strong importance',
+        documentation: '',
         kind: monaco.languages.CompletionItemKind.Method,
         insertText: 'Strong(',
         params: [
@@ -575,7 +593,7 @@ const functionDefs = {
     },
     Table: {
         label: 'Table',
-        documentation: 'Generic container for the content that will give text strong importance',
+        documentation: '',
         kind: monaco.languages.CompletionItemKind.Method,
         insertText: 'Table(',
         params: [{
@@ -588,6 +606,30 @@ const functionDefs = {
                 kind: monaco.languages.CompletionItemKind.Property,
                 documentation: 'Optional filter for the coulmns to show. Format: ColumnTitle1=column1,ColumnTitl2=column2',
                 insertText: 'Columns: '
+            }
+        ]
+    },
+    EcosysParam: {
+        label: 'EcosysParam',
+        documentation: '',
+        kind: monaco.languages.CompletionItemKind.Method,
+        insertText: 'EcosysParam(',
+        params: [{
+                label: 'Source',
+                documentation: '',
+                insertText: 'Source: '
+            },
+            {
+                label: 'Index',
+                kind: monaco.languages.CompletionItemKind.Property,
+                documentation: '',
+                insertText: 'Index: '
+            },
+            {
+                label: 'Name',
+                kind: monaco.languages.CompletionItemKind.Property,
+                documentation: '',
+                insertText: 'Name: '
             }
         ]
     },

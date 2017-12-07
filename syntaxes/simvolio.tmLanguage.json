@@ -45,7 +45,7 @@
 		},
 		"protypo-func": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|EcosysParam|SetTitle|GetVar|If|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
+			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|EcosysParam|SetTitle|GetVar|If|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
