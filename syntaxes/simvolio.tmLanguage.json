@@ -9,7 +9,7 @@
 	"repository": {
 		"type-literal": {
 			"name": "const.simvolio",
-			"begin": "^\\s*(var)\\s+([a-zA-Z0-9-_])+\\s+\\b(bool|bytes|int|address|array|map|money|float|string)\\b",
+			"begin": "^\\s*(var\\b)?([a-zA-Z0-9-_\\s,.])+\\s+\\b(bool|bytes|int|address|array|map|money|float|string)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.simvolio"
@@ -18,7 +18,7 @@
 					"name": "entity.name.type.simvolio"
 				}
 			},
-			"end": "$"
+			"end": "\\b"
 		},
 		"comparsion-operator": {
 			"name": "keyword.operator.comparison.simvolio",
