@@ -81,7 +81,7 @@ class SimvolioFormatProvider {
         const spaceBeforeBracePattern = /\s*(\))\s*/g
         const spaceBeforeCloseBracePattern = /\s*(\))\s*/g
         const spaceAfterOpenBracePattern = /\s*(\()\s*/g
-        const commaSpacePattern = /\s*(,)\s*/g
+        const commaSpacePattern = /\s*(,)(\s)*/g
         const capAfterBracePattern = /([\)\}])([A-Z])/g
         try {
             const lines = []
@@ -90,7 +90,8 @@ class SimvolioFormatProvider {
                 if (tabs < 0) tabs = 0
                 let line = text.lineAt(i).text
                 let lineLength = line.length
-                line = line.replace(commaSpacePattern, '$1 ')
+                line = line
+                    .replace(commaSpacePattern, '$1$2')
                     .replace(spaceAfterOpenBracePattern, '$1')
                     .replace(spaceBeforeCloseBracePattern, '$1')
                     .trim()

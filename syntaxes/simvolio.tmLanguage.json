@@ -32,9 +32,9 @@
 			"name": "entity.name.function.simvolio",
 			"match": "\\b(LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam)\\b"
 		},
-		"common-constants": {
+		"autodefined": {
 			"name": "variable.language.simvolio",
-			"match": "\\B\\$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)[^\\w\\$]"
+			"match": "\\b$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
 		},
 		"defined-var": {
 			"name": "variable.other.simvolio",
@@ -50,11 +50,11 @@
 		},
 		"protypo-func": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBRow|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
+			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
 		},
 		"removed": {
 			"name": " invalid.illegal.simvolio",
-			"match": "\\b(DBInt|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
+			"match": "\\b(DBInt|DBRow|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
@@ -103,9 +103,6 @@
 					"include": "#protypo"
 				},
 				{
-					"include": "#common-constants"
-				},
-				{
 					"include": "#protypo-func"
 				},
 				{
@@ -119,6 +116,9 @@
 				},
 				{
 					"include": "#defined-var"
+				},
+				{
+					"include": "#autodefined"
 				}
 			]
 		}
