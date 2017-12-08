@@ -50,7 +50,11 @@
 		},
 		"protypo-func": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBInt|DBAmount|DBFind|DBInsert|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
+			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
+		},
+		"removed": {
+			"name": " invalid.illegal.simvolio",
+			"match": "\\b(DBInt|DBAmount|DBIntExt|DBIntWhere|DBRowExt|DBString|DBStringExt|DBStringWhere)\\b\\(.*\\)"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
@@ -75,6 +79,9 @@
 		"expression": {
 			"name": "meta.expression.simvolio",
 			"patterns": [{
+					"include": "#removed"
+				},
+				{
 					"include": "#strings"
 				},
 				{
