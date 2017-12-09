@@ -54,7 +54,7 @@
 		},
 		"removed": {
 			"name": " invalid.illegal.simvolio",
-			"match": "\\b(DBInt|DBRow|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
+			"match": "\\b(GetOne|GetRow|BtnContract|TxButton|TxForm|Navigation|LiTemplate|BtnPage|BtnEdit|Back|PageTitle|Title|FullScreen|WhiteMobileBg|WiAccount|WiBalance|WiCitizen|LangJS|BlockInfo|TxId|Json|AutoUpdate|GetList|GetMap|ListVal|ValueById|Source|TextHidden|InputMoney|InputDate|InputAddress|Textarea|UList|MarkDown|Legend|LiBegin|Mult|Trim|StateLink|StateValDBInt|DBRow|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
