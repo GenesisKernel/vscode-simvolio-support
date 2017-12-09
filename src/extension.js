@@ -5,7 +5,7 @@ const completionsKeys = Object.keys(completions)
 const completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
 
 
-class SimvolioCompleteProvider {
+class ProtypoCompleteProvider {
     provideCompletionItems(document, position, token) {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
@@ -38,7 +38,7 @@ class SimvolioCompleteProvider {
         return items
     }
 }
-class SimvolioSignatureProvider {
+class ProtypoSignatureProvider {
     provideSignatureHelp(document, position, token) {
         const text = document.lineAt(position.line).text
         const currentText = text.substr(0, position.character).trim()
@@ -67,7 +67,7 @@ class SimvolioSignatureProvider {
     }
 }
 
-class SimvolioFormatProvider {
+class SimpleFormatProvider {
     provideDocumentFormattingEdits(document, options, token) {
         return this.format(0, document.lineCount, document, options)
     }
@@ -135,24 +135,32 @@ function activate(context) {
     const active = vscode.window.activeTextEditor
     if (!active || !active.document) return
 
-    function registerDocType(type) {
+    function registerProtypoProviders() {
+        const type = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new SimvolioCompleteProvider(), '.')
+            vscode.languages.registerCompletionItemProvider(type, new ProtypoCompleteProvider(), '.')
         )
         context.subscriptions.push(
-            vscode.languages.registerDocumentFormattingEditProvider(type, new SimvolioFormatProvider())
+            vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
         )
-        // context.subscriptions.push(
-        //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatProvider())
-        // )
-        // context.subscriptions.push(
-        //     vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
-        // )
-        // context.subscriptions.push(
-        //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()))
-
     }
-    registerDocType('simvolio')
+
+    function registerSimvolioProviders() {
+        const type = 'simvolio'
+        context.subscriptions.push(
+            vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
+        )
+    }
+    registerProtypoProviders()
+    registerSimvolioProviders()
+    // context.subscriptions.push(
+    //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatProvider())
+    // )
+    // context.subscriptions.push(
+    //     vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
+    // )
+    // context.subscriptions.push(
+    //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()))
 }
 
 exports.activate = activate
