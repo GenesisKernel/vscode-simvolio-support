@@ -1,0 +1,111 @@
+{
+	"fileTypes": [
+		"protypo"
+	],
+	"name": "protypo",
+	"patterns": [{
+		"include": "#expression"
+	}],
+	"repository": {
+		"comparsion-operator": {
+			"name": "keyword.operator.comparison.protypo",
+			"match": "\\b(==|!=|>|<|<=|>=)\\b"
+		},
+		"error-func": {
+			"name": "invalid.illegal.protypo",
+			"match": "\\b(\\w)+\\b\\s*\\(.*"
+		},
+		"error-simvolio": {
+			"name": "invalid.illegal.protypo",
+			"match": "\\b(FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam)\\b"
+		},
+		"autodefined": {
+			"name": "variable.language.protypo",
+			"match": "\\b$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
+		},
+		"defined-var": {
+			"name": "variable.other.protypo",
+			"match": "\\B\\$([a-zA-Z0-9_]*)\\b"
+		},
+		"protypo": {
+			"name": "entity.name.class.protypo",
+			"match": "\\b(Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong|LangRes)\\b|\\.(Alert|Style)\\b"
+		},
+		"protypo-params": {
+			"name": "variable.language.protypo",
+			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index)\\b:\\s*"
+		},
+		"protypo-func": {
+			"name": "entity.name.function.protypo",
+			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
+		},
+		"removed": {
+			"name": "invalid.illegal.protypo",
+			"match": "\\b(GetOne|GetRow|BtnContract|TxButton|TxForm|Navigation|LiTemplate|BtnPage|BtnEdit|Back|PageTitle|Title|FullScreen|WhiteMobileBg|WiAccount|WiBalance|WiCitizen|LangJS|BlockInfo|TxId|Json|AutoUpdate|GetList|GetMap|ListVal|ValueById|Source|TextHidden|InputMoney|InputDate|InputAddress|Textarea|UList|MarkDown|Legend|LiBegin|Mult|Trim|StateLink|StateValDBInt|DBRow|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
+		},
+		"variable": {
+			"name": "variable.other.protypo",
+			"match": "([a-zA-Z0-9_-]*#[a-zA-Z0-9_-]*)+"
+		},
+		"lang-res": {
+			"name": "variable.parameter.protypo",
+			"match": "(\\$[a-zA-Z0-9_-]+\\$)"
+		},
+		"class-name": {
+			"name": "string.html.protypo",
+			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\`\\'\\sa-zA-Z0-9_]*"
+		},
+		"strings": {
+			"name": "string.quoted.double.protypo",
+			"match": "\".*?\""
+		},
+		"error-simvolio-comments": {
+			"name": "invalid.illegal.protypo",
+			"match": "//.*$"
+		},
+		"expression": {
+			"name": "meta.expression.protypo",
+			"patterns": [{
+					"include": "#strings"
+				},
+				{
+					"include": "#comparsion-operator"
+				},
+				{
+					"include": "#protypo-params"
+				},
+				{
+					"include": "#error-simvolio"
+				},
+				{
+					"include": "#protypo"
+				},
+				{
+					"include": "#protypo-func"
+				},
+				{
+					"include": "#lang-res"
+				},
+				{
+					"include": "#variable"
+				},
+				{
+					"include": "#defined-var"
+				},
+				{
+					"include": "#autodefined"
+				},
+				{
+					"include": "#error-simvolio-comments"
+				},
+				{
+					"include": "#removed"
+				},
+				{
+					"include": "#error-func"
+				}
+			]
+		}
+	},
+	"scopeName": "source.protypo"
+}

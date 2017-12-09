@@ -2,7 +2,7 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.1.19",
+  "version": "0.2.0",
   "publisher": "hy6",
   "author": {
     "name": "Andrey Voronkov",
@@ -21,22 +21,31 @@
   ],
   "contributes": {
     "languages": [{
-      "id": "simvolio",
-      "aliases": [
-        "simvolio",
-        "protypo"
-      ],
-      "extensions": [
-        ".sim",
-        ".ptl"
-      ],
-      "configuration": "./language-configuration.json"
-    }],
+        "id": "simvolio",
+        "extensions": [
+          ".sim"
+        ],
+        "configuration": "./language-configuration_simvolio.json"
+      },
+      {
+        "id": "protypo",
+        "extensions": [
+          ".ptl"
+        ],
+        "configuration": "./language-configuration_protypo.json"
+      }
+    ],
     "grammars": [{
-      "language": "simvolio",
-      "scopeName": "source.simvolio",
-      "path": "./syntaxes/simvolio.tmLanguage.json"
-    }]
+        "language": "simvolio",
+        "scopeName": "source.simvolio",
+        "path": "./syntaxes/simvolio.tmLanguage.json"
+      },
+      {
+        "language": "protypo",
+        "scopeName": "source.protypo",
+        "path": "./syntaxes/protypo.tmLanguage.json"
+      }
+    ]
   },
   "activationEvents": [
     "onLanguage:simvolio",

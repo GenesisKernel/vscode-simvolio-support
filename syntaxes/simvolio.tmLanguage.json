@@ -40,20 +40,8 @@
 			"name": "variable.other.simvolio",
 			"match": "\\B\\$([a-zA-Z0-9_]*)\\b"
 		},
-		"protypo": {
-			"name": "entity.name.class.simvolio",
-			"match": "\\b(Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Include|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong|LangRes)\\b|\\.(Alert|Style)\\b"
-		},
-		"protypo-params": {
-			"name": "variable.language.simvolio",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index)\\b:\\s*"
-		},
-		"protypo-func": {
-			"name": "entity.name.function.simvolio",
-			"match": "\\b(EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b|\\.(Else|ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b"
-		},
 		"removed": {
-			"name": " invalid.illegal.simvolio",
+			"name": "invalid.illegal.simvolio",
 			"match": "\\b(GetOne|GetRow|BtnContract|TxButton|TxForm|Navigation|LiTemplate|BtnPage|BtnEdit|Back|PageTitle|Title|FullScreen|WhiteMobileBg|WiAccount|WiBalance|WiCitizen|LangJS|BlockInfo|TxId|Json|AutoUpdate|GetList|GetMap|ListVal|ValueById|Source|TextHidden|InputMoney|InputDate|InputAddress|Textarea|UList|MarkDown|Legend|LiBegin|Mult|Trim|StateLink|StateValDBInt|DBRow|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
 		},
 		"variable": {
@@ -79,9 +67,6 @@
 		"expression": {
 			"name": "meta.expression.simvolio",
 			"patterns": [{
-					"include": "#removed"
-				},
-				{
 					"include": "#strings"
 				},
 				{
@@ -94,16 +79,7 @@
 					"include": "#control-statement"
 				},
 				{
-					"include": "#protypo-params"
-				},
-				{
 					"include": "#simvolio"
-				},
-				{
-					"include": "#protypo"
-				},
-				{
-					"include": "#protypo-func"
 				},
 				{
 					"include": "#type-literal"
@@ -119,6 +95,9 @@
 				},
 				{
 					"include": "#autodefined"
+				},
+				{
+					"include": "#removed"
 				}
 			]
 		}
