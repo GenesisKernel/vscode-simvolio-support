@@ -30,7 +30,7 @@
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
-			"match": "\\b(LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBInsert|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b"
+			"match": "\\b(info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBInsert|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b"
 		},
 		"autodefined": {
 			"name": "variable.language.simvolio",
