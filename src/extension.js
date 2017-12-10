@@ -77,12 +77,13 @@ class SimpleFormatProvider {
         // return new vscode.TextEdit()
     }
     format(start, end, text, options) {
-        const curveOpenClosePattern = /.*\{.*\}.*/
-        const spaceBeforeBracePattern = /\s*(\))\s*/g
-        const spaceBeforeCloseBracePattern = /\s*(\))\s*/g
-        const spaceAfterOpenBracePattern = /\s*(\()\s*/g
-        const commaSpacePattern = /\s*(,)(\s)*/g
-        const capAfterBracePattern = /([\)\}])([A-Z])/g
+        const curveOpenClose = /.*\{.*\}.*/
+        const spaceBeforeBrace = /\s*(\))\s*/g
+        const spaceBeforeCloseBrace = /\s*(\))\s*/g
+        const spaceAfterOpenBrace = /\s*(\()\s*/g
+        const commaSpace = /\s*(,)(\s)*/g
+        const blockAfterBrace = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
+
         try {
             const lines = []
             let tabs = 0
@@ -91,13 +92,13 @@ class SimpleFormatProvider {
                 let line = text.lineAt(i).text
                 let lineLength = line.length
                 line = line
-                    .replace(commaSpacePattern, '$1$2')
-                    .replace(spaceAfterOpenBracePattern, '$1')
-                    .replace(spaceBeforeCloseBracePattern, '$1')
+                    .replace(commaSpace, '$1$2')
+                    .replace(spaceAfterOpenBrace, '$1')
+                    .replace(spaceBeforeCloseBrace, '$1')
                     .trim()
 
                 if (line.indexOf('}') > -1) {
-                    if (!curveOpenClosePattern.test(line)) {
+                    if (!curveOpenClose.test(line)) {
                         --tabs
                     }
                 }
@@ -105,10 +106,10 @@ class SimpleFormatProvider {
                 let spaceLength = (tabs * options.tabSize) + 1
                 let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
                 line = spaces + line
-                line = line.replace(capAfterBracePattern, '$1\n' + spaces + '$2')
+                line = line.replace(blockAfterBrace, '$1\n' + spaces + '$2')
 
                 if (line.indexOf('{') > -1) {
-                    if (!curveOpenClosePattern.test(line)) {
+                    if (!curveOpenClose.test(line)) {
                         ++tabs
                     }
                 }
