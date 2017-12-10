@@ -1,5 +1,3 @@
-const vscode = require('vscode')
-
 // *** https://github.com/AplaProject/apla-front/blob/master/src/components/Editor/protypo/index.ts
 // Copyright 2017 The apla-front Authors
 // This file is part of the apla-front library.

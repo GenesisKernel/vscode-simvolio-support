@@ -1,11 +1,15 @@
 const vscode = require('vscode')
-const completions = require('./protypo_defs').completions
-const completionsKeys = Object.keys(completions)
+const protypoCompletions = require('./protypo_defs').completions
+const simvolioCompletions = require('./simvolio_defs').completions
 
 const completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
 
 
-class ProtypoCompleteProvider {
+class CompleteProvider {
+    constructor(completions) {
+        this.completions = completions
+        this.completionsKeys = Object.keys(completions)
+    }
     provideCompletionItems(document, position, token) {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
@@ -19,26 +23,30 @@ class ProtypoCompleteProvider {
             items = []
         if (paramsMatch && paramsMatch[1]) {
             let el = paramsMatch[1]
-            completionsKeys.forEach(key => {
+            this.completionsKeys.forEach(key => {
                 if (key === el) { // Element complete - params helper
-                    completions[key].params.forEach(it => {
+                    this.completions[key].params.forEach(it => {
                         if (textToken.indexOf(it.insertText) < 0) { // not repeat params
                             items.push(new vscode.CompletionItem(it.insertText))
                         }
                     })
                 } else if (key.indexOf(el) > -1) { // Element NOT complete - element helper
-                    items.push(new vscode.CompletionItem(completions[key].insertText))
+                    items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
         } else {
-            completionsKeys.forEach(key => { // Element NOT exist - list all elements
-                items.push(new vscode.CompletionItem(completions[key].insertText))
+            this.completionsKeys.forEach(key => { // Element NOT exist - list all elements
+                items.push(new vscode.CompletionItem(this.completions[key].insertText))
             })
         }
         return items
     }
 }
-class ProtypoSignatureProvider {
+class SignatureProvider {
+    constructor(completions) {
+        this.completions = completions
+        this.completionsKeys = Object.keys(completions)
+    }
     provideSignatureHelp(document, position, token) {
         const text = document.lineAt(position.line).text
         const currentText = text.substr(0, position.character).trim()
@@ -50,9 +58,9 @@ class ProtypoSignatureProvider {
         const items = []
         if (paramsMatch && paramsMatch[1]) {
             let el = paramsMatch[1]
-            completionsKeys.forEach(key => {
+            this.completionsKeys.forEach(key => {
                 if (key.indexOf(el) > -1) {
-                    let it = completions[key]
+                    let it = this.completions[key]
                     let label = it.label
                     let doc = [it.documentation]
                     it.params.forEach(p => doc.push(`${p.label}: ${p.documentation}`))
@@ -139,7 +147,7 @@ function activate(context) {
     function registerProtypoProviders() {
         const type = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new ProtypoCompleteProvider(), '.')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(protypoCompletions), '.')
         )
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
@@ -150,6 +158,9 @@ function activate(context) {
         const type = 'simvolio'
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
+        )
+        context.subscriptions.push(
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(simvolioCompletions), '.')
         )
     }
     registerProtypoProviders()
