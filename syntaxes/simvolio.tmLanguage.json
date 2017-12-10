@@ -57,8 +57,16 @@
 			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\`\\'\\sa-zA-Z0-9_]*"
 		},
 		"strings": {
-			"name": "string.quoted.double.simvolio",
-			"match": "\".*?\""
+			"name": "string.quoted.double.protypo",
+			"begin": "\"",
+			"end": "\"",
+			"pattern": ".*?"
+		},
+		"strings2": {
+			"name": "string.quoted.single.protypo",
+			"begin": "`",
+			"end": "`",
+			"pattern": ".*?"
 		},
 		"simvolio-comments": {
 			"name": "comment.line.simvolio",
@@ -68,6 +76,9 @@
 			"name": "meta.expression.simvolio",
 			"patterns": [{
 					"include": "#strings"
+				},
+				{
+					"include": "#strings2"
 				},
 				{
 					"include": "#simvolio-comments"

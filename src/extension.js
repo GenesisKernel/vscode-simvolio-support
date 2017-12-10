@@ -79,8 +79,8 @@ class SimpleFormatProvider {
     format(start, end, text, options) {
         const curveOpenClose = /.*\{.*\}.*/
         const spaceBeforeBrace = /\s*(\))\s*/g
-        const spaceBeforeCloseBrace = /\s*(\))\s*/g
-        const spaceAfterOpenBrace = /\s*(\()\s*/g
+        const spaceCloseBrace = /\s*(\))(\s)*/g
+        const spaceOpenBrace = /\s*(\()\s*/g
         const commaSpace = /\s*(,)(\s)*/g
         const blockAfterBrace = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
 
@@ -93,8 +93,8 @@ class SimpleFormatProvider {
                 let lineLength = line.length
                 line = line
                     .replace(commaSpace, '$1$2')
-                    .replace(spaceAfterOpenBrace, '$1')
-                    .replace(spaceBeforeCloseBrace, '$1')
+                    .replace(spaceOpenBrace, '$1')
+                    .replace(spaceCloseBrace, '$1$2')
                     .trim()
 
                 if (line.indexOf('}') > -1) {

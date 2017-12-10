@@ -57,7 +57,15 @@
 		},
 		"strings": {
 			"name": "string.quoted.double.protypo",
-			"match": "\".*?\""
+			"begin": "\"",
+			"end": "\"",
+			"pattern": ".*?"
+		},
+		"strings2": {
+			"name": "string.quoted.single.protypo",
+			"begin": "`",
+			"end": "`",
+			"pattern": ".*?"
 		},
 		"error-simvolio-comments": {
 			"name": "invalid.illegal.protypo",
@@ -67,6 +75,9 @@
 			"name": "meta.expression.protypo",
 			"patterns": [{
 					"include": "#strings"
+				},
+				{
+					"include": "#strings2"
 				},
 				{
 					"include": "#comparsion-operator"
