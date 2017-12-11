@@ -85,7 +85,9 @@ class SimpleFormatProvider {
         // return new vscode.TextEdit()
     }
     format(start, end, text, options) {
-        const curveOpenClose = /.*\{.*\}.*/
+        const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
+        const firstBrace = /^(\}).*/
+        const lastBrace = /(\{)[^\}]*$/
         const spaceBeforeBrace = /\s*(\))\s*/g
         const spaceCloseBrace = /\s*(\))(\s)*/g
         const spaceOpenBrace = /\s*(\()\s*/g
@@ -105,20 +107,20 @@ class SimpleFormatProvider {
                     .replace(spaceCloseBrace, '$1$2')
                     .trim()
 
-                if (line.indexOf('}') > -1) {
-                    if (!curveOpenClose.test(line)) {
-                        --tabs
-                    }
+                if (firstBrace.test(line)) {
+                    tabs--
                 }
 
-                let spaceLength = (tabs * options.tabSize) + 1
+                let spaceLength = tabs * options.tabSize + 1
                 let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
                 line = spaces + line
                 line = line.replace(blockAfterBrace, '$1\n' + spaces + '$2')
 
-                if (line.indexOf('{') > -1) {
-                    if (!curveOpenClose.test(line)) {
+                if (lastBrace.test(line)) {
+                    ++tabs
+                    if (/[^\}]*\}$/.test(line)) {
                         ++tabs
+
                     }
                 }
 
