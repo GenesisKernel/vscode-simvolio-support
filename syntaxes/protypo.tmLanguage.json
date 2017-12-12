@@ -49,7 +49,9 @@
 		},
 		"lang-res": {
 			"name": "variable.parameter.protypo",
-			"match": "(\\$[a-zA-Z0-9_-]+\\$)"
+			"begin": "\\$",
+			"end": "\\$",
+			"pattern": "[a-zA-Z0-9_-]+$)"
 		},
 		"class-name": {
 			"name": "string.html.protypo",

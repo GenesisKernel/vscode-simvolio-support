@@ -149,7 +149,7 @@ function activate(context) {
     function registerProtypoProviders() {
         const type = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(protypoCompletions), '.')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(protypoCompletions), '.', '(')
         )
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
@@ -162,7 +162,7 @@ function activate(context) {
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
         )
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(simvolioCompletions), '.')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(simvolioCompletions), '.', '(')
         )
     }
     registerProtypoProviders()

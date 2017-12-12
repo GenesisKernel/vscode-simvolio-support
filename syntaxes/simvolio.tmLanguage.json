@@ -48,10 +48,6 @@
 			"name": "variable.other.simvolio",
 			"match": "([a-zA-Z0-9_-]*#[a-zA-Z0-9_-]*)+"
 		},
-		"lang-res": {
-			"name": "variable.parameter.simvolio",
-			"match": "(\\$[a-zA-Z0-9_-]+\\$)"
-		},
 		"class-name": {
 			"name": "string.html.simvolio",
 			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\`\\'\\sa-zA-Z0-9_]*"
@@ -94,9 +90,6 @@
 				},
 				{
 					"include": "#type-literal"
-				},
-				{
-					"include": "#lang-res"
 				},
 				{
 					"include": "#variable"
