@@ -92,6 +92,7 @@ class SimpleFormatProvider {
         const spaceCloseBrace = /\s*(\))(\s)*/g
         const spaceOpenBrace = /\s*(\()\s*/g
         const commaSpace = /\s*(,)(\s)*/g
+        const commentLine = /^\s*\/\/.*$/
         const blockAfterBrace = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
 
         try {
@@ -107,8 +108,10 @@ class SimpleFormatProvider {
                     .replace(spaceCloseBrace, '$1$2')
                     .trim()
 
-                if (firstBrace.test(line)) {
-                    tabs--
+                if (!commentLine.test(line)) {
+                    if (firstBrace.test(line)) {
+                        tabs--
+                    }
                 }
 
                 let spaceLength = tabs * options.tabSize + 1
@@ -116,11 +119,12 @@ class SimpleFormatProvider {
                 line = spaces + line
                 line = line.replace(blockAfterBrace, '$1\n' + spaces + '$2')
 
-                if (lastBrace.test(line)) {
-                    ++tabs
-                    if (/[^\}]*\}$/.test(line)) {
+                if (!commentLine.test(line)) {
+                    if (lastBrace.test(line)) {
                         ++tabs
-
+                        if (/[^\}]*\}$/.test(line)) {
+                            ++tabs
+                        }
                     }
                 }
 
