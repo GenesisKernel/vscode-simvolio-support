@@ -22,7 +22,7 @@
 		},
 		"DBFind-param": {
 			"name": "variable.language.simvolio",
-			"match": "\\.(Columns|Where|WhereInt|Order|Limit|Offset|Ecosystem)\\b"
+			"match": "\\.(Columns|Where|WhereId|Order|Limit|Offset|Ecosystem)\\b"
 		},
 		"comparsion-operator": {
 			"name": "keyword.operator.comparison.simvolio",
