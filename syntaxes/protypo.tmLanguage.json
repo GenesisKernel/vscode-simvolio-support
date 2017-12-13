@@ -23,10 +23,6 @@
 			"name": "variable.language.protypo",
 			"match": "\\b$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b"
 		},
-		"defined-var": {
-			"name": "variable.other.protypo",
-			"match": "\\B\\$([a-zA-Z0-9_]*)\\b"
-		},
 		"protypo": {
 			"name": "entity.name.class.protypo",
 			"match": "\\b(Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b|\\.(Alert|Style)\\b"
@@ -45,17 +41,15 @@
 		},
 		"variable": {
 			"name": "variable.other.protypo",
-			"match": "([a-zA-Z0-9_-]*#[a-zA-Z0-9_-]*)+"
+			"match": "#[\\w-]+#"
 		},
 		"lang-res": {
 			"name": "variable.parameter.protypo",
-			"begin": "\\$",
-			"end": "\\$",
-			"pattern": "[a-zA-Z0-9_-]+$)"
+			"match": "\\$[\\w-]+\\$"
 		},
 		"class-name": {
 			"name": "string.html.protypo",
-			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\`\\'\\sa-zA-Z0-9_]*"
+			"match": "[\\`\\'\\s\\w]*-[\\`\\'\\s\\w]*"
 		},
 		"strings": {
 			"name": "string.quoted.double.protypo",
@@ -101,9 +95,6 @@
 				},
 				{
 					"include": "#variable"
-				},
-				{
-					"include": "#defined-var"
 				},
 				{
 					"include": "#autodefined"
