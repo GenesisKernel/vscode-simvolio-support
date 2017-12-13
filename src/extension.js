@@ -105,7 +105,7 @@ class SimpleFormatProvider {
         const oldProtypoEndBlock = /^.+End:$/
         const oldProtypoIf = /If\s*\((.+?),(.+?),(.+?)\)/
         const oldProtypoIf2 = /(If\s*\(.+\))$/
-        const oldProtypoElse = /^(Else:)$/
+        const oldProtypoElse = /^(Else):$/
 
         const newLineBlock = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
         const newLineBlock2 = /([\(\{])(If)/g
