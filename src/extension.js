@@ -96,6 +96,7 @@ class SimpleFormatProvider {
         const spaceOpenBrace = /\s*(\()\s*/g
         const commaSpace = /\s*(,)(\s)*/g
         const commentLine = /^\s*\/\/.*$/
+        const doubleSpaces = /(\s)+/g
         const blockAfterBrace = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
 
         try {
@@ -109,6 +110,7 @@ class SimpleFormatProvider {
                     .replace(commaSpace, '$1$2')
                     .replace(spaceOpenBrace, '$1')
                     .replace(spaceCloseBrace, '$1$2')
+                    .replace(doubleSpaces, '$1')
                     .trim()
 
                 if (!commentLine.test(line)) {
