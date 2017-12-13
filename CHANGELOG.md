@@ -2,6 +2,10 @@
 
 All notable changes to the "simvolio-support" extension will be documented in this file.
 
+## 0.4.0
+
++ basic converter from old protypo format
+
 ## 0.3.0
 
 + basic simvolio complete helper

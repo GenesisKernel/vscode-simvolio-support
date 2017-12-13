@@ -97,7 +97,18 @@ class SimpleFormatProvider {
         const commaSpace = /\s*(,)(\s)*/g
         const commentLine = /^\s*\/\/.*$/
         const doubleSpaces = /(\s)+/g
-        const blockAfterBrace = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
+
+        const oldProtypoDiv = /^Div\((.*?),([^\(]+?)\)$/
+        const oldProtypoDiv2 = /^Divs:?\(?([\w-\s]+)\)?$/
+        const oldProtypoDiv3 = /^Divs\(([\w-\s]+?),(.+)\)$/
+        const oldProtypoForm = /^(Form\(.*?\))$/
+        const oldProtypoEndBlock = /^.+End:$/
+        const oldProtypoIf = /If\s*\((.+?),(.+?),(.+?)\)/
+        const oldProtypoIf2 = /(If\s*\(.+\))$/
+        const oldProtypoElse = /^(Else:)$/
+
+        const newLineBlock = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
+        const newLineBlock2 = /([\(\{])(If)/g
 
         try {
             const lines = []
@@ -112,6 +123,14 @@ class SimpleFormatProvider {
                     .replace(spaceCloseBrace, '$1$2')
                     .replace(doubleSpaces, '$1')
                     .trim()
+                    .replace(oldProtypoDiv, 'Div($1){$2}')
+                    .replace(oldProtypoDiv2, 'Div($1){')
+                    .replace(oldProtypoDiv3, 'Div($1){Div($2){')
+                    .replace(oldProtypoForm, '$1{')
+                    .replace(oldProtypoEndBlock, '}')
+                    .replace(oldProtypoIf, 'If($1){\n$2\n}.Else{\n$3\n}')
+                    .replace(oldProtypoIf2, '$1{')
+                    .replace(oldProtypoElse, '}.$1{')
 
                 if (!commentLine.test(line)) {
                     if (firstBrace.test(line) | firstBraceSq.test(line)) {
@@ -122,7 +141,8 @@ class SimpleFormatProvider {
                 let spaceLength = tabs * options.tabSize + 1
                 let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
                 line = spaces + line
-                line = line.replace(blockAfterBrace, '$1\n' + spaces + '$2')
+                line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
+                line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
 
                 if (!commentLine.test(line)) {
                     if (lastBrace.test(line) | lastBraceSq.test(line)) {
