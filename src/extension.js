@@ -11,7 +11,7 @@ class CompleteProvider {
         if (type === 'simvolio') {
             this.completions = simvolioCompletions
             this.isSimvolio = true
-            this.varMatch = /\$\w+/g
+            this.varMatch = /\$\w+\s*/g
         }
         if (type === 'protypo') {
             this.completions = protypoCompletions
@@ -49,9 +49,10 @@ class CompleteProvider {
         //     })
         // }
 
-        const vars = document.getText().match(this.varMatch)
+        const vars = document.getText(new vscode.Range(0, 0, position.line, position.character)).match(this.varMatch)
         if (vars.length > 1) {
-            vars.slice(1).forEach(v => {
+            vars.slice(1).forEach(it => {
+                let v = it.trim()
                 if (this.completes.indexOf(v) < 0) {
                     this.completes.unshift(v)
                 }
