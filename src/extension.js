@@ -60,6 +60,7 @@ class CompleteProvider {
                 let item = new vscode.CompletionItem(c)
                 item.detail = c
                 item.filterText = c
+                item.insertText = c.replace(/[#$]/, '')
                 items.push(item)
             })
         }
