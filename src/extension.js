@@ -83,9 +83,16 @@ class CompleteProvider {
 
 
 class SignatureProvider {
-    constructor(completions) {
-        this.completions = completions
-        this.completionsKeys = Object.keys(completions)
+    constructor(type) {
+        if (type === 'simvolio') {
+            this.completions = simvolioCompletions
+            this.isSimvolio = true
+        }
+        if (type === 'protypo') {
+            this.completions = protypoCompletions
+            this.isProtypo = true
+        }
+        this.completionsKeys = Object.keys(this.completions)
     }
     provideSignatureHelp(document, position, token) {
         const text = document.lineAt(position.line).text
@@ -102,9 +109,9 @@ class SignatureProvider {
                 if (key.indexOf(el) > -1) {
                     let it = this.completions[key]
                     let label = it.label
-                    let doc = [it.documentation]
-                    it.params.forEach(p => doc.push(`${p.label}: ${p.documentation}`))
-                    items.push(new vscode.SignatureInformation(label, doc.join('\n')))
+                    let doc = it.documentation
+                    // it.params.forEach(p => doc.push(`${p.label}: ${p.documentation}`))
+                    items.push(new vscode.SignatureInformation(label, doc))
                 }
             })
         }
@@ -242,7 +249,7 @@ class SimpleFormatProvider {
                 fix: 'DBFind(Name: $1, Source: src_$1).WhereId($2)\n$3'
             },
             { // SetVar(a=b)
-                pattern: /SetVar\((.*?)=(.*?)\)/,
+                pattern: /SetVar\("?([\w]+?)=([\w]+?)"?\)/,
                 fix: 'SetVar(Name: $1, Value: $2)'
             },
             { // Input(idname,[class],[placeholder],[type],[value])
@@ -277,6 +284,9 @@ function activate(context) {
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider(type))
         )
+        context.subscriptions.push(
+            vscode.languages.registerSignatureHelpProvider(type, new SignatureProvider(type), '(', ' ', '{')
+        )
     }
 
     function registerSimvolioProviders() {
@@ -293,9 +303,6 @@ function activate(context) {
     registerSimvolioProviders()
     // context.subscriptions.push(
     //     vscode.languages.registerDocumentRangeFormattingEditProvider(type, new SimvolioFormatProvider())
-    // )
-    // context.subscriptions.push(
-    //     vscode.languages.registerSignatureHelpProvider(type, new SimvolioSignatureProvider(), '(', ' ')
     // )
     // context.subscriptions.push(
     //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()))

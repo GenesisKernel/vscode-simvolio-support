@@ -31,7 +31,7 @@ const staticParamTypes = {
 const functionDefs = {
     Address: {
         label: 'Address',
-        documentation: 'Converts wallet ID to address in readable format',
+        documentation: 'Address(Wallet)',
         insertText: 'Address(',
         params: [{
             label: 'Wallet',
@@ -41,7 +41,7 @@ const functionDefs = {
     },
     AddToolButton: {
         label: 'AddToolButton',
-        documentation: 'Add a tool button to the page header',
+        documentation: 'AddToolButton(Title, Icon, Page, PageParams)',
         insertText: 'AddToolButton(',
         params: [{
                 label: 'Title',
@@ -67,12 +67,12 @@ const functionDefs = {
     },
     And: {
         label: 'And',
-        documentation: 'Logical "And" operator. All parameters must be truthy',
+        documentation: 'And(parameters)',
         insertText: 'And('
     },
     DBFind: {
         label: 'DBFind',
-        documentation: 'Database search',
+        documentation: 'DBFind(Name, Source) [.Columns(columns)] [.Where(conditions)] [.WhereId(id)] [.Order(name)] [.Limit(limit)] [.Offset(offset)] [.Ecosystem(id)] [.Custom(Column,Body)] [.Vars(Prefix)]',
         insertText: 'DBFind(',
         params: [{
                 label: 'Name',
@@ -88,7 +88,7 @@ const functionDefs = {
     },
     Button: {
         label: 'Button',
-        documentation: 'Button element',
+        documentation: 'Button(Body, Page, Class, Contract, Params, PageParams) [.Alert(Text,ConfirmButton,CancelButton,Icon)] [.Style(Style)]',
         insertText: 'Button(',
         params: [
             staticParamTypes.Body,
@@ -117,7 +117,7 @@ const functionDefs = {
     },
     Data: {
         label: 'Data',
-        documentation: 'Data emitter that is filled with data by hand',
+        documentation: 'Data(Source,Columns,Data) [.Custom(Column,Body)]',
         insertText: 'Data(',
         params: [{
                 label: 'Source',
@@ -136,9 +136,25 @@ const functionDefs = {
             }
         ]
     },
+    CmpTime: {
+        label: 'CmpTime',
+        documentation: 'CmpTime(Time1, Time2)',
+        insertText: 'CmpTime(',
+        params: [{
+                label: 'Time1',
+                documentation: '',
+                insertText: 'Time1: '
+            },
+            {
+                label: 'Time2',
+                documentation: '',
+                insertText: 'Time2: '
+            },
+        ]
+    },
     Div: {
         label: 'Div',
-        documentation: 'Generic container for the content. You can use it to group other elements and apply specific styling or classes',
+        documentation: 'Div(Class, Body) [.Style(Style)]',
         insertText: 'Div(',
         params: [
             staticParamTypes.Body,
@@ -147,7 +163,7 @@ const functionDefs = {
     },
     Em: {
         label: 'Em',
-        documentation: 'Specific element that marks the text that has stress emphasis',
+        documentation: 'Em(Body, Class)',
         insertText: 'Em(',
         params: [
             staticParamTypes.Body,
@@ -156,7 +172,7 @@ const functionDefs = {
     },
     ForList: {
         label: 'ForList',
-        documentation: 'List-iteration function. Body will be rendered once per element of the source',
+        documentation: 'ForList(Source, Body)',
         insertText: 'ForList(',
         params: [{
                 label: 'Source',
@@ -168,7 +184,7 @@ const functionDefs = {
     },
     Form: {
         label: 'Form',
-        documentation: 'Contract form container. All input elements must be placed within a form',
+        documentation: 'Form(Class, Body) [.Style(Style)]',
         insertText: 'Form(',
         params: [
             staticParamTypes.Body,
@@ -177,7 +193,7 @@ const functionDefs = {
     },
     GetVar: {
         label: 'GetVar',
-        documentation: 'Get variable value',
+        documentation: 'GetVar(Name)',
         insertText: 'GetVar(',
         params: [{
             label: 'Name',
@@ -187,7 +203,7 @@ const functionDefs = {
     },
     If: {
         label: 'If',
-        documentation: 'Conditional clause. Body elements will be shown only if the condition is truthy',
+        documentation: 'If(Condition){ Body } [.ElseIf(Condition){ Body }] [.Else{ Body }]',
         insertText: 'If(',
         params: [
             staticParamTypes.Body,
@@ -200,7 +216,7 @@ const functionDefs = {
     },
     Image: {
         label: 'Image',
-        documentation: 'Static image element',
+        documentation: 'Image(Src,Alt,Class) [.Style(Style)]',
         insertText: 'Image(',
         params: [{
                 label: 'Src',
@@ -217,7 +233,7 @@ const functionDefs = {
     },
     ImageInput: {
         label: 'ImageInput',
-        documentation: 'Image upload component with ability to crop images',
+        documentation: 'ImageInput(Name, Width, Ratio, Format)',
         insertText: 'ImageInput(',
         params: [{
                 label: 'Name',
@@ -244,7 +260,7 @@ const functionDefs = {
     },
     Include: {
         label: 'Include',
-        documentation: 'Include another page or block and output its contents',
+        documentation: 'Include(Name)',
         insertText: 'Include(',
         params: [{
             label: 'Name',
@@ -254,7 +270,7 @@ const functionDefs = {
     },
     Input: {
         label: 'Input',
-        documentation: 'Form input element to request user to enter some data',
+        documentation: 'Input(Name,Class,Placeholder,Type,Value) [.Validate(validation parameters)] [.Style(Style)]',
         insertText: 'Input(',
         params: [
             staticParamTypes.Class,
@@ -287,7 +303,7 @@ const functionDefs = {
     },
     InputErr: {
         label: 'InputErr',
-        documentation: 'Validation message for the specific input',
+        documentation: 'InputErr(Name,validation errors)]',
         insertText: 'InputErr(',
         params: [
             staticParamTypes.Class,
@@ -300,7 +316,7 @@ const functionDefs = {
     },
     Label: {
         label: 'Label',
-        documentation: 'Form input label. Will set focus to bound input on click',
+        documentation: 'Label(Body, Class, For) [.Style(Style)]',
         insertText: 'Label(',
         params: [
             staticParamTypes.Body,
@@ -314,7 +330,7 @@ const functionDefs = {
     },
     LangRes: {
         label: 'LangRes',
-        documentation: 'Get language resource by name',
+        documentation: 'LangRes(Name, Lang)',
         insertText: 'LangRes(',
         params: [{
                 label: 'Name',
@@ -330,7 +346,7 @@ const functionDefs = {
     },
     LinkPage: {
         label: 'LinkPage',
-        documentation: 'Static redirect link',
+        documentation: 'LinkPage(Body, Page, Class, PageParams) [.Style(Style)]',
         insertText: 'LinkPage(',
         params: [
             staticParamTypes.Body,
@@ -349,7 +365,7 @@ const functionDefs = {
     },
     MenuGroup: {
         label: 'MenuGroup',
-        documentation: 'Menu group that will replace current menu on click',
+        documentation: 'MenuGroup(Title, Body, Icon)',
         insertText: 'MenuGroup(',
         params: [
             staticParamTypes.Body,
@@ -367,7 +383,7 @@ const functionDefs = {
     },
     MenuItem: {
         label: 'MenuItem',
-        documentation: 'Menu item button used to redirect user to another page',
+        documentation: 'MenuItem(Title, Page, Params, Icon, Vde)',
         insertText: 'MenuItem(',
         params: [{
                 label: 'Title',
@@ -393,12 +409,12 @@ const functionDefs = {
     },
     Or: {
         label: 'Or',
-        documentation: 'Logical "Or" operator. One of the parameters must be truthy',
+        documentation: 'Or(parameters)',
         insertText: 'Or('
     },
     P: {
         label: 'P',
-        documentation: 'HTML element that represents a paragraph of text',
+        documentation: 'P(Body, Class) [.Style(Style)]',
         insertText: 'P(',
         params: [
             staticParamTypes.Body,
@@ -407,7 +423,7 @@ const functionDefs = {
     },
     RadioGroup: {
         label: 'RadioGroup',
-        documentation: 'List of options represented with radio buttons',
+        documentation: 'RadioGroup(Name, Source, NameColumn, ValueColumn, Value, Class) [.Validate(validation parameters)] [.Style(Style)]',
         insertText: 'RadioGroup(',
         params: [{
                 label: 'Name',
@@ -439,7 +455,7 @@ const functionDefs = {
     },
     Select: {
         label: 'Select',
-        documentation: 'Element with dropdown menu used to select one value from multiple choices',
+        documentation: 'Select(Name, Source, NameColumn, ValueColumn, Value, Class) [.Validate(validation parameters)] [.Style(Style)]',
         insertText: 'Select(',
         params: [{
                 label: 'Name',
@@ -471,33 +487,33 @@ const functionDefs = {
     },
     SetVar: {
         label: 'SetVar',
-        documentation: 'Set variable value by name',
+        documentation: 'SetVar(Name, Value)',
         insertText: 'SetVar(',
         params: [{
                 label: 'Name',
-                documentation: 'Variable name to set the value of',
+                documentation: '',
                 insertText: 'Name: '
             },
             {
                 label: 'Value',
-                documentation: 'Variable name to set the value of',
+                documentation: '',
                 insertText: 'Value: '
             }
         ]
     },
     SetTitle: {
         label: 'SetTitle',
-        documentation: 'Set text shown in the page header',
+        documentation: 'SetTitle(Title)',
         insertText: 'SetTitle(',
         params: [{
             label: 'Title',
-            documentation: 'Text to show in the header',
+            documentation: '',
             insertText: 'Title: '
         }]
     },
     Span: {
         label: 'Span',
-        documentation: 'Generic container for the content. You can use it to group other elements and apply specific styling or classes',
+        documentation: 'Span(Body, Class) [.Style(Style)]',
         insertText: 'Span(',
         params: [
             staticParamTypes.Body,
@@ -506,7 +522,7 @@ const functionDefs = {
     },
     Strong: {
         label: 'Strong',
-        documentation: '',
+        documentation: 'Strong(Body, Class)',
         insertText: 'Strong(',
         params: [
             staticParamTypes.Body,
@@ -515,23 +531,23 @@ const functionDefs = {
     },
     Table: {
         label: 'Table',
-        documentation: '',
+        documentation: 'Table(Source, Columns) [.Style(Style)]',
         insertText: 'Table(',
         params: [{
                 label: 'Source',
-                documentation: 'Source identificator to fetch the results',
+                documentation: '',
                 insertText: 'Source: '
             },
             {
                 label: 'Columns',
-                documentation: 'Optional filter for the coulmns to show. Format: ColumnTitle1=column1,ColumnTitl2=column2',
+                documentation: '',
                 insertText: 'Columns: '
             }
         ]
     },
     EcosysParam: {
         label: 'EcosysParam',
-        documentation: '',
+        documentation: 'EcosysParam(Name, Index, Source)',
         insertText: 'EcosysParam(',
         params: [{
                 label: 'Source',
@@ -552,7 +568,7 @@ const functionDefs = {
     },
     DateTime: {
         label: 'DateTime',
-        documentation: '',
+        documentation: 'DateTime(DateTime, Format)',
         insertText: 'DateTime(',
         params: [{
                 label: 'DateTime',
