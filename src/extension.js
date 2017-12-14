@@ -11,7 +11,7 @@ class CompleteProvider {
         if (type === 'simvolio') {
             this.completions = simvolioCompletions
             this.isSimvolio = true
-            this.varMatch = /\$\w+[\s,]/g
+            this.varMatch = /\$(\w+)[\s,]/g
         }
         if (type === 'protypo') {
             this.completions = protypoCompletions
@@ -20,6 +20,14 @@ class CompleteProvider {
         }
         this.completionsKeys = Object.keys(this.completions)
         this.completes = []
+
+        // vscode.commands.registerTextEditorCommand('simvolioCompletion', editor => {
+        //     // enter snippet mode
+        //     return editor.insertSnippet(
+        //         new vscode.SnippetString('I have $0computed ${1:this}'),
+        //         new vscode.Position(0, 0)
+        //     );
+        // })
     }
     provideCompletionItems(document, position, token) {
         const text = document.lineAt(position.line).text,
@@ -49,22 +57,25 @@ class CompleteProvider {
         //     })
         // }
 
-        const vars = document.getText(new vscode.Range(0, 0, position.line, position.character)).match(this.varMatch)
-        if (vars.length > 1) {
-            vars.slice(1).forEach(it => {
-                let v = it.trim()
-                if (this.completes.indexOf(v) < 0) {
-                    this.completes.unshift(v)
-                }
-            })
-            this.completes.slice(0, 10).forEach(c => {
-                let item = new vscode.CompletionItem(c)
-                item.detail = c
-                item.filterText = c
-                item.insertText = c.replace(/[#$]/, '')
-                items.push(item)
-            })
-        }
+        const vars = document.getText(document.getWordRangeAtPosition(position)).split(/[\s,\]\[\(\)=]+/).map(w => w.indexOf('$') === 0 ? w.substr(1).trim() : null).filter(w => w)
+        // const word = currentText.split(/[\s,\]\[\(\)=]+/).map(w => w.length > 3 ? w : null).filter(w => w).reverse()[0]
+
+        console.log(vars)
+
+
+        vars.forEach(v => {
+            if (this.completes.indexOf(v) < 0) {
+                this.completes.push(v)
+            }
+        })
+        this.completes.forEach(c => {
+            let item = new vscode.CompletionItem(c)
+            // item.detail = c
+            // item.filterText = c
+            item.insertText = c
+            items.push(item)
+        })
+
 
         return items
     }
@@ -261,7 +272,7 @@ function activate(context) {
     function registerProtypoProviders() {
         const type = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '#', '.', '(')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), ' ', '#', '.', '(')
         )
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider(type))
@@ -274,9 +285,10 @@ function activate(context) {
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
         )
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '$', '.', '(')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '$', ' ', '.', '(')
         )
     }
+
     registerProtypoProviders()
     registerSimvolioProviders()
     // context.subscriptions.push(
