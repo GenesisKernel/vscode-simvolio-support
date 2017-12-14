@@ -11,7 +11,7 @@ class CompleteProvider {
         if (type === 'simvolio') {
             this.completions = simvolioCompletions
             this.isSimvolio = true
-            this.varMatch = /\$\w+\s*/g
+            this.varMatch = /\$\w+[\s,]/g
         }
         if (type === 'protypo') {
             this.completions = protypoCompletions
