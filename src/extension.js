@@ -76,12 +76,12 @@ class SignatureProvider {
 }
 
 class SimpleFormatProvider {
+
     provideDocumentFormattingEdits(document, options, token) {
         return this.format(0, document.lineCount, document, options)
     }
 
     provideDocumentRangeFormattingEdits(document, range, options, token) {
-        // console.log('provideDocumentRangeFormattingEdits', document)
         // return new vscode.TextEdit()
     }
     format(start, end, text, options) {
@@ -98,14 +98,6 @@ class SimpleFormatProvider {
         const commentLine = /^\s*\/\/.*$/
         const doubleSpaces = /(\s)+/g
 
-        const oldProtypoDiv = /^Div\((.*?),([^\(]+?)\)$/
-        const oldProtypoDiv2 = /^Divs:?\(?([\w-\s]+)\)?$/
-        const oldProtypoDiv3 = /^Divs\(([\w-\s]+?),(.+)\)$/
-        const oldProtypoForm = /^(Form\(.*?\))$/
-        const oldProtypoEndBlock = /^.+End:$/
-        const oldProtypoIf = /If\s*\((.+?),(.+?),(.+?)\)/
-        const oldProtypoIf2 = /(If\s*\(.+\))$/
-        const oldProtypoElse = /^(Else):$/
 
         const newLineBlock = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
         const newLineBlock2 = /([\(\{])(If)/g
@@ -123,14 +115,8 @@ class SimpleFormatProvider {
                     .replace(spaceCloseBrace, '$1$2')
                     .replace(doubleSpaces, '$1')
                     .trim()
-                    .replace(oldProtypoDiv, 'Div($1){$2}')
-                    .replace(oldProtypoDiv2, 'Div($1){')
-                    .replace(oldProtypoDiv3, 'Div($1){Div($2){')
-                    .replace(oldProtypoForm, '$1{')
-                    .replace(oldProtypoEndBlock, '}')
-                    .replace(oldProtypoIf, 'If($1){\n$2\n}.Else{\n$3\n}')
-                    .replace(oldProtypoIf2, '$1{')
-                    .replace(oldProtypoElse, '}.$1{')
+
+                line = this.fixSyntax(line)
 
                 if (!commentLine.test(line)) {
                     if (firstBrace.test(line) | firstBraceSq.test(line)) {
@@ -152,15 +138,79 @@ class SimpleFormatProvider {
                         }
                     }
                 }
-
-
-
                 lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
             }
             return lines
         } catch (e) {
             console.log(e)
         }
+    }
+    fixSyntax(line) {
+        if (this.type === 'protypo') {
+            this.protypoRules.forEach(rule => line = line.replace(rule.pattern, rule.fix))
+        }
+        return line
+    }
+    constructor(type) {
+        this.type = type
+        this.protypoRules = [{
+                pattern: /^Div\((.*?),(.+?)\)$/, // short Div
+                fix: 'Div($1){$2}'
+            },
+            {
+                pattern: /^Divs:?\(?([\w-\s]+)\)?$/, // Divs: a | Divs(a)
+                fix: 'Div($1){'
+            },
+            {
+                pattern: /^Divs\(([\w-\s]+?),(.+)\)$/, // Divs (a,b)
+                fix: 'Div($1){Div($2){'
+            },
+            {
+                pattern: /^(Form\(.*?\))$/, // Form ()
+                fix: '$1{'
+            },
+            {
+                pattern: /^.+End:$/, // *End:
+                fix: '}'
+            },
+            {
+                pattern: /If\s*\((.+?),(.+?),(.+?)\)\s*[^{]/, // short If
+                fix: 'If($1){\n$2\n}.Else{\n$3\n}'
+            },
+            {
+                pattern: /If\s*\(([=<>#\w]+)\)$/, // If(a)
+                fix: 'If ($1){'
+            },
+            {
+                pattern: /^(Else):$/, // Else(a)
+                fix: '}.$1{'
+            },
+            { // GetRow(prefix, table, colname, [value])
+                pattern: /GetRow\(\s*(["\w-]+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"?([\w-]+?)"?\s*,\s*([#\w-]+?)\)/,
+                fix: 'DBFind(Name: $2, Source: src_$2).Where("$3=$4").Vars($1)'
+            },
+            { // GetRow(prefix, table, cols)
+                pattern: /GetRow\(\s*(.+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*([=><\s"#\w-]+?)/,
+                fix: 'DBFind(Name: $2, Source: src_$2).Where($3).Vars($1)'
+            },
+            { // StateVal(name, [index])
+                pattern: /StateVal\(\s*([\w-]+?)\s*,\s*([#\w-]+)\s*\)/,
+                fix: 'EcosysParam(Name: $1, Index: $2)'
+            },
+            { // ValueById(table,idval,columns,[aliases])
+                pattern: /ValueById\(\s*#state_id#_([\w]+?)\s*,\s*(.+?),(.*)\)$/,
+                fix: 'DBFind(Name: $1, Source: src_$1).WhereId($2)\n$3'
+            },
+            { // SetVar(a=b)
+                pattern: /SetVar\((.*?)=(.*?)\)/,
+                fix: 'SetVar(Name: $1, Value: $2)'
+            },
+            { // Input(idname,[class],[placeholder],[type],[value])
+                pattern: /Input\((\w+?)\s*,\s*("[\w\s-]+?")\s*,\s*(\w+?)\s*,\s*(\w+?)\s*,\s*([#\w]+?)\)/,
+                fix: 'Input(Name: $1, Class: $2, Placeholder: $3, Type: $4, Value: $5)'
+            },
+
+        ]
     }
 }
 
@@ -181,7 +231,7 @@ function activate(context) {
             vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(protypoCompletions), '.', '(')
         )
         context.subscriptions.push(
-            vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
+            vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider(type))
         )
     }
 
