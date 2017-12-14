@@ -154,7 +154,7 @@ class SimpleFormatProvider {
     constructor(type) {
         this.type = type
         this.protypoRules = [{
-                pattern: /^Div\((.*?),(.+?)\)$/, // short Div
+                pattern: /^Div\((.*?),(.+)\)$/, // short Div
                 fix: 'Div($1){$2}'
             },
             {
@@ -170,12 +170,12 @@ class SimpleFormatProvider {
                 fix: '$1{'
             },
             {
-                pattern: /^.+End:$/, // *End:
-                fix: '}'
+                pattern: /^PageEnd:$/,
+                fix: ''
             },
             {
-                pattern: /If\s*\((.+?),(.+?),(.+?)\)\s*[^{]/, // short If
-                fix: 'If($1){\n$2\n}.Else{\n$3\n}'
+                pattern: /^.+End:$/, // *End:
+                fix: '}'
             },
             {
                 pattern: /If\s*\(([=<>#\w]+)\)$/, // If(a)
@@ -190,8 +190,8 @@ class SimpleFormatProvider {
                 fix: 'DBFind(Name: $2, Source: src_$2).Where("$3=$4").Vars($1)'
             },
             { // GetRow(prefix, table, cols)
-                pattern: /GetRow\(\s*(.+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*([=><\s"#\w-]+?)/,
-                fix: 'DBFind(Name: $2, Source: src_$2).Where($3).Vars($1)'
+                pattern: /GetRow\(\s*(.+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"(.*?)"\)/,
+                fix: 'DBFind(Name: $2, Source: src_$2).Where("$3").Vars($1)'
             },
             { // StateVal(name, [index])
                 pattern: /StateVal\(\s*([\w-]+?)\s*,\s*([#\w-]+)\s*\)/,
@@ -208,6 +208,10 @@ class SimpleFormatProvider {
             { // Input(idname,[class],[placeholder],[type],[value])
                 pattern: /Input\((\w+?)\s*,\s*("[\w\s-]+?")\s*,\s*(\w+?)\s*,\s*(\w+?)\s*,\s*([#\w]+?)\)/,
                 fix: 'Input(Name: $1, Class: $2, Placeholder: $3, Type: $4, Value: $5)'
+            },
+            {
+                pattern: /^Title:([\w\s]+)$/,
+                fix: 'SetTitle($1)'
             },
 
         ]
