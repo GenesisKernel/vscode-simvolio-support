@@ -167,6 +167,12 @@ const functionDefs = {
         insertText: 'DBFind(',
         params: []
     },
+    Where: {
+        label: 'Where',
+        documentation: '',
+        insertText: '.Where(',
+        params: []
+    },
     DBInsert: {
         label: 'DBInsert',
         documentation: '',

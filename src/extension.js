@@ -2,13 +2,24 @@ const vscode = require('vscode')
 const protypoCompletions = require('./protypo_defs').completions
 const simvolioCompletions = require('./simvolio_defs').completions
 
-const completionPattern = /\s*([A-Z][a-zA-Z]*)\(?([a-zA-Z]*.*[,:])*[\sa-zA-Z]*$/
+const completionPattern = /([\w\$#]+)/i
 
 
 class CompleteProvider {
-    constructor(completions) {
-        this.completions = completions
-        this.completionsKeys = Object.keys(completions)
+    constructor(type) {
+        this.type = type
+        if (type === 'simvolio') {
+            this.completions = simvolioCompletions
+            this.isSimvolio = true
+            this.varMatch = /\$\w+/g
+        }
+        if (type === 'protypo') {
+            this.completions = protypoCompletions
+            this.isProtypo = true
+            this.varMatch = /#\w+#/g
+        }
+        this.completionsKeys = Object.keys(this.completions)
+        this.completes = []
     }
     provideCompletionItems(document, position, token) {
         const text = document.lineAt(position.line).text,
@@ -16,9 +27,6 @@ class CompleteProvider {
             tokens = currentText.split(') '),
             textToken = tokens.length ? tokens[tokens.length - 1] : currentText
 
-        if (textToken.match(/^\d+$/)) {
-            return []
-        }
         const paramsMatch = textToken.match(completionPattern),
             items = []
         if (paramsMatch && paramsMatch[1]) {
@@ -34,14 +42,33 @@ class CompleteProvider {
                     items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
-        } else {
-            this.completionsKeys.forEach(key => { // Element NOT exist - list all elements
-                items.push(new vscode.CompletionItem(this.completions[key].insertText))
+        }
+        //  else {
+        //     this.completionsKeys.forEach(key => { // Element NOT exist - list all elements
+        //         items.push(new vscode.CompletionItem(this.completions[key].insertText))
+        //     })
+        // }
+
+        const vars = document.getText().match(this.varMatch)
+        if (vars.length > 1) {
+            vars.slice(1).forEach(v => {
+                if (this.completes.indexOf(v) < 0) {
+                    this.completes.unshift(v)
+                }
+            })
+            this.completes.slice(0, 10).forEach(c => {
+                let item = new vscode.CompletionItem(c)
+                item.detail = c
+                item.filterText = c
+                items.push(item)
             })
         }
+
         return items
     }
 }
+
+
 class SignatureProvider {
     constructor(completions) {
         this.completions = completions
@@ -232,7 +259,7 @@ function activate(context) {
     function registerProtypoProviders() {
         const type = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(protypoCompletions), '.', '(')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '#', '.', '(')
         )
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider(type))
@@ -245,7 +272,7 @@ function activate(context) {
             vscode.languages.registerDocumentFormattingEditProvider(type, new SimpleFormatProvider())
         )
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(simvolioCompletions), '.', '(')
+            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '$', '.', '(')
         )
     }
     registerProtypoProviders()
