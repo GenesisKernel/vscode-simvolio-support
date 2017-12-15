@@ -25,25 +25,25 @@
         "extensions": [
           ".sim"
         ],
-        "configuration": "./language-configuration_simvolio.json"
+        "configuration": "./src/language-conf_simvolio.json"
       },
       {
         "id": "protypo",
         "extensions": [
           ".ptl"
         ],
-        "configuration": "./language-configuration_protypo.json"
+        "configuration": "./src/language-conf_protypo.json"
       }
     ],
     "grammars": [{
         "language": "simvolio",
         "scopeName": "source.simvolio",
-        "path": "./syntaxes/simvolio.tmLanguage.json"
+        "path": "./src/syntaxes/simvolio.tmLanguage.json"
       },
       {
         "language": "protypo",
         "scopeName": "source.protypo",
-        "path": "./syntaxes/protypo.tmLanguage.json"
+        "path": "./src/syntaxes/protypo.tmLanguage.json"
       }
     ]
   },

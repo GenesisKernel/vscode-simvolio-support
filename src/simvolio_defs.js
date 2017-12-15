@@ -1,7 +1,7 @@
 const functionDefs = {
     LangRes: {
         label: 'LangRes',
-        documentation: '',
+        documention: '',
         insertText: 'LangRes(',
         params: []
     },
