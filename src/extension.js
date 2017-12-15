@@ -225,7 +225,7 @@ class SimpleFormatProvider {
                 fix: '}'
             },
             {
-                pattern: /If\s*\(([=<>#\w]+)\)$/, // If(a)
+                pattern: /^If\s*\((.+)\)$/, // If(a)
                 fix: 'If ($1){'
             },
             {
@@ -244,6 +244,10 @@ class SimpleFormatProvider {
                 pattern: /StateVal\(\s*([\w-]+?)\s*,\s*([#\w-]+)\s*\)/,
                 fix: 'EcosysParam(Name: $1, Index: $2)'
             },
+            { // StateVal(name)
+                pattern: /StateVal\(([\w-]+?)\)/,
+                fix: 'EcosysParam(Name: $1)'
+            },
             { // ValueById(table,idval,columns,[aliases])
                 pattern: /ValueById\(\s*#state_id#_([\w]+?)\s*,\s*(.+?),(.*)\)$/,
                 fix: 'DBFind(Name: $1, Source: src_$1).WhereId($2)\n$3'
@@ -260,7 +264,22 @@ class SimpleFormatProvider {
                 pattern: /^Title:([\w\s]+)$/,
                 fix: 'SetTitle($1)'
             },
-
+            {
+                pattern: /^Navigation\((.+)\)$/,
+                fix: 'Div(breadcrumb){Div(){$1}}'
+            },
+            {
+                pattern: /^Title:([\w\s$]+)$/,
+                fix: 'SetTitle($1)'
+            },
+            { //BtnPage
+                pattern: /BtnPage\s*\(([\s\w$"]+?),([\s\w$"]+?),([\s\w$"]+?),([\s\w$"-]+?)\)/,
+                fix: 'Button(Page: $1, Body: $2, PageParam: $3, Class: $4)'
+            },
+            { //BtnContract(contract, name, message, params, [class], [onsuccess], [pageparams])
+                pattern: /BtnContract\s*\(([\s\w\$"]+?),([\s\w\$"\)\(-]+?),([\s\w\$"]+?),([\s\w\$"#:]+?),([\s\w\$"'-]+?),([\s\w\$"]+?),([\s\w\$"]+?)\)/,
+                fix: 'Button(Contract: $1, Body: $2, Params: $4, Class: $5, Page: $6, PageParams: $7).Alert($3, confirm, cancel)'
+            },
         ]
     }
 }
