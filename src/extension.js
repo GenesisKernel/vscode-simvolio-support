@@ -201,10 +201,6 @@ class SimpleFormatProvider {
     constructor(type) {
         this.type = type
         this.protypoRules = [{
-                pattern: /^Div\((.*?),(.+)\)$/, // short Div
-                fix: 'Div($1){$2}'
-            },
-            {
                 pattern: /^Divs:?\(?([\w-\s]+)\)?$/, // Divs: a | Divs(a)
                 fix: 'Div($1){'
             },
