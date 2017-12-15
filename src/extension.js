@@ -280,6 +280,10 @@ class SimpleFormatProvider {
                 pattern: /BtnContract\s*\(([\s\w\$"]+?),([\s\w\$"\)\(-]+?),([\s\w\$"]+?),([\s\w\$"#:]+?),([\s\w\$"'-]+?),([\s\w\$"]+?),([\s\w\$"]+?)\)/,
                 fix: 'Button(Contract: $1, Body: $2, Params: $4, Class: $5, Page: $6, PageParams: $7).Alert($3, confirm, cancel)'
             },
+            { // fix langres on  button alert
+                pattern: /(\.Alert.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?\))$/g,
+                fix: '$1LangRes($2)$3LangRes($4)$5LangRes($6)$7'
+            },
         ]
     }
 }
