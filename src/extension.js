@@ -274,7 +274,7 @@ class SimpleFormatProvider {
             },
             { //BtnPage
                 pattern: /BtnPage\s*\(([\s\w$"]+?),([\s\w$"]+?),([\s\w$"]+?),([\s\w$"-]+?)\)/,
-                fix: 'Button(Page: $1, Body: $2, PageParam: $3, Class: $4)'
+                fix: 'Button(Page: $1, Body: $2, PageParams: $3, Class: $4)'
             },
             { //BtnContract(contract, name, message, params, [class], [onsuccess], [pageparams])
                 pattern: /BtnContract\s*\(([\s\w\$"]+?),([\s\w\$"\)\(-]+?),([\s\w\$"]+?),([\s\w\$"#:]+?),([\s\w\$"'-]+?),([\s\w\$"]+?),([\s\w\$"]+?)\)/,
