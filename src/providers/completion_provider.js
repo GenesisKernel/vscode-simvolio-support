@@ -1,7 +1,7 @@
 const vscode = require('vscode')
 const protypoCompletions = require('../protypo_defs').completions
 const simvolioCompletions = require('../simvolio_defs').completions
-const completionPattern = /([\w\$#]+)/i
+const completionPattern = /([\w\$#]{4,})/i
 
 class CompleteProvider {
     constructor(type) {
