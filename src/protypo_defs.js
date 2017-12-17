@@ -32,7 +32,7 @@ const functionDefs = {
     Address: {
         label: 'Address',
         documentation: 'Address(Wallet)',
-        insertText: 'Address(',
+        insertText: 'Address',
         params: [{
             label: 'Wallet',
             documentation: 'Wallet ID to convert',
@@ -40,9 +40,9 @@ const functionDefs = {
         }]
     },
     AddToolButton: {
-        label: 'AddToolButton',
-        documentation: 'AddToolButton(Title, Icon, Page, PageParams)',
-        insertText: 'AddToolButton(',
+        label: 'AddToolButton(Title, Icon, Page, PageParams)',
+        documentation: '',
+        insertText: 'AddToolButton',
         params: [{
                 label: 'Title',
                 documentation: 'Button title to show',
@@ -71,9 +71,9 @@ const functionDefs = {
         insertText: 'And('
     },
     DBFind: {
-        label: 'DBFind',
-        documentation: 'DBFind(Name, Source) [.Columns(columns)] [.Where(conditions)] [.WhereId(id)] [.Order(name)] [.Limit(limit)] [.Offset(offset)] [.Ecosystem(id)] [.Custom(Column,Body)] [.Vars(Prefix)]',
-        insertText: 'DBFind(',
+        label: 'DBFind(Name, Source)',
+        documentation: '[.Columns(columns)][.Where(conditions)][.WhereId(id)][.Order(name)][.Limit(limit)][.Offset(offset)][.Ecosystem(id)][.Custom(Column,Body)][.Vars(Prefix)]',
+        insertText: 'DBFind',
         params: [{
                 label: 'Name',
                 documentation: 'Table name to search',
@@ -87,9 +87,9 @@ const functionDefs = {
         ]
     },
     Button: {
-        label: 'Button',
-        documentation: 'Button(Body, Page, Class, Contract, Params, PageParams) [.Alert(Text,ConfirmButton,CancelButton,Icon)] [.Style(Style)]',
-        insertText: 'Button(',
+        label: 'Button(Body, Page, Class, Contract, Params, PageParams)',
+        documentation: '[.Alert(Text,ConfirmButton,CancelButton,Icon)] [.Style(Style)]',
+        insertText: 'Button',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class,
@@ -116,9 +116,9 @@ const functionDefs = {
         ]
     },
     Data: {
-        label: 'Data',
-        documentation: 'Data(Source,Columns,Data) [.Custom(Column,Body)]',
-        insertText: 'Data(',
+        label: 'Data(Source,Columns,Data)',
+        documentation: '[.Custom(Column,Body)]',
+        insertText: 'Data',
         params: [{
                 label: 'Source',
                 documentation: 'Source identificator to bind results',
@@ -137,9 +137,9 @@ const functionDefs = {
         ]
     },
     CmpTime: {
-        label: 'CmpTime',
-        documentation: 'CmpTime(Time1, Time2)',
-        insertText: 'CmpTime(',
+        label: 'CmpTime(Time1, Time2)',
+        documentation: '',
+        insertText: 'CmpTime',
         params: [{
                 label: 'Time1',
                 documentation: '',
@@ -153,9 +153,9 @@ const functionDefs = {
         ]
     },
     Div: {
-        label: 'Div',
-        documentation: 'Div(Class, Body) [.Style(Style)]',
-        insertText: 'Div(',
+        label: 'Div(Class, Body) ',
+        documentation: '[.Style(Style)]',
+        insertText: 'Div',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class
@@ -164,16 +164,16 @@ const functionDefs = {
     Em: {
         label: 'Em',
         documentation: 'Em(Body, Class)',
-        insertText: 'Em(',
+        insertText: 'Em',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class
         ]
     },
     ForList: {
-        label: 'ForList',
-        documentation: 'ForList(Source, Body)',
-        insertText: 'ForList(',
+        label: 'ForList(Source, Body)',
+        documentation: '',
+        insertText: 'ForList',
         params: [{
                 label: 'Source',
                 documentation: 'Source identificator to fetch the results',
@@ -183,18 +183,18 @@ const functionDefs = {
         ]
     },
     Form: {
-        label: 'Form',
-        documentation: 'Form(Class, Body) [.Style(Style)]',
-        insertText: 'Form(',
+        label: 'Form(Class, Body)',
+        documentation: '[.Style(Style)]',
+        insertText: 'Form',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class
         ]
     },
     GetVar: {
-        label: 'GetVar',
-        documentation: 'GetVar(Name)',
-        insertText: 'GetVar(',
+        label: 'GetVar(Name)',
+        documentation: '',
+        insertText: 'GetVar',
         params: [{
             label: 'Name',
             documentation: 'Variable name to get the value of',
@@ -202,9 +202,9 @@ const functionDefs = {
         }]
     },
     If: {
-        label: 'If',
-        documentation: 'If(Condition){ Body } [.ElseIf(Condition){ Body }] [.Else{ Body }]',
-        insertText: 'If(',
+        label: 'If(Condition){ Body }',
+        documentation: '[.ElseIf(Condition){ Body }] [.Else{ Body }]',
+        insertText: 'If',
         params: [
             staticParamTypes.Body,
             {
@@ -215,9 +215,9 @@ const functionDefs = {
         ]
     },
     Image: {
-        label: 'Image',
-        documentation: 'Image(Src,Alt,Class) [.Style(Style)]',
-        insertText: 'Image(',
+        label: 'Image(Src,Alt,Class)',
+        documentation: '[.Style(Style)]',
+        insertText: 'Image',
         params: [{
                 label: 'Src',
                 documentation: 'Image URI',
@@ -232,9 +232,9 @@ const functionDefs = {
         ]
     },
     ImageInput: {
-        label: 'ImageInput',
-        documentation: 'ImageInput(Name, Width, Ratio, Format)',
-        insertText: 'ImageInput(',
+        label: 'ImageInput(Name, Width, Ratio, Format)',
+        documentation: '',
+        insertText: 'ImageInput',
         params: [{
                 label: 'Name',
                 documentation: 'Unique input name to bind the value to',
@@ -259,9 +259,9 @@ const functionDefs = {
         ]
     },
     Include: {
-        label: 'Include',
-        documentation: 'Include(Name)',
-        insertText: 'Include(',
+        label: 'Include(Name)',
+        documentation: '',
+        insertText: 'Include',
         params: [{
             label: 'Name',
             documentation: 'Page or block name to include',
@@ -269,9 +269,9 @@ const functionDefs = {
         }]
     },
     Input: {
-        label: 'Input',
-        documentation: 'Input(Name,Class,Placeholder,Type,Value) [.Validate(validation parameters)] [.Style(Style)]',
-        insertText: 'Input(',
+        label: 'Input(Name,Class,Placeholder,Type,Value)',
+        documentation: '[.Validate(validation parameters)] [.Style(Style)]',
+        insertText: 'Input',
         params: [
             staticParamTypes.Class,
             {
@@ -302,9 +302,9 @@ const functionDefs = {
         ]
     },
     InputErr: {
-        label: 'InputErr',
-        documentation: 'InputErr(Name,validation errors)]',
-        insertText: 'InputErr(',
+        label: 'InputErr(Name,validation errors)',
+        documentation: '',
+        insertText: 'InputErr',
         params: [
             staticParamTypes.Class,
             {
@@ -315,9 +315,9 @@ const functionDefs = {
         ]
     },
     Label: {
-        label: 'Label',
-        documentation: 'Label(Body, Class, For) [.Style(Style)]',
-        insertText: 'Label(',
+        label: 'Label(Body, Class, For)',
+        documentation: '[.Style(Style)]',
+        insertText: 'Label',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class,
@@ -329,9 +329,9 @@ const functionDefs = {
         ]
     },
     LangRes: {
-        label: 'LangRes',
-        documentation: 'LangRes(Name, Lang)',
-        insertText: 'LangRes(',
+        label: 'LangRes(Name, Lang)',
+        documentation: '',
+        insertText: 'LangRes',
         params: [{
                 label: 'Name',
                 documentation: 'Unique resource name to get',
@@ -345,9 +345,9 @@ const functionDefs = {
         ]
     },
     LinkPage: {
-        label: 'LinkPage',
-        documentation: 'LinkPage(Body, Page, Class, PageParams) [.Style(Style)]',
-        insertText: 'LinkPage(',
+        label: 'LinkPage(Body, Page, Class, PageParams)',
+        documentation: '[.Style(Style)]',
+        insertText: 'LinkPage',
         params: [
             staticParamTypes.Body,
             {
@@ -364,9 +364,9 @@ const functionDefs = {
         ]
     },
     MenuGroup: {
-        label: 'MenuGroup',
-        documentation: 'MenuGroup(Title, Body, Icon)',
-        insertText: 'MenuGroup(',
+        label: 'MenuGroup(Title, Body, Icon)',
+        documentation: '',
+        insertText: 'MenuGroup',
         params: [
             staticParamTypes.Body,
             {
@@ -382,9 +382,9 @@ const functionDefs = {
         ]
     },
     MenuItem: {
-        label: 'MenuItem',
-        documentation: 'MenuItem(Title, Page, Params, Icon, Vde)',
-        insertText: 'MenuItem(',
+        label: 'MenuItem(Title, Page, Params, Icon, Vde)',
+        documentation: '',
+        insertText: 'MenuItem',
         params: [{
                 label: 'Title',
                 documentation: 'Title of the menu button',
@@ -408,23 +408,23 @@ const functionDefs = {
         ]
     },
     Or: {
-        label: 'Or',
-        documentation: 'Or(parameters)',
+        label: 'Or(parameters)',
+        documentation: '',
         insertText: 'Or('
     },
     P: {
-        label: 'P',
-        documentation: 'P(Body, Class) [.Style(Style)]',
-        insertText: 'P(',
+        label: 'P(Body, Class)',
+        documentation: '[.Style(Style)]',
+        insertText: 'P',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class
         ]
     },
     RadioGroup: {
-        label: 'RadioGroup',
-        documentation: 'RadioGroup(Name, Source, NameColumn, ValueColumn, Value, Class) [.Validate(validation parameters)] [.Style(Style)]',
-        insertText: 'RadioGroup(',
+        label: 'RadioGroup(Name, Source, NameColumn, ValueColumn, Value, Class)',
+        documentation: '[.Validate(validation parameters)] [.Style(Style)]',
+        insertText: 'RadioGroup',
         params: [{
                 label: 'Name',
                 documentation: 'Unique input name to bind the value to',
@@ -454,9 +454,9 @@ const functionDefs = {
         ]
     },
     Select: {
-        label: 'Select',
-        documentation: 'Select(Name, Source, NameColumn, ValueColumn, Value, Class) [.Validate(validation parameters)] [.Style(Style)]',
-        insertText: 'Select(',
+        label: 'Select(Name, Source, NameColumn, ValueColumn, Value, Class)',
+        documentation: '[.Validate(validation parameters)] [.Style(Style)]',
+        insertText: 'Select',
         params: [{
                 label: 'Name',
                 documentation: 'Unique input name to bind the value to',
@@ -486,9 +486,9 @@ const functionDefs = {
         ]
     },
     SetVar: {
-        label: 'SetVar',
-        documentation: 'SetVar(Name, Value)',
-        insertText: 'SetVar(',
+        label: 'SetVar(Name, Value)',
+        documentation: '',
+        insertText: 'SetVar',
         params: [{
                 label: 'Name',
                 documentation: '',
@@ -502,9 +502,9 @@ const functionDefs = {
         ]
     },
     SetTitle: {
-        label: 'SetTitle',
-        documentation: 'SetTitle(Title)',
-        insertText: 'SetTitle(',
+        label: 'SetTitle(Title)',
+        documentation: '',
+        insertText: 'SetTitle',
         params: [{
             label: 'Title',
             documentation: '',
@@ -512,27 +512,27 @@ const functionDefs = {
         }]
     },
     Span: {
-        label: 'Span',
-        documentation: 'Span(Body, Class) [.Style(Style)]',
-        insertText: 'Span(',
+        label: 'Span(Body, Class)',
+        documentation: '[.Style(Style)]',
+        insertText: 'Span',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class
         ]
     },
     Strong: {
-        label: 'Strong',
-        documentation: 'Strong(Body, Class)',
-        insertText: 'Strong(',
+        label: 'Strong(Body, Class)',
+        documentation: '',
+        insertText: 'Strong',
         params: [
             staticParamTypes.Body,
             staticParamTypes.Class
         ]
     },
     Table: {
-        label: 'Table',
-        documentation: 'Table(Source, Columns) [.Style(Style)]',
-        insertText: 'Table(',
+        label: 'Table(Source, Columns)',
+        documentation: '[.Style(Style)]',
+        insertText: 'Table',
         params: [{
                 label: 'Source',
                 documentation: '',
@@ -546,9 +546,9 @@ const functionDefs = {
         ]
     },
     EcosysParam: {
-        label: 'EcosysParam',
-        documentation: 'EcosysParam(Name, Index, Source)',
-        insertText: 'EcosysParam(',
+        label: 'EcosysParam(Name, Index, Source)',
+        documentation: '',
+        insertText: 'EcosysParam',
         params: [{
                 label: 'Source',
                 documentation: '',
@@ -567,9 +567,9 @@ const functionDefs = {
         ]
     },
     DateTime: {
-        label: 'DateTime',
-        documentation: 'DateTime(DateTime, Format)',
-        insertText: 'DateTime(',
+        label: 'DateTime(DateTime, Format)',
+        documentation: '',
+        insertText: 'DateTime',
         params: [{
                 label: 'DateTime',
                 documentation: '',

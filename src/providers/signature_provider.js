@@ -25,15 +25,28 @@ class SignatureProvider {
         }
         const paramsMatch = currentText.match(completionPattern)
         const items = []
+        let match = false
         if (paramsMatch && paramsMatch[1]) {
             let el = paramsMatch[1]
             this.completionsKeys.forEach(key => {
-                if (key.indexOf(el) > -1) {
-                    let it = this.completions[key]
-                    let label = it.label
-                    let doc = it.documentation
-                    // it.params.forEach(p => doc.push(`${p.label}: ${p.documentation}`))
-                    items.push(new vscode.SignatureInformation(label, doc))
+                if (key === el) {
+                    match = true
+                    const it = this.completions[key]
+                    const sign = new vscode.SignatureInformation(it.label)
+                    if (it.documentation) {
+                        sign.documentation = it.documentation
+                    }
+                    items.push(sign)
+                }
+            })
+            this.completionsKeys.forEach(key => {
+                if (!match && key.indexOf(el) > -1) {
+                    const it = this.completions[key]
+                    const sign = new vscode.SignatureInformation(it.label)
+                    if (it.documentation) {
+                        sign.documentation = it.documentation
+                    }
+                    items.push(sign)
                 }
             })
         }
