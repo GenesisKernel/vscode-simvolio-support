@@ -34,6 +34,9 @@ function activate(context) {
         context.subscriptions.push(
             vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '$', ' ', '.', '(')
         )
+        context.subscriptions.push(
+            vscode.languages.registerSignatureHelpProvider(type, new SignatureProvider(type), '(', ' ', '{')
+        )
     }
 
     registerProtypoProviders()

@@ -22,7 +22,7 @@ class CompleteProvider {
     provideCompletionItems(document, position, token) {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
-            tokens = currentText.split(/\)/),
+            tokens = currentText.split(/[\)\(]/),
             textToken = tokens.length ? tokens[tokens.length - 1] : currentText
 
         const tagMatch = textToken.match(/([\w\$#]{2,})/i),
@@ -36,14 +36,14 @@ class CompleteProvider {
                 if (key === el) { // Element complete - params helper
                     this.completions[key].params.forEach(it => {
                         if (textToken.indexOf(it.insertText) < 0) { // not repeat params
-                            items.push(new vscode.CompletionItem(it.insertText))
+                            items.push(' ' + new vscode.CompletionItem(it.insertText))
                         }
                     })
                 }
             })
             this.completionsKeys.forEach(key => {
                 if (!match && key.indexOf(el) > -1) { // Element NOT complete - element helper
-                    items.push(new vscode.CompletionItem(this.completions[key].insertText))
+                    items.push(new vscode.CompletionItem(' ' + this.completions[key].insertText))
                 }
             })
         }
@@ -60,11 +60,13 @@ class CompleteProvider {
             }
         })
         this.completes.forEach(c => {
-            let item = new vscode.CompletionItem(c)
-            // item.detail = c
-            // item.filterText = c
-            item.insertText = c
-            items.push(item)
+            if (c.length > 2) {
+                let item = new vscode.CompletionItem(c)
+                // item.detail = c
+                // item.filterText = c
+                item.insertText = c
+                items.push(item)
+            }
         })
 
 

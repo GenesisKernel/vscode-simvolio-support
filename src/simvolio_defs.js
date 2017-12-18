@@ -42,7 +42,7 @@ const functionDefs = {
         params: []
     },
     AddressToId: {
-        label: 'AddressToId',
+        label: 'AddressToId(address string)',
         documentation: '',
         insertText: 'AddressToId(',
         params: []
@@ -156,14 +156,20 @@ const functionDefs = {
         params: []
     },
     DBInsert: {
-        label: 'DBInsert',
+        label: 'DBInsert(tblname string, params string, val ...)',
         documentation: '',
         insertText: 'DBInsert(',
         params: []
     },
     DBFind: {
-        label: 'DBFind',
-        documentation: '',
+        label: 'DBRow(table string)',
+        documentation: '[.Columns(columns string)][.Where(where string, params ...)][.WhereId(id int)][.Order(order string)][.Limit(limit int)][.Offset(offset int)][.Ecosystem(ecosystemid int)]',
+        insertText: 'DBFind(',
+        params: []
+    },
+    DBRow: {
+        label: 'DBFind(table string)',
+        documentation: '[.Columns(columns string)] [.Where(where string, params ...)] [.WhereId(id int)] [.Order(order string)] [.Ecosystem(ecosystemid int)]',
         insertText: 'DBFind(',
         params: []
     },
@@ -173,12 +179,6 @@ const functionDefs = {
         insertText: '.Where(',
         params: []
     },
-    DBInsert: {
-        label: 'DBInsert',
-        documentation: '',
-        insertText: 'DBInsert(',
-        params: []
-    },
     DBInsertReport: {
         label: 'DBInsertReport',
         documentation: '',
@@ -186,7 +186,7 @@ const functionDefs = {
         params: []
     },
     DBUpdate: {
-        label: 'DBUpdate',
+        label: 'DBUpdate(tblname string, id int, params string, val...)',
         documentation: '',
         insertText: 'DBUpdate(',
         params: []
