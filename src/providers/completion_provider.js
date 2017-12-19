@@ -22,35 +22,37 @@ class CompleteProvider {
     provideCompletionItems(document, position, token) {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
-            tokens = currentText.split(/[\)\(]/),
-            textToken = tokens.length ? tokens[tokens.length - 1] : currentText
-
-        const tagMatch = textToken.match(/([\w\$#]{2,})/i),
             items = []
+        const el = this.getTag(currentText)
+        const word = this.getWord(currentText)
+        const scope = currentText.substring(currentText.indexOf(el), position.character)
 
-
-        if (tagMatch && tagMatch[1]) {
-            let el = tagMatch[1]
+        if (el) {
             let match = false
             this.completionsKeys.forEach(key => {
                 if (key === el) { // Element complete - params helper
                     this.completions[key].params.forEach(it => {
-                        if (textToken.indexOf(it.insertText) < 0) { // not repeat params
-                            items.push(' ' + new vscode.CompletionItem(it.insertText))
+                        if (scope.indexOf(it.insertText) < 0) { // not repeat params
+                            items.push(new vscode.CompletionItem(it.insertText))
                         }
                     })
                 }
             })
+            if (items.length) {
+                match = true
+            }
             this.completionsKeys.forEach(key => {
                 if (!match && key.indexOf(el) > -1) { // Element NOT complete - element helper
-                    items.push(new vscode.CompletionItem(' ' + this.completions[key].insertText))
+                    items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
+        } else if (word) {
+
         }
 
 
         const vars = document.getText(document.getWordRangeAtPosition(position))
-            .split(/[\s,\]\[\(\)=]+/)
+            .split(/[\s,:"'`\]\[(><)=]+/)
             .map(w => w.match(/^[\$#]/) ? w.substr(1, w.length - 1) : null)
             .filter(w => w)
 
@@ -60,7 +62,7 @@ class CompleteProvider {
             }
         })
         this.completes.forEach(c => {
-            if (c.length > 2) {
+            if (c.length > 3) {
                 let item = new vscode.CompletionItem(c)
                 // item.detail = c
                 // item.filterText = c
@@ -71,6 +73,29 @@ class CompleteProvider {
 
 
         return new vscode.CompletionList(items)
+    }
+
+    getTag(line) {
+        let i = line.length - 1,
+            right, left
+
+        while (i > 0 && '('.indexOf(line.charAt(i)) === -1) {
+            i--
+            right = i
+        }
+        while (--i > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
+            left = i
+        }
+        return line.substring(left, right)
+    }
+    getWord(line) {
+        let i = line.length - 1,
+            right = i,
+            left = i
+        while (--i > 0 && ' <>,.'.indexOf(line.charAt(i)) === -1) {
+            left = i
+        }
+        return line.substring(left, right)
     }
 }
 
