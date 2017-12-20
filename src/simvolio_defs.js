@@ -42,33 +42,39 @@ const functionDefs = {
         params: []
     },
     AddressToId: {
-        label: 'AddressToId(address string)',
-        documentation: '',
+        label: 'AddressToId',
+        documentation: 'AddressToId(address string) int',
         insertText: 'AddressToId(',
         params: []
     },
     Contains: {
         label: 'Contains',
-        documentation: '',
+        documentation: 'Contains(s string, substr string) bool',
         insertText: 'Contains(',
         params: []
     },
     Float: {
         label: 'Float',
-        documentation: '',
+        documentation: 'Float(val int|string) float',
         insertText: 'Float(',
         params: []
     },
     HasPrefix: {
         label: 'HasPrefix',
-        documentation: '',
+        documentation: 'HasPrefix(s string, prefix string) bool',
         insertText: 'HasPrefix(',
         params: []
     },
     HexToBytes: {
         label: 'HexToBytes',
-        documentation: '',
+        documentation: 'HexToBytes(hexdata string) bytes',
         insertText: 'HexToBytes(',
+        params: []
+    },
+    Join: {
+        label: 'Join',
+        documentation: 'Join(in array, sep string) string',
+        insertText: 'Join(',
         params: []
     },
     Int: {
@@ -151,13 +157,13 @@ const functionDefs = {
     },
     EcosysParam: {
         label: 'EcosysParam',
-        documentation: '',
+        documentation: 'EcosysParam(name string) string',
         insertText: 'EcosysParam(',
         params: []
     },
     DBInsert: {
-        label: 'DBInsert(tblname string, params string, val ...)',
-        documentation: '',
+        label: 'DBInsert',
+        documentation: 'DBInsert(tblname string, params string, val ...)',
         insertText: 'DBInsert(',
         params: []
     },
@@ -173,12 +179,6 @@ const functionDefs = {
         insertText: 'DBFind(',
         params: []
     },
-    Where: {
-        label: 'Where',
-        documentation: '',
-        insertText: '.Where(',
-        params: []
-    },
     DBInsertReport: {
         label: 'DBInsertReport',
         documentation: '',
@@ -186,8 +186,8 @@ const functionDefs = {
         params: []
     },
     DBUpdate: {
-        label: 'DBUpdate(tblname string, id int, params string, val...)',
-        documentation: '',
+        label: 'DBUpdate',
+        documentation: 'DBUpdate(tblname string, id int, params string, val...)',
         insertText: 'DBUpdate(',
         params: []
     },
