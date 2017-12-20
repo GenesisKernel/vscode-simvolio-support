@@ -151,7 +151,7 @@ const functionDefs = {
     },
     UpdateSysParam: {
         label: 'UpdateSysParam',
-        documentation: '',
+        documentation: 'UpdateSysParam(name, value, conditions string)',
         insertText: 'UpdateSysParam(',
         params: []
     },
