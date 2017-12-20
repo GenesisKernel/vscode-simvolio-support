@@ -68,6 +68,12 @@
 			"end": "`",
 			"pattern": ".*?"
 		},
+		"strings3": {
+			"name": "string.quoted.single.protypo",
+			"begin": "'",
+			"end": "'",
+			"pattern": ".*?"
+		},
 		"simvolio-comments": {
 			"name": "comment.line.simvolio",
 			"match": "//.*$"
@@ -79,6 +85,9 @@
 				},
 				{
 					"include": "#strings2"
+				},
+				{
+					"include": "#strings3"
 				},
 				{
 					"include": "#simvolio-comments"

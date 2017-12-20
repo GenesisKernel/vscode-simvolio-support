@@ -63,6 +63,12 @@
 			"end": "`",
 			"pattern": ".*?"
 		},
+		"strings3": {
+			"name": "string.quoted.single.protypo",
+			"begin": "'",
+			"end": "'",
+			"pattern": ".*?"
+		},
 		"error-simvolio-comments": {
 			"name": "invalid.illegal.protypo",
 			"match": "//.*$"
@@ -74,6 +80,9 @@
 				},
 				{
 					"include": "#strings2"
+				},
+				{
+					"include": "#strings3"
 				},
 				{
 					"include": "#comparsion-operator"
