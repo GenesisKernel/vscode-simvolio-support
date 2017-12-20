@@ -27,7 +27,7 @@ class CompleteProvider {
         const word = this.getWord(currentText)
         const scope = currentText.substring(currentText.indexOf(tag), position.character)
 
-
+        console.log("tag:", tag, "word:", word)
         if (tag) {
             let match = false
             this.completionsKeys.forEach(key => {
@@ -42,8 +42,10 @@ class CompleteProvider {
             if (items.length) {
                 match = true
             }
+        }
+        if (word) {
             this.completionsKeys.forEach(key => {
-                if (!match && key.indexOf(tag) > -1) { // Element NOT complete - element helper
+                if (key.indexOf(word) > -1) { // Element NOT complete - element helper
                     items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
@@ -76,7 +78,8 @@ class CompleteProvider {
 
     getTag(line) {
         let i = line.length - 1,
-            right, left
+            right = i,
+            left = i
 
         while (i > 0 && '('.indexOf(line.charAt(i)) === -1) {
             i--
@@ -89,7 +92,7 @@ class CompleteProvider {
     }
     getWord(line) {
         let i = line.length - 1,
-            right = i,
+            right = i + 1,
             left = i
         while (i-- > 0 && ' <>,.'.indexOf(line.charAt(i)) === -1) {
             left = i
