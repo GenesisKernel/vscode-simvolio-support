@@ -23,14 +23,15 @@ class CompleteProvider {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
             items = []
-        const el = this.getTag(currentText)
+        const tag = this.getTag(currentText)
         const word = this.getWord(currentText)
-        const scope = currentText.substring(currentText.indexOf(el), position.character)
+        const scope = currentText.substring(currentText.indexOf(tag), position.character)
 
-        if (el) {
+
+        if (tag) {
             let match = false
             this.completionsKeys.forEach(key => {
-                if (key === el) { // Element complete - params helper
+                if (key === tag) { // Element complete - params helper
                     this.completions[key].params.forEach(it => {
                         if (scope.indexOf(it.insertText) < 0) { // not repeat params
                             items.push(new vscode.CompletionItem(it.insertText))
@@ -42,12 +43,10 @@ class CompleteProvider {
                 match = true
             }
             this.completionsKeys.forEach(key => {
-                if (!match && key.indexOf(el) > -1) { // Element NOT complete - element helper
+                if (!match && key.indexOf(tag) > -1) { // Element NOT complete - element helper
                     items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
-        } else if (word) {
-
         }
 
 
@@ -83,7 +82,7 @@ class CompleteProvider {
             i--
             right = i
         }
-        while (--i > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
+        while (i-- > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
             left = i
         }
         return line.substring(left, right)
@@ -92,7 +91,7 @@ class CompleteProvider {
         let i = line.length - 1,
             right = i,
             left = i
-        while (--i > 0 && ' <>,.'.indexOf(line.charAt(i)) === -1) {
+        while (i-- > 0 && ' <>,.'.indexOf(line.charAt(i)) === -1) {
             left = i
         }
         return line.substring(left, right)
