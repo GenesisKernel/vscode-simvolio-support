@@ -48,4 +48,9 @@ function activate(context) {
     //     vscode.languages.registerDefinitionProvider(type, new SimvolioDefinitionProvider()))
 }
 
+function sayHello(e) {
+    console.log("work")
+    console.log(e)
+}
 exports.activate = activate
+exports.sayHello = sayHello

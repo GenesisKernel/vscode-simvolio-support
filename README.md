@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE.md) [![Marketplace Version](https://vsmarketplacebadge.apphb.com/version/hy6.simvolio-support.svg)](https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support) [![Install](https://vsmarketplacebadge.apphb.com/installs/hy6.simvolio-support.svg)](https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support)
+
 # Simvolio and Protypo language for Visual Studio Code
 
 simvolio and protypo language by Apla. Format, completion and highlighting supports

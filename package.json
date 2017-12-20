@@ -45,7 +45,13 @@
         "scopeName": "source.protypo",
         "path": "./src/syntaxes/protypo.tmLanguage.json"
       }
-    ]
+    ],
+    "keybindings": [{
+      "command": "sayHello",
+      "key": "ctrl+backspace",
+      "mac": "cmd+backspace",
+      "when": "editorTextFocus && !editorReadonly"
+    }]
   },
   "activationEvents": [
     "onLanguage:simvolio",
