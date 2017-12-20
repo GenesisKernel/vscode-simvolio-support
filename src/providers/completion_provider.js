@@ -27,11 +27,10 @@ class CompleteProvider {
         const word = this.getWord(currentText)
         const scope = currentText.substring(currentText.indexOf(tag), position.character)
 
-        console.log("tag:", tag, "word:", word)
+        // console.log("tag:", tag, "word:", word)
         if (tag) {
-            let match = false
             this.completionsKeys.forEach(key => {
-                if (key === tag) { // Element complete - params helper
+                if (key.toLowerCase() === tag) { // Element complete - params helper
                     this.completions[key].params.forEach(it => {
                         if (scope.indexOf(it.insertText) < 0) { // not repeat params
                             items.push(new vscode.CompletionItem(it.insertText))
@@ -39,13 +38,11 @@ class CompleteProvider {
                     })
                 }
             })
-            if (items.length) {
-                match = true
-            }
+
         }
         if (word) {
             this.completionsKeys.forEach(key => {
-                if (key.indexOf(word) > -1) { // Element NOT complete - element helper
+                if (key.toLowerCase().indexOf(word) > -1) { // Element NOT complete - element helper
                     items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
@@ -88,16 +85,16 @@ class CompleteProvider {
         while (i-- > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
             left = i
         }
-        return line.substring(left, right)
+        return line.substring(left, right).toLowerCase()
     }
     getWord(line) {
         let i = line.length - 1,
             right = i + 1,
             left = i
-        while (i-- > 0 && ' <>,.'.indexOf(line.charAt(i)) === -1) {
+        while (i-- > 0 && ' <>,.(){}"[]`'.indexOf(line.charAt(i)) === -1) {
             left = i
         }
-        return line.substring(left, right)
+        return line.substring(left, right).toLowerCase()
     }
 }
 
