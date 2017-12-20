@@ -2,7 +2,7 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.4.28",
+  "version": "0.4.29",
   "publisher": "hy6",
   "author": {
     "name": "Andrey Voronkov",
@@ -45,13 +45,7 @@
         "scopeName": "source.protypo",
         "path": "./src/syntaxes/protypo.tmLanguage.json"
       }
-    ],
-    "keybindings": [{
-      "command": "sayHello",
-      "key": "ctrl+backspace",
-      "mac": "cmd+backspace",
-      "when": "editorTextFocus && !editorReadonly"
-    }]
+    ]
   },
   "activationEvents": [
     "onLanguage:simvolio",
