@@ -78,9 +78,16 @@
 			"name": "comment.line.simvolio",
 			"match": "//.*$"
 		},
+		"cyr-text": {
+			"name": "comment.line.simvolio",
+			"match": "[а-яА-Я]"
+		},
 		"expression": {
 			"name": "meta.expression.simvolio",
 			"patterns": [{
+					"include": "#cyr-text"
+				},
+				{
 					"include": "#strings"
 				},
 				{

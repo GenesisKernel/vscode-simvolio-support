@@ -73,9 +73,16 @@
 			"name": "invalid.illegal.protypo",
 			"match": "//.*$"
 		},
+		"cyr-text": {
+			"name": "comment.line.simvolio",
+			"match": "[а-яА-Я]"
+		},
 		"expression": {
 			"name": "meta.expression.protypo",
 			"patterns": [{
+					"include": "#cyr-text"
+				},
+				{
 					"include": "#strings"
 				},
 				{
