@@ -42,9 +42,9 @@ class SimpleFormatProvider {
                     .trim()
 
                 line = this.fixSyntax(line)
-
-                if (!commentLine.test(line)) {
-                    if (firstBrace.test(line) | firstBraceSq.test(line)) {
+                let testLine = line.replace(/".*?"/g, "")
+                if (!commentLine.test(testLine)) {
+                    if (firstBrace.test(testLine) | firstBraceSq.test(testLine)) {
                         tabs--
                     }
                 }
@@ -55,10 +55,11 @@ class SimpleFormatProvider {
                 line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
                 line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
 
-                if (!commentLine.test(line)) {
-                    if (lastBrace.test(line) | lastBraceSq.test(line)) {
+                testLine = line.replace(/".*?"/g, "")
+                if (!commentLine.test(testLine)) {
+                    if (lastBrace.test(testLine) | lastBraceSq.test(testLine)) {
                         ++tabs
-                        if (/[^\}]*\}$/.test(line)) {
+                        if (/[^\}]*\}$/.test(testLine)) {
                             ++tabs
                         }
                     }
