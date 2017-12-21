@@ -33,7 +33,7 @@
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",
-			"match": "\\b(Include|LangRes|EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b\\s*(?=\\()|\\.(ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b\\s*(?=\\()|\\.(Else)\\b\\s*(?=\\{)"
+			"match": "\\b(Val|Include|LangRes|EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b\\s*(?=\\()|\\.(ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns)\\b\\s*(?=\\()|\\.(Else)\\b\\s*(?=\\{)"
 		},
 		"removed": {
 			"name": "invalid.illegal.protypo",
