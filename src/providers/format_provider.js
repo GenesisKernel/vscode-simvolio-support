@@ -88,6 +88,10 @@ class SimpleFormatProvider {
                 fix: 'Div($1){Div($2){'
             },
             {
+                pattern: /^Tag\(([\w-\s]+?),(.+)\)$/, // Divs (a,b)
+                fix: 'Div($1){$2}'
+            },
+            {
                 pattern: /^(Form\(.*?\))$/, // Form ()
                 fix: '$1{'
             },
