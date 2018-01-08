@@ -8,17 +8,8 @@
 	}],
 	"repository": {
 		"type-literal": {
-			"name": "const.simvolio",
-			"begin": "^\\s*(var\\b)?([a-zA-Z0-9-_\\s,.])+\\s+\\b(bool|bytes|int|address|array|map|money|float|string)",
-			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.simvolio"
-				},
-				"3": {
-					"name": "entity.name.type.simvolio"
-				}
-			},
-			"end": "\\b"
+			"name": "entity.name.type.simvolio",
+			"match": "(?<!\\.|\\$)\\b(bool|bytes|int|address|array|map|money|float|string)\\b(?!\\$|\\.)"
 		},
 		"DBFind-param": {
 			"name": "variable.language.simvolio",
@@ -30,7 +21,7 @@
 		},
 		"control-statement": {
 			"name": "keyword.control.simvolio",
-			"match": "(?<!\\.|\\$)\\b(if|while|func|else)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(contract|data|conditions|action|return|var|if|while|func|else)\\b(?!\\$|\\.)"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",

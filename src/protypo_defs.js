@@ -582,6 +582,11 @@ const functionDefs = {
             }
         ]
     },
+    Code: {
+        label: 'Code(some code)',
+        documentation: '',
+        insertText: 'Code(',
+    },
 }
 
 exports.completions = functionDefs

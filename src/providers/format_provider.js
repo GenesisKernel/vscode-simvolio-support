@@ -11,8 +11,8 @@ class SimpleFormatProvider {
     }
     format(start, end, text, options) {
         const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
-        const firstBrace = /^(\}).*/
-        const lastBrace = /(\{)[^\}]*$/
+        const firstBrace = /^(\}|\)).*/
+        const lastBrace = /(\{|\()[^\}\)]*$/
         const firstBraceSq = /^(\]).*/
         const lastBraceSq = /(\[)[^\]]*$/
 
