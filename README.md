@@ -11,10 +11,3 @@ Open (download and install) [Visual Studio Code](https://code.visualstudio.com/)
 Search extension by any of keywords: apla, simvolio, protypo
 
 Install
-
-
-[Facebook Share](http://www.facebook.com/sharer.php?u='https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support') |
-[Twitter Share](http://twitter.com/share?url='https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support'&text=Nice%20support%20for%20protypo%20and%20simvolio) |
-[Google+ Share](https://plus.google.com/share?url='https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support') |
-[LinkedIn Share](http://www.linkedin.com/shareArticle?url='https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support') |
-[VK Share](http://vk.com/share.php?url='https://marketplace.visualstudio.com/items?itemName=hy6.simvolio-support'?title=apla&description=Nice%20support%20for%20protypo%20and%20simvolio)
