@@ -25,11 +25,11 @@
 		},
 		"protypo": {
 			"name": "entity.name.class.protypo",
-			"match": "\\b(Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b\\s*(?=\\()|\\.(Alert|Style)\\b\\s*(?=\\()"
+			"match": "\\b(Chart|Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b\\s*(?=\\()|\\.(Alert|Style)\\b\\s*(?=\\()"
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
-			"match": "\\b(Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For)\\b\\s*(?=:)"
+			"match": "\\b(FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For)\\b\\s*(?=:)"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",

@@ -587,6 +587,37 @@ const functionDefs = {
         documentation: '',
         insertText: 'Code(',
     },
+    Chart: {
+        label: 'Chart(Type, Source, FieldLabel, FieldValue, Colors)',
+        documentation: '',
+        insertText: 'Chart(',
+        params: [{
+                label: 'Type',
+                documentation: '',
+                insertText: 'Type: '
+            },
+            {
+                label: 'Source',
+                documentation: '',
+                insertText: 'Source:'
+            },
+            {
+                label: 'FieldLabel',
+                documentation: '',
+                insertText: 'FieldLabel:'
+            },
+            {
+                label: 'FieldValue',
+                documentation: '',
+                insertText: 'FieldValue:'
+            },
+            {
+                label: 'Colors',
+                documentation: '',
+                insertText: 'Colors:'
+            }
+        ]
+    },
 }
 
 exports.completions = functionDefs
