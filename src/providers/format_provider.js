@@ -27,6 +27,7 @@ class SimpleFormatProvider {
         const newLineBlock = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
         const newLineBlock2 = /([\(\{])(If)/g
 
+        if (text.lineAt(0).text.match(/^\s*\{/)) return // do not format export.sim
         try {
             const lines = []
             let tabs = 0
