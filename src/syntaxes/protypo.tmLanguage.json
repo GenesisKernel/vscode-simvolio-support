@@ -29,7 +29,7 @@
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
-			"match": "\\b(FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For)\\b\\s*(?=:)"
+			"match": "\\b(Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For)\\b\\s*(?=:)"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",
