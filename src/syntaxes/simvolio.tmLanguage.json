@@ -25,7 +25,7 @@
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
-			"match": "(?<!\\.|\\$)\\b(info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt|DBRow|DBIntExt|DBStringExt)\\b(?!\\$|\\.)"
 		},
 		"autodefined": {
 			"name": "variable.language.simvolio",
@@ -37,7 +37,7 @@
 		},
 		"removed": {
 			"name": "invalid.illegal.simvolio",
-			"match": "(?<!\\.|\\$)\\b(GetOne|GetRow|BtnContract|TxButton|TxForm|Navigation|LiTemplate|BtnPage|BtnEdit|Back|PageTitle|Title|FullScreen|WhiteMobileBg|WiAccount|WiBalance|WiCitizen|LangJS|BlockInfo|TxId|Json|AutoUpdate|GetList|GetMap|ListVal|ValueById|Source|TextHidden|InputMoney|InputDate|InputAddress|Textarea|UList|MarkDown|Legend|LiBegin|Mult|Trim|StateLink|StateValDBInt|DBRow|DBIntExt|DBIntWhere|DBRowExt|DBStringExt|DBStringWhere)\\b\\(.*\\)"
+			"match": "(?<!\\.|\\$)\\b(GetOne|GetRow|BtnContract|TxButton|TxForm|Navigation|LiTemplate|BtnPage|BtnEdit|Back|PageTitle|Title|FullScreen|WhiteMobileBg|WiAccount|WiBalance|WiCitizen|LangJS|BlockInfo|TxId|Json|AutoUpdate|GetList|GetMap|ListVal|ValueById|Source|TextHidden|InputMoney|InputDate|InputAddress|Textarea|UList|MarkDown|Legend|LiBegin|Mult|Trim|StateLink|StateValDBInt|DBIntWhere|DBRowExt|DBStringWhere)\\b\\(.*\\)"
 		},
 		"variable": {
 			"name": "variable.other.simvolio",
