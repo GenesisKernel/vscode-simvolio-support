@@ -1,0 +1,18 @@
+{
+    "iconDefinitions": {
+        "_file_ptl": {
+            "iconPath": "./img/ptl.svg"
+        },
+        "_file_sim": {
+            "iconPath": "./img/sim.svg"
+        }
+    },
+    "fileExtensions": {
+        "sim": "_file_sim",
+        "ptl": "_file_ptl"
+    },
+    "languageIds": {
+        "simvolio": "_file_sim",
+        "protypo": "_file_ptl"
+    }
+}

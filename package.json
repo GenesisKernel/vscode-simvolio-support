@@ -2,8 +2,9 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.4.40",
+  "version": "0.4.41",
   "publisher": "hy6",
+  "icon": "./src/img/apla.png",
   "author": {
     "name": "Andrey Voronkov",
     "email": "cynephy6@gmail.com"
@@ -24,6 +25,11 @@
     "apla"
   ],
   "contributes": {
+    "iconThemes": [{
+      "id": "simvolio-theme",
+      "label": "Simvolio Theme",
+      "path": "./src/simvolio-icon-theme.json"
+    }],
     "languages": [{
         "id": "simvolio",
         "extensions": [
@@ -36,6 +42,7 @@
         "extensions": [
           ".ptl"
         ],
+        "icon": "./img/ptl.png",
         "configuration": "./src/language-conf_protypo.json"
       }
     ],
