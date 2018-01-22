@@ -161,6 +161,24 @@ const functionDefs = {
             staticParamTypes.Class
         ]
     },
+    Calculate: {
+        label: 'Calculate(Exp, Type, Prec) ',
+        documentation: '',
+        insertText: 'Calculate(',
+        params: [{
+            label: 'Type',
+            documentation: 'int, float, money',
+            insertText: 'Name: '
+        }, {
+            label: 'Exp',
+            documentation: '',
+            insertText: 'Exp: '
+        }, {
+            label: 'Prec',
+            documentation: 'count of number after dot in "float" and "money"',
+            insertText: 'Prec: '
+        }]
+    },
     Em: {
         label: 'Em',
         documentation: 'Em(Body, Class)',
