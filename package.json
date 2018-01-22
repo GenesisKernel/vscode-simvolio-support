@@ -4,7 +4,7 @@
   "description": "Simvolio and Protypo support",
   "version": "0.4.41",
   "publisher": "hy6",
-  "icon": "./src/img/apla.png",
+  "icon": "src/img/apla.png",
   "author": {
     "name": "Andrey Voronkov",
     "email": "cynephy6@gmail.com"
