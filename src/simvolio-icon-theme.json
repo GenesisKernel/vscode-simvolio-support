@@ -1,10 +1,10 @@
 {
     "iconDefinitions": {
         "_file_ptl": {
-            "iconPath": "./img/ptl.png"
+            "iconPath": "./img/ptl.svg"
         },
         "_file_sim": {
-            "iconPath": "./img/sim.png"
+            "iconPath": "./img/sim.svg"
         }
     },
     "fileExtensions": {
