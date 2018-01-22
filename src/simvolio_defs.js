@@ -169,7 +169,7 @@ const functionDefs = {
     },
     DBFind: {
         label: 'DBRow(table string)',
-        documentation: '[.Columns(columns string)][.Where(where string, params ...)][.WhereId(id int)][.Order(order string)][.Limit(limit int)][.Offset(offset int)][.Ecosystem(ecosystemid int)]',
+        documentation: '[.Columns(columns string)][.Where(where string, params ...)][.WhereId(id int)][.Order(order string)][.Limit(limit int)][.Offset(offset int)][.Ecosystem(ecosystemid int)][.Row()][.One(field)]',
         insertText: 'DBFind(',
         params: []
     },

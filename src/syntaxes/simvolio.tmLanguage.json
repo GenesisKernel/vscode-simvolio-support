@@ -13,7 +13,7 @@
 		},
 		"DBFind-param": {
 			"name": "variable.language.simvolio",
-			"match": "\\.(Columns|Where|WhereId|Order|Limit|Offset|Ecosystem|One)\\b"
+			"match": "\\.(Columns|Where|WhereId|Order|Limit|Offset|Ecosystem|One|Row)\\b"
 		},
 		"control-statement": {
 			"name": "keyword.control.simvolio",
