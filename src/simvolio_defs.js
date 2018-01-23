@@ -47,6 +47,12 @@ const functionDefs = {
         insertText: 'AddressToId(',
         params: []
     },
+    IdToAddress: {
+        label: 'IdToAddress',
+        documentation: 'IdToAddress(id int) string',
+        insertText: 'IdToAddress(',
+        params: []
+    },
     Contains: {
         label: 'Contains',
         documentation: 'Contains(s string, substr string) bool',
