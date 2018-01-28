@@ -5,9 +5,13 @@
         },
         "_file_sim": {
             "iconPath": "./img/sim.svg"
+        },
+        "_file_json": {
+            "iconPath": "./img/json.png"
         }
     },
     "fileExtensions": {
+        "json": "_file_json",
         "sim": "_file_sim",
         "ptl": "_file_ptl"
     },
