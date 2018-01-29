@@ -11,10 +11,8 @@ class SimpleFormatProvider {
     }
     format(start, end, text, options) {
         const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
-        const firstBrace = /^(\}|\)).*/
-        const lastBrace = /(\{|\()[^\}\)]*$/
-        const firstBraceSq = /^(\]).*/
-        const lastBraceSq = /(\[)[^\]]*$/
+        const hasClosedBracket = /^\s*([\}\)\]]).*/
+        const hasOpenBracket = /[\{\(\[]\s*$/
 
         const spaceBeforeBrace = /\s*(\))\s*/g
         const spaceCloseBrace = /\s*(\))(\s)*/g
@@ -45,7 +43,7 @@ class SimpleFormatProvider {
                 line = this.fixSyntax(line)
                 let testLine = line.replace(/".*?"/g, "")
                 if (!commentLine.test(testLine)) {
-                    if (firstBrace.test(testLine) | firstBraceSq.test(testLine)) {
+                    if (hasClosedBracket.test(testLine)) {
                         tabs--
                     }
                 }
@@ -58,7 +56,7 @@ class SimpleFormatProvider {
 
                 testLine = line.replace(/".*?"/g, "")
                 if (!commentLine.test(testLine)) {
-                    if (lastBrace.test(testLine) | lastBraceSq.test(testLine)) {
+                    if (hasOpenBracket.test(testLine)) {
                         ++tabs
                         if (/[^\}]*\}$/.test(testLine)) {
                             ++tabs
