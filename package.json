@@ -2,7 +2,7 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.4.47",
+  "version": "0.4.48",
   "publisher": "hy6",
   "icon": "src/img/apla.png",
   "author": {
@@ -22,7 +22,8 @@
   "keywords": [
     "protypo",
     "simvolio",
-    "apla"
+    "apla",
+    "genesis"
   ],
   "contributes": {
     "iconThemes": [{
