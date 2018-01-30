@@ -584,6 +584,17 @@ const functionDefs = {
             }
         ]
     },
+    SysParam: {
+        label: 'SysParam(Name)',
+        documentation: '',
+        insertText: 'SysParam',
+        params: [{
+                label: 'Name',
+                documentation: '',
+                insertText: 'Name: '
+            }
+        ]
+    },
     DateTime: {
         label: 'DateTime(DateTime, Format)',
         documentation: '',
