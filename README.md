@@ -8,6 +8,6 @@ simvolio and protypo language by Apla. Format, completion and highlighting suppo
 
 Open (download and install) [Visual Studio Code](https://code.visualstudio.com/)
 
-Search extension by any of keywords: apla, simvolio, protypo
+Search extension by any of keywords: apla, genesis, simvolio, protypo
 
 Install
