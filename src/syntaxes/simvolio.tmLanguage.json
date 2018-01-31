@@ -23,6 +23,10 @@
 			"name": "entity.name.function.simvolio",
 			"match": "(?<!\\.|\\$)\\b(Join|info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|IdToAddress|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt|DBRow|DBIntExt|DBStringExt)\\b(?!\\$|\\.)"
 		},
+		"simvolio-ext": {
+			"name": "entity.name.function.simvolio",
+			"match": "(?<!\\.|\\$)\\b(MoneyTransfer|NewContract|EditContract|ActivateContract|NewEcosystem|NewParameter|EditParameter|NewMenu|EditMenu|AppendMenu|NewPage|EditPage|AppendPage|NewLang|EditLang|NewSign|EditSign|NewBlock|EditBlock|NewTable|EditTable|NewColumn|EditColumn|Import|DeactivateContract)\\b(?!\\$|\\.)"
+		},
 		"autodefined": {
 			"name": "variable.language.simvolio",
 			"match": "(?<!\\.|\\$)\\b$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b(?!\\$|\\.)"
@@ -94,6 +98,9 @@
 				},
 				{
 					"include": "#simvolio"
+				},
+				{
+					"include": "#simvolio-ext"
 				},
 				{
 					"include": "#type-literal"

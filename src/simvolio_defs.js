@@ -156,9 +156,9 @@ const functionDefs = {
         params: []
     },
     UpdateSysParam: {
-        label: 'UpdateSysParam',
-        documentation: 'UpdateSysParam(name, value, conditions string)',
-        insertText: 'UpdateSysParam(',
+        label: 'UpdateSysParam(Name, Value string, Conditions string "optional")',
+        documentation: '',
+        insertText: 'UpdateSysParam("Name,Value,Conditions", ',
         params: []
     },
     EcosysParam: {
@@ -218,6 +218,156 @@ const functionDefs = {
                 insertText: 'Format: YYYY-MM-DD HH:MI:SS'
             }
         ]
+    },
+    MoneyTransfer: {
+        label: 'MoneyTransfer(Recipient, Amount string, Comment string "optional")',
+        documentation: '',
+        insertText: 'MoneyTransfer("Recipient,Amount,Comment", ',
+        params: []
+    },
+    NewContract: {
+        label: 'NewContract(Value, Conditions string, Wallet string "optional", TokenEcosystem int "optional")',
+        documentation: '',
+        insertText: 'NewContract("Value,Conditions,Wallet,TokenEcosystem", ',
+        params: []
+    },
+    EditContract: {
+        label: 'EditContract(Id int, Value, Conditions string, WalletId string "optional")',
+        documentation: '',
+        insertText: 'EditContract("Id,Value,Conditions,WalletId",',
+        params: []
+    },
+    ActivateContract: {
+        label: 'ActivateContract(Id int)',
+        documentation: '',
+        insertText: 'ActivateContract("Id", ',
+        params: []
+    },
+    NewEcosystem: {
+        label: 'NewEcosystem(Name  string "optional")',
+        documentation: '',
+        insertText: 'NewEcosystem("Name", ',
+        params: []
+    },
+    NewParameter: {
+        label: 'NewParameter(Name, Value, Conditions string)',
+        documentation: '',
+        insertText: 'NewParameter("Name,Value,Conditions", ',
+        params: []
+    },
+    EditParameter: {
+        label: 'EditParameter(Id int, Value, Conditions string)',
+        documentation: '',
+        insertText: 'EditParameter("Id,Value,Conditions", ',
+        params: []
+    },
+    NewMenu: {
+        label: 'NewMenu(Name, Value, Conditions string, Title string "optional")',
+        documentation: '',
+        insertText: 'NewMenu("Name,Value,Conditions,Title", ',
+        params: []
+    },
+    EditMenu: {
+        label: 'EditMenu(Id int, Value, Conditions string, Title string "optional")',
+        documentation: '',
+        insertText: 'EditMenu("Id,Value,Conditions,Title", ',
+        params: []
+    },
+    AppendMenu: {
+        label: 'AppendMenu(Id int, Value string)',
+        documentation: '',
+        insertText: 'AppendMenu("Id,Value", ',
+        params: []
+    },
+    NewPage: {
+        label: 'NewPage(Name, Value, Menu, Conditions string)',
+        documentation: '',
+        insertText: 'NewPage("Name,Value,Menu,Conditions", ',
+        params: []
+    },
+    EditPage: {
+        label: 'EditPage(Id int, Value, Menu, Conditions string)',
+        documentation: '',
+        insertText: 'EditPage("Id,Value,Menu,Conditions", ',
+        params: []
+    },
+    AppendPage: {
+        label: 'AppendPage(Id int, Value string)',
+        documentation: '',
+        insertText: 'AppendPage("Id,Value", ',
+        params: []
+    },
+    NewLang: {
+        label: 'NewLang(Name, Trans string)',
+        documentation: '',
+        insertText: 'NewLang("Name,Trans", ',
+        params: []
+    },
+    EditLang: {
+        label: 'EditLang(Name, Trans string)',
+        documentation: '',
+        insertText: 'EditLang("Name,Trans", ',
+        params: []
+    },
+    NewSign: {
+        label: 'NewSign(Name, Value, Conditions string)',
+        documentation: '',
+        insertText: 'NewSign("Name,Value,Conditions", ',
+        params: []
+    },
+    EditSign: {
+        label: 'EditSign(Id int, Value, Conditions string)',
+        documentation: '',
+        insertText: 'EditSign("Id,Value,Conditions", ',
+        params: []
+    },
+    NewBlock: {
+        label: 'NewBlock(Name, Value, Conditions string)',
+        documentation: '',
+        insertText: 'NewBlock("Name,Value,Conditions", ',
+        params: []
+    },
+    EditBlock: {
+        label: 'EditBlock(Id int, Value, Conditions string)',
+        documentation: '',
+        insertText: 'EditBlock("Id,Value,Conditions", ',
+        params: []
+    },
+    NewTable: {
+        label: 'NewTable(Name, Columns, Permissions string)',
+        documentation: '',
+        insertText: 'NewTable("Name,Columns,Permissions", ',
+        params: []
+    },
+    EditTable: {
+        label: 'EditTable(Name, Permissions string)',
+        documentation: '',
+        insertText: 'EditTable("Name,Permissions", ',
+        params: []
+    },
+    NewColumn: {
+        label: 'NewColumn(TableName, Name, Type, Permissions string)',
+        documentation: '',
+        insertText: 'NewColumn("TableName,Name,Type,Permissions", ',
+        params: []
+    },
+    EditColumn: {
+        label: 'EditColumn(TableName, Name, Permissions string)',
+        documentation: '',
+        insertText: 'EditColumn("TableName,Name,Permissions", ',
+        params: []
+    },
+    Import: {
+        label: 'Import(Data string)',
+        documentation: '',
+        insertText: 'Import("Data", ',
+        params: []
+    },
+    DeactivateContract: {
+        label: 'DeactivateContract(Id int)',
+        documentation: '',
+        insertText: 'DeactivateContract("Id", ',
+        params: []
     },
 }
 
