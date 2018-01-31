@@ -17,7 +17,7 @@
 		},
 		"control-statement": {
 			"name": "keyword.control.simvolio",
-			"match": "(?<!\\.|\\$)\\b(contract|data|conditions|action|return|var|if|while|func|else)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(contract|data|conditions|action|return|var|if|while|func|else|break|continue)\\b(?!\\$|\\.)"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
