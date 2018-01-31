@@ -111,7 +111,7 @@ class SimpleFormatProvider {
                 fix: '}.$1{'
             },
             { // GetRow(prefix, table, colname, [value])
-                pattern: /GetRow\(\s*(["\w-]+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"?([\w-]+?)"?\s*,\s*([#\w-]+?)\)/,
+                pattern: /GetRow\(\s*(["\w\-]+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"?([\w\-]+?)"?\s*,\s*([#\w\-]+?)\)/,
                 fix: 'DBFind(Name: $2, Source: src_$2).Where("$3=$4").Vars($1)'
             },
             { // GetRow(prefix, table, cols)
@@ -119,11 +119,11 @@ class SimpleFormatProvider {
                 fix: 'DBFind(Name: $2, Source: src_$2).Where("$3").Vars($1)'
             },
             { // StateVal(name, [index])
-                pattern: /StateVal\(\s*([\w-]+?)\s*,\s*([#\w-]+)\s*\)/,
+                pattern: /StateVal\(\s*([\w\-]+?)\s*,\s*([#\w\-]+)\s*\)/,
                 fix: 'EcosysParam(Name: $1, Index: $2)'
             },
             { // StateVal(name)
-                pattern: /StateVal\(([\w-]+?)\)/,
+                pattern: /StateVal\(([\w\-]+?)\)/,
                 fix: 'EcosysParam(Name: $1)'
             },
             { // ValueById(table,idval,columns,[aliases])
@@ -135,7 +135,7 @@ class SimpleFormatProvider {
                 fix: 'SetVar(Name: $1, Value: $2)'
             },
             { // Input(idname,[class],[placeholder],[type],[value])
-                pattern: /Input\((\w+?)\s*,\s*("[\w\s-]+?")\s*,\s*(\w+?)\s*,\s*(\w+?)\s*,\s*([#\w]+?)\)/,
+                pattern: /Input\((\w+?)\s*,\s*("[\w\s\-]+?")\s*,\s*(\w+?)\s*,\s*(\w+?)\s*,\s*([#\w]+?)\)/,
                 fix: 'Input(Name: $1, Class: $2, Placeholder: $3, Type: $4, Value: $5)'
             },
             {
@@ -151,11 +151,11 @@ class SimpleFormatProvider {
                 fix: 'SetTitle($1)'
             },
             { //BtnPage
-                pattern: /BtnPage\s*\(([\s\w$"]+?),([\s\w$"]+?),([\s\w$"]+?),([\s\w$"-]+?)\)/,
+                pattern: /BtnPage\s*\(([\s\w$"]+?),([\s\w$"]+?),([\s\w$"]+?),([\s\w$"\-]+?)\)/,
                 fix: 'Button(Page: $1, Body: $2, PageParams: $3, Class: $4)'
             },
             { //BtnContract(contract, name, message, params, [class], [onsuccess], [pageparams])
-                pattern: /BtnContract\s*\(([\s\w\$"]+?),([\s\w\$"\)\(-]+?),([\s\w\$"]+?),([\s\w\$"#:]+?),([\s\w\$"'-]+?),([\s\w\$"]+?),([\s\w\$"]+?)\)/,
+                pattern: /BtnContract\s*\(([\s\w\$"]+?),([\s\w\$"\)\(\-]+?),([\s\w\$"]+?),([\s\w\$"#:]+?),([\s\w\$"'\-]+?),([\s\w\$"]+?),([\s\w\$"]+?)\)/,
                 fix: 'Button(Contract: $1, Body: $2, Params: $4, Class: $5, Page: $6, PageParams: $7).Alert($3, confirm, cancel)'
             },
             // { 
