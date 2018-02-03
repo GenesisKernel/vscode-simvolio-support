@@ -2,22 +2,18 @@
 
 All notable changes to the "simvolio-support" extension will be documented in this file.
 
-## 0.4.0
+## 0.4
 
 + basic converter from old protypo format
 
-## 0.3.0
+## 0.3
 
 + basic simvolio complete helper
 
-## 0.2.0
+## 0.2
 
 + separation of languages (simvolio-protypo => simvolio, protypo)
 
-## 0.1.0
+## 0.1
 
 + formatting and protypo complete helpers
-
-## [0.0.0]
-
-+ Initial release
