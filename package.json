@@ -26,12 +26,37 @@
     "genesis"
   ],
   "contributes": {
-    "iconThemes": [{
-      "id": "simvolio-theme",
-      "label": "Simvolio Theme",
-      "path": "./src/simvolio-icon-theme.json"
-    }],
-    "languages": [{
+    "commands": [
+      {
+        "command": "extension.exportFile",
+        "title": "Export File",
+        "description": "Export file to ecosystems"
+      },
+      {
+        "command": "extension.exportPackage",
+        "title": "Export Package",
+        "description": "Export package to ecosystem"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.exportFile",
+        "key": "Alt+I"
+      },
+      {
+        "command": "extension.exportPackage",
+        "key": "Alt+P"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "simvolio-theme",
+        "label": "Simvolio Theme",
+        "path": "./src/simvolio-icon-theme.json"
+      }
+    ],
+    "languages": [
+      {
         "id": "simvolio",
         "extensions": [
           ".sim"
@@ -47,7 +72,8 @@
         "configuration": "./src/language-conf_protypo.json"
       }
     ],
-    "grammars": [{
+    "grammars": [
+      {
         "language": "simvolio",
         "scopeName": "source.simvolio",
         "path": "./src/syntaxes/simvolio.tmLanguage.json"
