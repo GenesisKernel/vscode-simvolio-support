@@ -8,7 +8,7 @@ class SimpleFormatProvider {
     provideDocumentRangeFormattingEdits(document, range, options, token) {
         return this.format(range.start.line, range.end.line, document, options)
     }
-    format(start, end, text, options, isRange) {
+    format(start, end, text, options) {
         const countLines = text.lineCount
         const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
         const hasClosedBracket = /^\s*([\}\)\]]).*/
