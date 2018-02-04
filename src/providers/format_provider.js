@@ -1,15 +1,15 @@
 const vscode = require('vscode')
 
 class SimpleFormatProvider {
-
     provideDocumentFormattingEdits(document, options, token) {
         return this.format(0, document.lineCount, document, options)
     }
 
     provideDocumentRangeFormattingEdits(document, range, options, token) {
-        // return new vscode.TextEdit()
+        return this.format(range.start.line, range.end.line, document, options)
     }
-    format(start, end, text, options) {
+    format(start, end, text, options, isRange) {
+        const countLines = text.lineCount
         const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
         const hasClosedBracket = /^\s*([\}\)\]]).*/
         const hasOpenBracket = /[\{\(\[]\s*$/
@@ -29,7 +29,7 @@ class SimpleFormatProvider {
         try {
             const lines = []
             let tabs = 0
-            for (let i = start; i < end; i++) {
+            for (let i = 0; i < countLines; i++) {
                 if (tabs < 0) tabs = 0
                 let line = text.lineAt(i).text
                 let lineLength = line.length
@@ -63,7 +63,9 @@ class SimpleFormatProvider {
                         }
                     }
                 }
-                lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
+                if (i >= start && i <= end) {
+                    lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
+                }
             }
             return lines
         } catch (e) {
