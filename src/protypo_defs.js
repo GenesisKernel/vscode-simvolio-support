@@ -647,6 +647,32 @@ const functionDefs = {
             }
         ]
     },
+    InputMap: {
+        label: 'InputMap(Name, Value, Type, MapType)',
+        documentation: '',
+        insertText: 'InputMap(',
+        params: [{
+                label: 'Name',
+                documentation: '',
+                insertText: 'Name: '
+            },
+            {
+                label: 'Value',
+                documentation: '',
+                insertText: 'Value:'
+            },
+            {
+                label: 'Type',
+                documentation: '',
+                insertText: 'Type:'
+            },
+            {
+                label: 'MapType',
+                documentation: 'hybrid|roadmap|satellite|terrain',
+                insertText: 'MapType:'
+            }
+        ]
+    },
 }
 
 exports.completions = functionDefs
