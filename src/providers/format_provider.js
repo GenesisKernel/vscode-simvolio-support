@@ -14,9 +14,8 @@ class SimpleFormatProvider {
         const hasClosedBracket = /^\s*([\}\)\]]).*/
         const hasOpenBracket = /[\{\(\[]\s*$/
 
-        const spaceBeforeBrace = /\s*(\))\s*/g
         const spaceCloseBrace = /\s*(\))(\s)*/g
-        const spaceOpenBrace = /\s*(\()\s*/g
+        const spaceOpenBrace = /(\s)+(\()\s*/g
         const commaSpace = /\s*(,)(\s)*/g
         const commentLine = /^\s*\/\/.*$/
         const doubleSpaces = /(\s)+/g
@@ -35,7 +34,7 @@ class SimpleFormatProvider {
                 let lineLength = line.length
                 line = line
                     .replace(commaSpace, '$1$2')
-                    .replace(spaceOpenBrace, '$1')
+                    .replace(spaceOpenBrace, '$1$2')
                     .replace(spaceCloseBrace, '$1$2')
                     .replace(doubleSpaces, '$1')
                     .trim()
