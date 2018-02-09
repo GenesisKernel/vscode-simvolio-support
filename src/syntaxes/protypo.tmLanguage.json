@@ -25,11 +25,11 @@
 		},
 		"protypo": {
 			"name": "entity.name.class.protypo",
-			"match": "\\b(Chart|Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b\\s*(?=\\()|\\.(Alert|Style)\\b\\s*(?=\\()"
+			"match": "\\b(InputMap|Chart|Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b\\s*(?=\\()|\\.(Alert|Style)\\b\\s*(?=\\()"
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
-			"match": "\\b(Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For|Prec|Exp)\\b\\s*(?=:)"
+			"match": "\\b(Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For|Prec|Exp|MapType|Text|ConfirmButton|CancelButton)\\b\\s*(?=:)"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",
