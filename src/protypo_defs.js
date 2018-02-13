@@ -649,7 +649,7 @@ const functionDefs = {
     },
     InputMap: {
         label: 'InputMap(Name, Value, Type, MapType)',
-        documentation: '',
+        documentation: 'MapType:hybrid|roadmap|satellite|terrain',
         insertText: 'InputMap(',
         params: [{
                 label: 'Name',
