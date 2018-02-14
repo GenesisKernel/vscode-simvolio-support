@@ -83,6 +83,12 @@ const functionDefs = {
         insertText: 'Join(',
         params: []
     },
+    Split: {
+        label: 'Split',
+        documentation: 'Split(s, sep string) array',
+        insertText: 'Split(',
+        params: []
+    },
     Int: {
         label: 'Int',
         documentation: '',
