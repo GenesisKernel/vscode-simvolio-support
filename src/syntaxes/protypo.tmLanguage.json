@@ -25,7 +25,7 @@
 		},
 		"protypo": {
 			"name": "entity.name.class.protypo",
-			"match": "\\b(InputMap|Chart|Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b\\s*(?=\\()|\\.(Alert|Style)\\b\\s*(?=\\()"
+			"match": "\\b(Map|InputMap|Chart|Div|Span|Button|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)\\b\\s*(?=\\()|\\.(Alert|Style)\\b\\s*(?=\\()"
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",

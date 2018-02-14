@@ -648,7 +648,7 @@ const functionDefs = {
         ]
     },
     InputMap: {
-        label: 'InputMap(Name, Value, Type, MapType)',
+        label: 'InputMap(Name, Value, Type:poligon, MapType)',
         documentation: 'MapType:hybrid|roadmap|satellite|terrain',
         insertText: 'InputMap(',
         params: [{
@@ -668,7 +668,29 @@ const functionDefs = {
             },
             {
                 label: 'MapType',
-                documentation: 'hybrid|roadmap|satellite|terrain',
+                documentation: '',
+                insertText: 'MapType:'
+            }
+        ]
+    },
+    Map: {
+        label: 'Map(Name, Value, Type:poligon, MapType)',
+        documentation: 'MapType:hybrid|roadmap|satellite|terrain',
+        insertText: 'InputMap(',
+        params: [
+            {
+                label: 'Value',
+                documentation: '',
+                insertText: 'Value:'
+            },
+            {
+                label: 'Type',
+                documentation: '',
+                insertText: 'Type:'
+            },
+            {
+                label: 'MapType',
+                documentation: '',
                 insertText: 'MapType:'
             }
         ]
