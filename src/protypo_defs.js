@@ -674,7 +674,7 @@ const functionDefs = {
         ]
     },
     Map: {
-        label: 'Map(Name, Value, Type:poligon, MapType)',
+        label: 'Map(Hmap, Value, MapType)',
         documentation: 'MapType:hybrid|roadmap|satellite|terrain',
         insertText: 'InputMap(',
         params: [
@@ -684,14 +684,14 @@ const functionDefs = {
                 insertText: 'Value:'
             },
             {
-                label: 'Type',
-                documentation: '',
-                insertText: 'Type:'
-            },
-            {
                 label: 'MapType',
                 documentation: '',
                 insertText: 'MapType:'
+            },
+            {
+                label: 'Hmap',
+                documentation: '',
+                insertText: 'Hmap:'
             }
         ]
     },

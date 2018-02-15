@@ -8,7 +8,7 @@ class CompleteProvider {
         if (type === 'simvolio') {
             this.completions = simvolioCompletions
             this.isSimvolio = true
-            this.varMatch = /\$(\w+)[\s,]/g
+            this.varMatch = /\$(\w+)[\s,]|var\s/g
         }
         if (type === 'protypo') {
             this.completions = protypoCompletions
@@ -50,8 +50,8 @@ class CompleteProvider {
 
 
         const vars = document.getText(document.getWordRangeAtPosition(position))
-            .split(/[\s,:"'`\]\[(><)=]+/)
-            .map(w => w.match(/^[\$#]/) ? w.substr(1, w.length - 1) : null)
+            .split(/[\s,:"'`\]\[(><)=]+/) // get str tokens
+            .map(w => w.match(this.varMatch) ? w.substr(1, w.length - 1) : null)
             .filter(w => w)
 
         vars.forEach(v => {
