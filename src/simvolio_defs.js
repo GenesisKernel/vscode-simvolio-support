@@ -375,6 +375,19 @@ const functionDefs = {
         insertText: 'DeactivateContract("Id", ',
         params: []
     },
+    GetContractById: {
+        label: 'GetContractById(id int) string',
+        documentation: '',
+        insertText: 'GetContractById(',
+        params: []
+    },
+    GetContractByName: {
+        label: 'GetContractByName(name string) int',
+        documentation: '',
+        insertText: 'GetContractByName(',
+        params: []
+    },
+    
 }
 
 exports.completions = functionDefs

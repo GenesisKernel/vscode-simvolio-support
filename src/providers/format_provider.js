@@ -11,8 +11,8 @@ class SimpleFormatProvider {
     format(start, end, text, options) {
         const countLines = text.lineCount
         const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
-        const hasClosedBracket = /^\s*([\}\)\]]).*/
-        const hasOpenBracket = /[\{\(\[]\s*$/
+        const hasClosedBrace = /^\s*([\}\)\]]).*/
+        const hasOpenBrace = /[\{\(\[]\s*$/
 
         const spaceCloseBrace = /\s*(\))(\s)*/g
         const spaceOpenBrace = /(\s)+(\()\s*/g
@@ -20,6 +20,8 @@ class SimpleFormatProvider {
         const commentLine = /^\s*\/\/.*$/
         const doubleSpaces = /(\s)+/g
 
+        const codeOpened = ["("]
+        const codeClosed = [")"]
 
         const newLineBlock = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
         const newLineBlock2 = /([\(\{])(If)/g
@@ -28,37 +30,84 @@ class SimpleFormatProvider {
         try {
             const lines = []
             let tabs = 0
+            let isCode = false
+            let bracesStack = []
+            let lastWord
             for (let i = 0; i < countLines; i++) {
-                if (tabs < 0) tabs = 0
                 let line = text.lineAt(i).text
                 let lineLength = line.length
-                line = line
-                    .replace(commaSpace, '$1$2')
-                    .replace(spaceOpenBrace, '$1$2')
-                    .replace(spaceCloseBrace, '$1$2')
-                    .replace(doubleSpaces, '$1')
-                    .trim()
-
-                line = this.fixSyntax(line)
-                let testLine = line.replace(/".*?"/g, "")
-                if (!commentLine.test(testLine)) {
-                    if (hasClosedBracket.test(testLine)) {
-                        tabs--
+                for (let l = 0; l < line.length; l++) {
+                    let c = line.charAt(l)
+                    if (c === '(') {
+                        if (!isCode) {
+                            lastWord = this.getLastWord(line.substring(0, l))
+                            isCode = lastWord === 'Code'
+                        }
+                        if (isCode) {
+                            bracesStack.push(c)
+                        }
+                    } else if (c === ')') {
+                        if (isCode) {
+                            if (bracesStack[bracesStack.length - 1] === '(') {
+                                bracesStack.pop()
+                            }
+                            isCode = bracesStack.length > 0
+                        }
                     }
                 }
+                
+                if (!isCode) {
+                    if (tabs < 0) tabs = 0
+                    line = line
+                        .replace(commaSpace, '$1$2')
+                        .replace(spaceOpenBrace, '$1$2')
+                        .replace(spaceCloseBrace, '$1$2')
+                        .replace(doubleSpaces, '$1')
+                        .trim()
 
-                let spaceLength = tabs * options.tabSize + 1
-                let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
-                line = spaces + line
-                line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
-                line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
+                    line = this.fixSyntax(line)
+                    // console.log(i, lastWord, isCode, bracesStack)
 
-                testLine = line.replace(/".*?"/g, "")
-                if (!commentLine.test(testLine)) {
-                    if (hasOpenBracket.test(testLine)) {
-                        ++tabs
-                        if (/[^\}]*\}$/.test(testLine)) {
+                    let testLine = line.replace(/".*?"/g, "")
+                    if (!commentLine.test(testLine)) {
+                        if (hasClosedBrace.test(testLine)) {
+                            tabs--
+                        }
+                    }
+
+
+                    let spaceLength = tabs * options.tabSize + 1
+                    let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
+                    line = spaces + line
+                    line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
+                    line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
+
+                    testLine = line.replace(/".*?"/g, "")
+                    if (!commentLine.test(testLine)) {
+                        if (hasOpenBrace.test(testLine)) {
                             ++tabs
+                            if (/[^\}]*\}$/.test(testLine)) {
+                                ++tabs
+                            }
+                        }
+                    }
+                }
+                for (let l = 0; l < line.length; l++) {
+                    let c = line.charAt(l)
+                    if (c === '(') {
+                        if (!isCode) {
+                            lastWord = this.getLastWord(line.substring(0, l))
+                            isCode = lastWord === 'Code'
+                        }
+                        if (isCode) {
+                            bracesStack.push(c)
+                        }
+                    } else if (c === ')') {
+                        if (isCode) {
+                            if (bracesStack[bracesStack.length - 1] === '(') {
+                                bracesStack.pop()
+                            }
+                            isCode = bracesStack.length > 0
                         }
                     }
                 }
@@ -71,6 +120,21 @@ class SimpleFormatProvider {
             console.log(e)
         }
     }
+
+    getLastWord(line) {
+        const notWordChars = ' <>,.(){}"[]`'
+        line = line.trim()
+        let last = line.length - 1
+        let i
+        for (i = last; i >= 0; i--) {
+            let ch = line.charAt(i)
+            if (notWordChars.indexOf(ch) != -1) {
+                return line.substring(i + 1)
+            }
+        }
+        return line.substring(i)
+    }
+
     fixSyntax(line) {
         if (this.type === 'protypo') {
             this.protypoRules.forEach(rule => line = line.replace(rule.pattern, rule.fix))
