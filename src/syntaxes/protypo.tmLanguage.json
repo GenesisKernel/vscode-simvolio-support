@@ -7,6 +7,12 @@
 		"include": "#expression"
 	}],
 	"repository": {
+		"tag-code": {
+			"name": "string.html.protypo",
+			"begin": "Code\\s*\\(",
+			"end": "^\\)\\s*$",
+			"pattern": "(.*?)"
+		},
 		"comparsion-operator": {
 			"name": "keyword.operator.comparison.protypo",
 			"match": "\\b(==|!=|>|<|<=|>=)\\b"
@@ -84,6 +90,9 @@
 				},
 				{
 					"include": "#strings"
+				},
+				{
+					"include": "#tag-code"
 				},
 				{
 					"include": "#strings2"
