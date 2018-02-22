@@ -8,12 +8,29 @@
         },
         "_file_json": {
             "iconPath": "./img/json.png"
+        },
+        "_file_jpg": {
+            "iconPath": "./img/jpg.png"
+        },
+        "_file_dot": {
+            "iconPath": "./img/dot.png"
+        },
+        "_file_go": {
+            "iconPath": "./img/go.png"
+        },
+        "_file_md": {
+            "iconPath": "./img/md.png"
         }
     },
     "fileExtensions": {
         "json": "_file_json",
         "sim": "_file_sim",
-        "ptl": "_file_ptl"
+        "ptl": "_file_ptl",
+        "jpg": "_file_jpg",
+        "png": "_file_jpg",
+        "dot": "_file_dot",
+        "go": "_file_go",
+        "md": "_file_md",
     },
     "languageIds": {
         "simvolio": "_file_sim",
