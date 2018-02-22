@@ -30,7 +30,7 @@
         "png": "_file_jpg",
         "dot": "_file_dot",
         "go": "_file_go",
-        "md": "_file_md",
+        "md": "_file_md"
     },
     "languageIds": {
         "simvolio": "_file_sim",
