@@ -20,6 +20,27 @@
         },
         "_file_md": {
             "iconPath": "./img/md.png"
+        },
+        "_file_js": {
+            "iconPath": "./img/js.png"
+        },
+        "_folder_o": {
+            "iconPath": "./img/folder-open.png"
+        },
+        "_folder_c": {
+            "iconPath": "./img/folder-closed.png"
+        },
+        "_file_txt": {
+            "iconPath": "./img/txt.png"
+        },
+        "_file_png": {
+            "iconPath": "./img/png.png"
+        },
+        "_file": {
+            "iconPath": "./img/file.png"
+        },
+        "_file_csv": {
+            "iconPath": "./img/csv.png"
         }
     },
     "fileExtensions": {
@@ -27,13 +48,21 @@
         "sim": "_file_sim",
         "ptl": "_file_ptl",
         "jpg": "_file_jpg",
-        "png": "_file_jpg",
         "dot": "_file_dot",
         "go": "_file_go",
-        "md": "_file_md"
+        "md": "_file_md",
+        "txt": "_file_txt",
+        "png": "_file_png",
+        "csv": "_file_csv",
+        "js": "_file_js"
     },
     "languageIds": {
         "simvolio": "_file_sim",
         "protypo": "_file_ptl"
-    }
+    },
+    "folderExpanded": "_folder_o",
+	"folder": "_folder_c",
+	"file": "_file",
+	"rootFolderExpanded": "_folder_o",
+	"rootFolder": "_folder_c"
 }
