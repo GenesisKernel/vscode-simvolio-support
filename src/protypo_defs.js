@@ -648,9 +648,9 @@ const functionDefs = {
         ]
     },
     InputMap: {
-        label: 'InputMap(Name, Value, Type:poligon, MapType)',
+        label: 'InputMap(Name, Value, Type:polygon, MapType)',
         documentation: 'MapType:hybrid|roadmap|satellite|terrain',
-        insertText: 'InputMap(',
+        insertText: 'InputMap(Type:polygon, Name:',
         params: [{
                 label: 'Name',
                 documentation: '',
