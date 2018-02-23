@@ -24,6 +24,9 @@
         "_file_js": {
             "iconPath": "./img/js.png"
         },
+        "_file_tsx": {
+            "iconPath": "./img/tsx.png"
+        },
         "_folder_o": {
             "iconPath": "./img/folder-open.png"
         },
@@ -54,7 +57,8 @@
         "txt": "_file_txt",
         "png": "_file_png",
         "csv": "_file_csv",
-        "js": "_file_js"
+        "js": "_file_js",
+        "tsx": "_file_tsx"
     },
     "languageIds": {
         "simvolio": "_file_sim",
