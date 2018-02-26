@@ -61,7 +61,7 @@
         "extensions": [
           ".sim"
         ],
-        "configuration": "./src/language-conf_simvolio.json"
+        "configuration": "./s rc/language-conf_simvolio.json"
       },
       {
         "id": "protypo",
