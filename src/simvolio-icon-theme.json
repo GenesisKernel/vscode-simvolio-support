@@ -1,10 +1,10 @@
 {
     "iconDefinitions": {
         "_file_ptl": {
-            "iconPath": "./img/ptl.svg"
+            "iconPath": "./img/ptl.png"
         },
         "_file_sim": {
-            "iconPath": "./img/sim.svg"
+            "iconPath": "./img/sim.png"
         },
         "_file_json": {
             "iconPath": "./img/json.png"
@@ -35,6 +35,9 @@
         },
         "_file_txt": {
             "iconPath": "./img/txt.png"
+        },
+        "_file_ts": {
+            "iconPath": "./img/ts.png"
         },
         "_file_png": {
             "iconPath": "./img/png.png"
