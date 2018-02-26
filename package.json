@@ -2,7 +2,7 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.4.70",
+  "version": "0.4.71",
   "publisher": "hy6",
   "icon": "src/img/apla.png",
   "author": {
@@ -61,14 +61,13 @@
         "extensions": [
           ".sim"
         ],
-        "configuration": "./s rc/language-conf_simvolio.json"
+        "configuration": "./src/language-conf_simvolio.json"
       },
       {
         "id": "protypo",
         "extensions": [
           ".ptl"
         ],
-        "icon": "./img/ptl.png",
         "configuration": "./src/language-conf_protypo.json"
       }
     ],
