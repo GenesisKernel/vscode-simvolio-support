@@ -74,27 +74,34 @@ class CompleteProvider {
     }
 
     getTag(line) {
-        let i = line.length - 1,
-            right = i,
-            left = i
-
-        while (i > 0 && '('.indexOf(line.charAt(i)) === -1) {
-            i--
+        line = line.replace(/\([^\(]+?\)/, "").trim()
+        let res,
+            i = line.length - 1,
             right = i
+        while (i > 0 && '('.indexOf(line.charAt(i)) === -1) {
+            right = --i
         }
-        while (i-- > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
-            left = i
+        if (right > 0) {
+            let left = --i
+            while (i > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
+                left = --i
+            }
+            let res = line.substring(left, right)
+        } else {
+            res = null
         }
-        return line.substring(left, right).toLowerCase()
+        return res
     }
     getWord(line) {
-        let i = line.length - 1,
+        let res,
+            i = line.length - 1,
             right = i + 1,
             left = i
         while (i-- > 0 && ' <>,.(){}"[]`'.indexOf(line.charAt(i)) === -1) {
             left = i
         }
-        return line.substring(left, right).toLowerCase()
+        res = line.substring(left, right).toLowerCase()
+        return res
     }
 }
 

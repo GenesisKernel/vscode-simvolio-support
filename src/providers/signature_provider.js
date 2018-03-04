@@ -16,13 +16,12 @@ class SignatureProvider {
     }
     provideSignatureHelp(document, position, token) {
         const text = document.lineAt(position.line).text
-        const currentText = text.substr(0, position.character).trim()
+        const currentText = text.substr(0, position.character).trim().replace(/\([^\(]+?\)/, "")
 
         if (currentText.match(/^\d+$/)) {
             return []
         }
         const paramsMatch = currentText.match(this.completionPattern)
-        console.log(paramsMatch)
         const items = []
         let match = false
         if (paramsMatch && paramsMatch[1]) {
