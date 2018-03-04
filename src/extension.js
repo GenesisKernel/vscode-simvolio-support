@@ -8,18 +8,16 @@ function activate(context) {
     const active = vscode.window.activeTextEditor
     if (!active || !active.document) return
 
-    function registerProtypoProviders() {
-        const type = 'protypo'
+    function registerProviders() {
+        let type = 'protypo'
         context.subscriptions.push(
             vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), ' ', '#', '.', '('),
             vscode.languages.registerDocumentFormattingEditProvider(type, new FormatProvider(type)),
             vscode.languages.registerDocumentRangeFormattingEditProvider(type, new FormatProvider()),
             vscode.languages.registerSignatureHelpProvider(type, new SignatureProvider(type), '(', ' ', '{')
         )
-    }
 
-    function registerSimvolioProviders() {
-        const type = 'simvolio'
+        type = 'simvolio'
         context.subscriptions.push(
             vscode.languages.registerDocumentFormattingEditProvider(type, new FormatProvider()),
             vscode.languages.registerDocumentRangeFormattingEditProvider(type, new FormatProvider()),
@@ -28,8 +26,7 @@ function activate(context) {
         )
     }
 
-    registerProtypoProviders()
-    registerSimvolioProviders()
+    registerProviders()
 
     vscode.commands.registerCommand('extension.exportFile', () => {
         exportHelpers.exportFile()
