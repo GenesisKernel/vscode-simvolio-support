@@ -50,17 +50,17 @@ const functionDefs = {
             },
             {
                 label: 'Icon',
-                documentation: 'Optional icon to show near the button',
+                documentation: '',
                 insertText: 'Icon: '
             },
             {
                 label: 'Page',
-                documentation: 'Page that will be loaded on click',
+                documentation: '',
                 insertText: 'Page: '
             },
             {
                 label: 'PageParams',
-                documentation: 'Parameters which will be passed to the page upon redirection',
+                documentation: '',
                 insertText: 'Params: '
             }
         ]
@@ -72,7 +72,7 @@ const functionDefs = {
     },
     DBFind: {
         label: 'DBFind(Name, Source)',
-        documentation: '[.Columns(columns)][.Where(conditions)][.WhereId(id)][.Order(name)][.Limit(limit)][.Offset(offset)][.Ecosystem(id)][.Custom(Column,Body)][.Vars(Prefix)]',
+        documentation: '.Columns(columns)\n.Where(conditions)\n.WhereId(id)\n.Order(name)\n.Limit(limit)\n.Offset(offset)\n.Ecosystem(id)\n.Custom(Column,Body)\n.Vars(prefix)',
         insertText: 'DBFind',
         params: [{
                 label: 'Name',
@@ -88,7 +88,7 @@ const functionDefs = {
     },
     Button: {
         label: 'Button(Body, Page, Class, Contract, Params, PageParams)',
-        documentation: '[.Alert(Text,ConfirmButton,CancelButton,Icon)] [.Style(Style)]',
+        documentation: '.Alert(Text,ConfirmButton,CancelButton,Icon)\n.Style(style)',
         insertText: 'Button',
         params: [
             staticParamTypes.Body,
@@ -117,7 +117,7 @@ const functionDefs = {
     },
     Data: {
         label: 'Data(Source,Columns,Data)',
-        documentation: '[.Custom(Column,Body)]',
+        documentation: '.Custom(Column,Body)',
         insertText: 'Data',
         params: [{
                 label: 'Source',
@@ -154,7 +154,7 @@ const functionDefs = {
     },
     Div: {
         label: 'Div(Class, Body) ',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'Div',
         params: [
             staticParamTypes.Body,
@@ -202,7 +202,7 @@ const functionDefs = {
     },
     Form: {
         label: 'Form(Class, Body)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'Form',
         params: [
             staticParamTypes.Body,
@@ -221,7 +221,7 @@ const functionDefs = {
     },
     If: {
         label: 'If(Condition){ Body }',
-        documentation: '[.ElseIf(Condition){ Body }] [.Else{ Body }]',
+        documentation: '.Else{ Body }',
         insertText: 'If',
         params: [
             staticParamTypes.Body,
@@ -234,7 +234,7 @@ const functionDefs = {
     },
     Image: {
         label: 'Image(Src,Alt,Class)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'Image',
         params: [{
                 label: 'Src',
@@ -288,7 +288,7 @@ const functionDefs = {
     },
     Input: {
         label: 'Input(Name,Class,Placeholder,Type,Value)',
-        documentation: '[.Validate(validation parameters)] [.Style(Style)]',
+        documentation: '.Validate(validation)\n.Style(style)',
         insertText: 'Input',
         params: [
             staticParamTypes.Class,
@@ -334,7 +334,7 @@ const functionDefs = {
     },
     Label: {
         label: 'Label(Body, Class, For)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'Label',
         params: [
             staticParamTypes.Body,
@@ -364,19 +364,19 @@ const functionDefs = {
     },
     LinkPage: {
         label: 'LinkPage(Body, Page, Class, PageParams)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'LinkPage',
         params: [
             staticParamTypes.Body,
             {
                 label: 'Page',
-                documentation: 'Page that will be loaded on click',
+                documentation: '',
                 insertText: 'Page: '
             },
             staticParamTypes.Class,
             {
                 label: 'PageParams',
-                documentation: 'Parameters which will be passed to the page upon redirection',
+                documentation: '',
                 insertText: 'Params: '
             }
         ]
@@ -389,12 +389,12 @@ const functionDefs = {
             staticParamTypes.Body,
             {
                 label: 'Title',
-                documentation: 'Title of the menu button',
+                documentation: '',
                 insertText: 'Title: '
             },
             {
                 label: 'Icon',
-                documentation: 'Optional icon to show near the menu button',
+                documentation: '',
                 insertText: 'Icon: '
             }
         ]
@@ -405,22 +405,22 @@ const functionDefs = {
         insertText: 'MenuItem',
         params: [{
                 label: 'Title',
-                documentation: 'Title of the menu button',
+                documentation: '',
                 insertText: 'Title: '
             },
             {
                 label: 'Page',
-                documentation: 'Page that will be loaded on click',
+                documentation: '',
                 insertText: 'Page: '
             },
             {
                 label: 'Params',
-                documentation: 'Parameters which will be passed to the page upon redirection',
+                documentation: '',
                 insertText: 'Params: '
             },
             {
                 label: 'Icon',
-                documentation: 'Optional icon to show near the button',
+                documentation: '',
                 insertText: 'Icon: '
             }
         ]
@@ -432,7 +432,7 @@ const functionDefs = {
     },
     P: {
         label: 'P(Body, Class)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'P',
         params: [
             staticParamTypes.Body,
@@ -441,7 +441,7 @@ const functionDefs = {
     },
     RadioGroup: {
         label: 'RadioGroup(Name, Source, NameColumn, ValueColumn, Value, Class)',
-        documentation: '[.Validate(validation parameters)] [.Style(Style)]',
+        documentation: '.Validate(validation)\n.Style(style)',
         insertText: 'RadioGroup',
         params: [{
                 label: 'Name',
@@ -473,7 +473,7 @@ const functionDefs = {
     },
     Select: {
         label: 'Select(Name, Source, NameColumn, ValueColumn, Value, Class)',
-        documentation: '[.Validate(validation parameters)] [.Style(Style)]',
+        documentation: '.Validate(validation)\n.Style(style)',
         insertText: 'Select',
         params: [{
                 label: 'Name',
@@ -531,7 +531,7 @@ const functionDefs = {
     },
     Span: {
         label: 'Span(Body, Class)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'Span',
         params: [
             staticParamTypes.Body,
@@ -549,7 +549,7 @@ const functionDefs = {
     },
     Table: {
         label: 'Table(Source, Columns)',
-        documentation: '[.Style(Style)]',
+        documentation: '.Style(style)',
         insertText: 'Table',
         params: [{
                 label: 'Source',

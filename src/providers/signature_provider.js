@@ -2,17 +2,15 @@ const vscode = require('vscode')
 const protypoCompletions = require('../protypo_defs').completions
 const simvolioCompletions = require('../simvolio_defs').completions
 
-const completionPattern = /([\w\$#]+)/i
-
 class SignatureProvider {
     constructor(type) {
         if (type === 'simvolio') {
             this.completions = simvolioCompletions
-            this.isSimvolio = true
+            this.completionPattern = /(\w+)/i
         }
         if (type === 'protypo') {
             this.completions = protypoCompletions
-            this.isProtypo = true
+            this.completionPattern = /([A-Z]\w+)/i
         }
         this.completionsKeys = Object.keys(this.completions)
     }
@@ -23,7 +21,8 @@ class SignatureProvider {
         if (currentText.match(/^\d+$/)) {
             return []
         }
-        const paramsMatch = currentText.match(completionPattern)
+        const paramsMatch = currentText.match(this.completionPattern)
+        console.log(paramsMatch)
         const items = []
         let match = false
         if (paramsMatch && paramsMatch[1]) {
