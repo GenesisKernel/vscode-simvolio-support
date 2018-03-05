@@ -1,6 +1,6 @@
 function getWord(line) {
-    line = line.replace(/\([^\(]+?\)/, "").trim()
-    let res, left
+    line = line.replace(/\([^(]+?\)/, '').trim()
+    let res, left,
         i = line.length - 1,
         right = i
     while (i > 0 && '('.indexOf(line.charAt(i)) === -1) {

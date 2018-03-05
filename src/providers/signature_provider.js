@@ -15,9 +15,9 @@ class SignatureProvider {
         }
         this.completionsKeys = Object.keys(this.completions)
     }
-    provideSignatureHelp(document, position, token) {
+    provideSignatureHelp(document, position) {
         const text = document.lineAt(position.line).text
-        const currentText = text.substring(0, position.character).replace(/[A-Z]\w+\([^\(]+?\)/, "")
+        const currentText = text.substring(0, position.character).replace(/[A-Z]\w+\([^(]+?\)/, '')
         const word = getWord(currentText)
         const items = []
         if (word) {

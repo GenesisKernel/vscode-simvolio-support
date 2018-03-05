@@ -213,7 +213,8 @@ const functionDefs = {
         label: 'DateTime',
         documentation: '',
         insertText: 'DateTime(',
-        params: [{
+        params: [
+            {
                 label: 'DateTime',
                 documentation: '',
                 insertText: 'DateTime: '
@@ -387,7 +388,7 @@ const functionDefs = {
         insertText: 'GetContractByName(',
         params: []
     },
-    
+
 }
 
 exports.completions = functionDefs

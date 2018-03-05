@@ -1,17 +1,17 @@
-const vscode = require('vscode')
+// const vscode = require('vscode')
 
 
 function exportFile() {
-    let te = vscode.window.activeTextEditor,
-        fullFileName = te? te.document.fileName : null
-        t = "export File: " + fullFileName
+    // let te = vscode.window.activeTextEditor,
+    // fullFileName = te? te.document.fileName : null,
+    // t = 'export File: ' + fullFileName
     // console.log(t)
-    
+
     // vscode.window.showInformationMessage(t);
 }
 
 function exportPackage() {
-    let t = "export Package"
+    // let t = 'export Package'
     // console.log(t)
     // vscode.window.showInformationMessage(t);
 }

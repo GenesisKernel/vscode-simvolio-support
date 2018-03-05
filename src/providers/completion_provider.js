@@ -20,7 +20,7 @@ class CompleteProvider {
         this.completes = []
 
     }
-    provideCompletionItems(document, position, token) {
+    provideCompletionItems(document, position) {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
             items = []
@@ -51,7 +51,7 @@ class CompleteProvider {
 
 
         const vars = document.getText(document.getWordRangeAtPosition(position))
-            .split(/[\s,:"'`\]\[(><)=]+/) // get str tokens
+            .split(/[\s,:"'`\][(><)=]+/) // get str tokens
             .map(w => w.match(this.varMatch) ? w.substr(1, w.length - 1) : null)
             .filter(w => w)
 

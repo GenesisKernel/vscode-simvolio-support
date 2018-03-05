@@ -9,7 +9,7 @@ const staticParamTypes = {
         documentation: 'HTML class value',
         insertText: 'Class: '
     }
-};
+}
 
 const functionDefs = {
     Address: {
@@ -27,25 +27,25 @@ const functionDefs = {
         documentation: '',
         insertText: 'AddToolButton',
         params: [{
-                label: 'Title',
-                documentation: 'Button title to show',
-                insertText: 'Title:'
-            },
-            {
-                label: 'Icon',
-                documentation: '',
-                insertText: 'Icon: '
-            },
-            {
-                label: 'Page',
-                documentation: '',
-                insertText: 'Page: '
-            },
-            {
-                label: 'PageParams',
-                documentation: '',
-                insertText: 'Params: '
-            }
+            label: 'Title',
+            documentation: 'Button title to show',
+            insertText: 'Title:'
+        },
+        {
+            label: 'Icon',
+            documentation: '',
+            insertText: 'Icon: '
+        },
+        {
+            label: 'Page',
+            documentation: '',
+            insertText: 'Page: '
+        },
+        {
+            label: 'PageParams',
+            documentation: '',
+            insertText: 'Params: '
+        }
         ]
     },
     And: {
@@ -58,15 +58,15 @@ const functionDefs = {
         documentation: '.Columns(columns)\n.Where(conditions)\n.WhereId(id)\n.Order(name)\n.Limit(limit)\n.Offset(offset)\n.Ecosystem(id)\n.Custom(Column,Body)\n.Vars(prefix)',
         insertText: 'DBFind',
         params: [{
-                label: 'Name',
-                documentation: 'Table name to search',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Source',
-                documentation: 'Source identificator to bind results',
-                insertText: 'Source: '
-            }
+            label: 'Name',
+            documentation: 'Table name to search',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Source',
+            documentation: 'Source identificator to bind results',
+            insertText: 'Source: '
+        }
         ]
     },
     Button: {
@@ -103,20 +103,20 @@ const functionDefs = {
         documentation: '.Custom(Column,Body)',
         insertText: 'Data',
         params: [{
-                label: 'Source',
-                documentation: 'Source identificator to bind results',
-                insertText: 'Source: '
-            },
-            {
-                label: 'Columns',
-                documentation: 'List of columns separated with comma',
-                insertText: 'Columns: '
-            },
-            {
-                label: 'Data',
-                documentation: 'Emitted data separated with comma line by line for each row',
-                insertText: 'Data: '
-            }
+            label: 'Source',
+            documentation: 'Source identificator to bind results',
+            insertText: 'Source: '
+        },
+        {
+            label: 'Columns',
+            documentation: 'List of columns separated with comma',
+            insertText: 'Columns: '
+        },
+        {
+            label: 'Data',
+            documentation: 'Emitted data separated with comma line by line for each row',
+            insertText: 'Data: '
+        }
         ]
     },
     CmpTime: {
@@ -124,15 +124,15 @@ const functionDefs = {
         documentation: '',
         insertText: 'CmpTime',
         params: [{
-                label: 'Time1',
-                documentation: '',
-                insertText: 'Time1: '
-            },
-            {
-                label: 'Time2',
-                documentation: '',
-                insertText: 'Time2: '
-            },
+            label: 'Time1',
+            documentation: '',
+            insertText: 'Time1: '
+        },
+        {
+            label: 'Time2',
+            documentation: '',
+            insertText: 'Time2: '
+        },
         ]
     },
     Div: {
@@ -176,11 +176,11 @@ const functionDefs = {
         documentation: '',
         insertText: 'ForList',
         params: [{
-                label: 'Source',
-                documentation: 'Source identificator to fetch the results',
-                insertText: 'Source: '
-            },
-            staticParamTypes.Body
+            label: 'Source',
+            documentation: 'Source identificator to fetch the results',
+            insertText: 'Source: '
+        },
+        staticParamTypes.Body
         ]
     },
     Form: {
@@ -220,16 +220,16 @@ const functionDefs = {
         documentation: '.Style(style)',
         insertText: 'Image',
         params: [{
-                label: 'Src',
-                documentation: 'Image URI',
-                insertText: 'Src: '
-            },
-            {
-                label: 'Alt',
-                documentation: 'Alternative text that is displayed when image is unable to load',
-                insertText: 'Alt: '
-            },
-            staticParamTypes.Class
+            label: 'Src',
+            documentation: 'Image URI',
+            insertText: 'Src: '
+        },
+        {
+            label: 'Alt',
+            documentation: 'Alternative text that is displayed when image is unable to load',
+            insertText: 'Alt: '
+        },
+        staticParamTypes.Class
         ]
     },
     ImageInput: {
@@ -237,26 +237,26 @@ const functionDefs = {
         documentation: '',
         insertText: 'ImageInput',
         params: [{
-                label: 'Name',
-                documentation: 'Unique input name to bind the value to',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Width',
-                documentation: 'Minimum width of the resulting image',
-                insertText: 'Width: '
-            },
-            {
-                label: 'Ratio',
-                documentation: 'Aspect ratio of the resulting image (WIDTH / HEIGHT)',
-                insertText: 'Ratio: '
-            },
-            {
-                label: 'Format',
-                documentation: 'What format to use when generating the result',
-                insertText: 'Format: '
-            },
-            staticParamTypes.Class
+            label: 'Name',
+            documentation: 'Unique input name to bind the value to',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Width',
+            documentation: 'Minimum width of the resulting image',
+            insertText: 'Width: '
+        },
+        {
+            label: 'Ratio',
+            documentation: 'Aspect ratio of the resulting image (WIDTH / HEIGHT)',
+            insertText: 'Ratio: '
+        },
+        {
+            label: 'Format',
+            documentation: 'What format to use when generating the result',
+            insertText: 'Format: '
+        },
+        staticParamTypes.Class
         ]
     },
     Include: {
@@ -334,15 +334,15 @@ const functionDefs = {
         label: 'LangRes(Name, Lang)',
         insertText: 'LangRes',
         params: [{
-                label: 'Name',
-                documentation: 'Unique resource name to get',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Lang',
-                documentation: 'Explicitly set language of the resource to get',
-                insertText: 'Lang: '
-            }
+            label: 'Name',
+            documentation: 'Unique resource name to get',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Lang',
+            documentation: 'Explicitly set language of the resource to get',
+            insertText: 'Lang: '
+        }
         ]
     },
     LinkPage: {
@@ -387,25 +387,25 @@ const functionDefs = {
         documentation: '',
         insertText: 'MenuItem',
         params: [{
-                label: 'Title',
-                documentation: '',
-                insertText: 'Title: '
-            },
-            {
-                label: 'Page',
-                documentation: '',
-                insertText: 'Page: '
-            },
-            {
-                label: 'Params',
-                documentation: '',
-                insertText: 'Params: '
-            },
-            {
-                label: 'Icon',
-                documentation: '',
-                insertText: 'Icon: '
-            }
+            label: 'Title',
+            documentation: '',
+            insertText: 'Title: '
+        },
+        {
+            label: 'Page',
+            documentation: '',
+            insertText: 'Page: '
+        },
+        {
+            label: 'Params',
+            documentation: '',
+            insertText: 'Params: '
+        },
+        {
+            label: 'Icon',
+            documentation: '',
+            insertText: 'Icon: '
+        }
         ]
     },
     Or: {
@@ -427,31 +427,31 @@ const functionDefs = {
         documentation: '.Validate(validation)\n.Style(style)',
         insertText: 'RadioGroup',
         params: [{
-                label: 'Name',
-                documentation: 'Unique input name to bind the value to',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Source',
-                documentation: 'Source identificator to fetch the results',
-                insertText: 'Source: '
-            },
-            {
-                label: 'NameColumn',
-                documentation: 'Name of the column that will be shown near the button',
-                insertText: 'NameColumn: '
-            },
-            {
-                label: 'ValueColumn',
-                documentation: 'Value that will be passed to the form',
-                insertText: 'ValueColumn: '
-            },
-            {
-                label: 'Value',
-                documentation: 'Default value that will be selected',
-                insertText: 'Value: '
-            },
-            staticParamTypes.Class
+            label: 'Name',
+            documentation: 'Unique input name to bind the value to',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Source',
+            documentation: 'Source identificator to fetch the results',
+            insertText: 'Source: '
+        },
+        {
+            label: 'NameColumn',
+            documentation: 'Name of the column that will be shown near the button',
+            insertText: 'NameColumn: '
+        },
+        {
+            label: 'ValueColumn',
+            documentation: 'Value that will be passed to the form',
+            insertText: 'ValueColumn: '
+        },
+        {
+            label: 'Value',
+            documentation: 'Default value that will be selected',
+            insertText: 'Value: '
+        },
+        staticParamTypes.Class
         ]
     },
     Select: {
@@ -459,31 +459,31 @@ const functionDefs = {
         documentation: '.Validate(validation)\n.Style(style)',
         insertText: 'Select',
         params: [{
-                label: 'Name',
-                documentation: 'Unique input name to bind the value to',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Source',
-                documentation: 'Source identificator to fetch the results',
-                insertText: 'Source: '
-            },
-            {
-                label: 'NameColumn',
-                documentation: 'Name of the column that will be shown in the dropdown menu',
-                insertText: 'NameColumn: '
-            },
-            {
-                label: 'ValueColumn',
-                documentation: 'Value that will be passed to the form',
-                insertText: 'ValueColumn: '
-            },
-            {
-                label: 'Value',
-                documentation: 'Default value that will be selected',
-                insertText: 'Value: '
-            },
-            staticParamTypes.Class
+            label: 'Name',
+            documentation: 'Unique input name to bind the value to',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Source',
+            documentation: 'Source identificator to fetch the results',
+            insertText: 'Source: '
+        },
+        {
+            label: 'NameColumn',
+            documentation: 'Name of the column that will be shown in the dropdown menu',
+            insertText: 'NameColumn: '
+        },
+        {
+            label: 'ValueColumn',
+            documentation: 'Value that will be passed to the form',
+            insertText: 'ValueColumn: '
+        },
+        {
+            label: 'Value',
+            documentation: 'Default value that will be selected',
+            insertText: 'Value: '
+        },
+        staticParamTypes.Class
         ]
     },
     SetVar: {
@@ -491,15 +491,15 @@ const functionDefs = {
         documentation: '',
         insertText: 'SetVar',
         params: [{
-                label: 'Name',
-                documentation: '',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Value',
-                documentation: '',
-                insertText: 'Value: '
-            }
+            label: 'Name',
+            documentation: '',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Value',
+            documentation: '',
+            insertText: 'Value: '
+        }
         ]
     },
     SetTitle: {
@@ -535,15 +535,15 @@ const functionDefs = {
         documentation: '.Style(style)',
         insertText: 'Table',
         params: [{
-                label: 'Source',
-                documentation: '',
-                insertText: 'Source: '
-            },
-            {
-                label: 'Columns',
-                documentation: '',
-                insertText: 'Columns: '
-            }
+            label: 'Source',
+            documentation: '',
+            insertText: 'Source: '
+        },
+        {
+            label: 'Columns',
+            documentation: '',
+            insertText: 'Columns: '
+        }
         ]
     },
     EcosysParam: {
@@ -551,20 +551,20 @@ const functionDefs = {
         documentation: '',
         insertText: 'EcosysParam',
         params: [{
-                label: 'Source',
-                documentation: '',
-                insertText: 'Source: '
-            },
-            {
-                label: 'Index',
-                documentation: '',
-                insertText: 'Index: '
-            },
-            {
-                label: 'Name',
-                documentation: '',
-                insertText: 'Name: '
-            }
+            label: 'Source',
+            documentation: '',
+            insertText: 'Source: '
+        },
+        {
+            label: 'Index',
+            documentation: '',
+            insertText: 'Index: '
+        },
+        {
+            label: 'Name',
+            documentation: '',
+            insertText: 'Name: '
+        }
         ]
     },
     SysParam: {
@@ -572,10 +572,10 @@ const functionDefs = {
         documentation: '',
         insertText: 'SysParam',
         params: [{
-                label: 'Name',
-                documentation: '',
-                insertText: 'Name: '
-            }
+            label: 'Name',
+            documentation: '',
+            insertText: 'Name: '
+        }
         ]
     },
     DateTime: {
@@ -583,15 +583,15 @@ const functionDefs = {
         documentation: '',
         insertText: 'DateTime',
         params: [{
-                label: 'DateTime',
-                documentation: '',
-                insertText: 'DateTime: '
-            },
-            {
-                label: 'Format',
-                documentation: '',
-                insertText: 'Format: YYYY-MM-DD HH:MI:SS'
-            }
+            label: 'DateTime',
+            documentation: '',
+            insertText: 'DateTime: '
+        },
+        {
+            label: 'Format',
+            documentation: '',
+            insertText: 'Format: YYYY-MM-DD HH:MI:SS'
+        }
         ]
     },
     Code: {
@@ -604,30 +604,30 @@ const functionDefs = {
         documentation: '',
         insertText: 'Chart(',
         params: [{
-                label: 'Type',
-                documentation: '',
-                insertText: 'Type: '
-            },
-            {
-                label: 'Source',
-                documentation: '',
-                insertText: 'Source:'
-            },
-            {
-                label: 'FieldLabel',
-                documentation: '',
-                insertText: 'FieldLabel:'
-            },
-            {
-                label: 'FieldValue',
-                documentation: '',
-                insertText: 'FieldValue:'
-            },
-            {
-                label: 'Colors',
-                documentation: '',
-                insertText: 'Colors:'
-            }
+            label: 'Type',
+            documentation: '',
+            insertText: 'Type: '
+        },
+        {
+            label: 'Source',
+            documentation: '',
+            insertText: 'Source:'
+        },
+        {
+            label: 'FieldLabel',
+            documentation: '',
+            insertText: 'FieldLabel:'
+        },
+        {
+            label: 'FieldValue',
+            documentation: '',
+            insertText: 'FieldValue:'
+        },
+        {
+            label: 'Colors',
+            documentation: '',
+            insertText: 'Colors:'
+        }
         ]
     },
     InputMap: {
@@ -635,25 +635,25 @@ const functionDefs = {
         documentation: 'MapType:hybrid|roadmap|satellite|terrain',
         insertText: 'InputMap(Type:polygon, Name:',
         params: [{
-                label: 'Name',
-                documentation: '',
-                insertText: 'Name: '
-            },
-            {
-                label: 'Value',
-                documentation: '',
-                insertText: 'Value:'
-            },
-            {
-                label: 'Type',
-                documentation: '',
-                insertText: 'Type:'
-            },
-            {
-                label: 'MapType',
-                documentation: '',
-                insertText: 'MapType:'
-            }
+            label: 'Name',
+            documentation: '',
+            insertText: 'Name: '
+        },
+        {
+            label: 'Value',
+            documentation: '',
+            insertText: 'Value:'
+        },
+        {
+            label: 'Type',
+            documentation: '',
+            insertText: 'Type:'
+        },
+        {
+            label: 'MapType',
+            documentation: '',
+            insertText: 'MapType:'
+        }
         ]
     },
     Map: {

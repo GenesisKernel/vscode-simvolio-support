@@ -1,18 +1,18 @@
 const vscode = require('vscode')
 
 class SimpleFormatProvider {
-    provideDocumentFormattingEdits(document, options, token) {
+    provideDocumentFormattingEdits(document, options) {
         return this.format(0, document.lineCount, document, options)
     }
 
-    provideDocumentRangeFormattingEdits(document, range, options, token) {
+    provideDocumentRangeFormattingEdits(document, range, options) {
         return this.format(range.start.line, range.end.line, document, options)
     }
     format(start, end, text, options) {
         const countLines = text.lineCount
-        const curveOpenClose = /[a-zA-Z0-9_-\s.,]*\{.*\}$/g
-        const hasClosedBrace = /^\s*([\}\)\]]).*/
-        const hasOpenBrace = /[\{\(\[]\s*$/
+        
+        const hasClosedBrace = /^\s*([})\]]).*/
+        const hasOpenBrace = /[{([]\s*$/
 
         const spaceCloseBrace = /\s*(\))(\s)*/g
         const spaceOpenBrace = /(\s)+(\()\s*/g
@@ -20,18 +20,14 @@ class SimpleFormatProvider {
         const commentLine = /^\s*\/\/.*$/
         const doubleSpaces = /(\s)+/g
 
-        const codeOpened = ["("]
-        const codeClosed = [")"]
-
-        const newLineBlock = /([\)\}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
-        const newLineBlock2 = /([\(\{])(If)/g
+        const newLineBlock = /([)}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
+        const newLineBlock2 = /([({])(If)/g
 
         if (text.lineAt(0).text.match(/^\s*\{/)) return // do not format export.sim
         try {
             const lines = []
             let isCode = false
             let bracesStack = []
-            let lastWord
             for (let i = 0; i < countLines; i++) {
                 let line = text.lineAt(i).text
                 let lineLength = line.length
@@ -50,7 +46,7 @@ class SimpleFormatProvider {
                 line = this.fixSyntax(line)
                 // console.log(i, lastWord, isCode, bracesStack)
 
-                let testLine = line.replace(/".*?"/g, "")
+                let testLine = line.replace(/".*?"/g, '')
                 if (!commentLine.test(testLine)) {
                     if (hasClosedBrace.test(testLine)) {
                         this.tabs--
@@ -64,11 +60,11 @@ class SimpleFormatProvider {
                 line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
                 line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
 
-                testLine = line.replace(/".*?"/g, "")
+                testLine = line.replace(/".*?"/g, '')
                 if (!commentLine.test(testLine)) {
                     if (hasOpenBrace.test(testLine)) {
                         ++this.tabs
-                        if (/[^\}]*\}$/.test(testLine)) {
+                        if (/[^}]*\}$/.test(testLine)) {
                             ++this.tabs
                         }
                     }
@@ -81,7 +77,7 @@ class SimpleFormatProvider {
             }
             return lines
         } catch (e) {
-            console.log(e)
+            // console.log(e)
         }
     }
 
@@ -139,93 +135,93 @@ class SimpleFormatProvider {
         this.tabs = 0
         this.type = type
         this.protypoRules = [{
-                pattern: /^Divs:?\(?([\w-\s]+)\)?$/, // Divs: a | Divs(a)
-                fix: 'Div($1){'
-            },
-            {
-                pattern: /^Divs\(([\w-\s]+?),(.+)\)$/, // Divs (a,b)
-                fix: 'Div($1){Div($2){'
-            },
-            {
-                pattern: /^Tag\(([\w-\s]+?),(.+)\)$/, // Divs (a,b)
-                fix: 'Div($1){$2}'
-            },
-            {
-                pattern: /^(Form\(.*?\))$/, // Form ()
-                fix: '$1{'
-            },
-            {
-                pattern: /^PageEnd:$/,
-                fix: ''
-            },
-            {
-                pattern: /^.+End:$/, // *End:
-                fix: '}'
-            },
-            {
-                pattern: /^If\s*\((.+)\)$/, // If(a)
-                fix: 'If ($1){'
-            },
-            {
-                pattern: /^(Else):$/, // Else(a)
-                fix: '}.$1{'
-            },
-            { // GetRow(prefix, table, colname, [value])
-                pattern: /GetRow\(\s*(["\w\-]+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"?([\w\-]+?)"?\s*,\s*([#\w\-]+?)\)/,
-                fix: 'DBFind(Name: $2, Source: src_$2).Where("$3=$4").Vars($1)'
-            },
-            { // GetRow(prefix, table, cols)
-                pattern: /GetRow\(\s*(.+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"(.*?)"\)/,
-                fix: 'DBFind(Name: $2, Source: src_$2).Where("$3").Vars($1)'
-            },
-            { // StateVal(name, [index])
-                pattern: /StateVal\(\s*([\w\-]+?)\s*,\s*([#\w\-]+)\s*\)/,
-                fix: 'EcosysParam(Name: $1, Index: $2)'
-            },
-            { // StateVal(name)
-                pattern: /StateVal\(([\w\-]+?)\)/,
-                fix: 'EcosysParam(Name: $1)'
-            },
-            { // ValueById(table,idval,columns,[aliases])
-                pattern: /ValueById\(\s*#state_id#_([\w]+?)\s*,\s*(.+?),(.*)\)$/,
-                fix: 'DBFind(Name: $1, Source: src_$1).WhereId($2)\n$3'
-            },
-            { // SetVar(a=b)
-                pattern: /SetVar\("?([\w]+?)=([\w]+?)"?\)/,
-                fix: 'SetVar(Name: $1, Value: $2)'
-            },
-            { // Input(idname,[class],[placeholder],[type],[value])
-                pattern: /Input\((\w+?)\s*,\s*("[\w\s\-]+?")\s*,\s*(\w+?)\s*,\s*(\w+?)\s*,\s*([#\w]+?)\)/,
-                fix: 'Input(Name: $1, Class: $2, Placeholder: $3, Type: $4, Value: $5)'
-            },
-            {
-                pattern: /^Title:([\w\s]+)$/,
-                fix: 'SetTitle($1)'
-            },
-            {
-                pattern: /^Navigation\((.+)\)$/,
-                fix: 'Div(breadcrumb){Div(){$1}}'
-            },
-            {
-                pattern: /^Title:([\w\s$]+)$/,
-                fix: 'SetTitle($1)'
-            },
-            { //BtnPage
-                pattern: /BtnPage\s*\(([\s\w$"]+?),([\s\w$"]+?),([\s\w$"]+?),([\s\w$"\-]+?)\)/,
-                fix: 'Button(Page: $1, Body: $2, PageParams: $3, Class: $4)'
-            },
-            { //BtnContract(contract, name, message, params, [class], [onsuccess], [pageparams])
-                pattern: /BtnContract\s*\(([\s\w\$"]+?),([\s\w\$"\)\(\-]+?),([\s\w\$"]+?),([\s\w\$"#:]+?),([\s\w\$"'\-]+?),([\s\w\$"]+?),([\s\w\$"]+?)\)/,
-                fix: 'Button(Contract: $1, Body: $2, Params: $4, Class: $5, Page: $6, PageParams: $7).Alert($3, confirm, cancel)'
-            },
-            // { 
-            //     pattern: /(\.Alert.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?\))$/g,
-            //     fix: '$1LangRes($2)$3LangRes($4)$5LangRes($6)$7'
-            // },
-            { // fix langres on  button alert
-                pattern: /(\.Alert.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?\))$/g,
-                fix: '$1$$$2$$$3$$$4$$$5$$$6$$$7'
-            },
+            pattern: /^Divs:?\(?([\w-\s]+)\)?$/, // Divs: a | Divs(a)
+            fix: 'Div($1){'
+        },
+        {
+            pattern: /^Divs\(([\w-\s]+?),(.+)\)$/, // Divs (a,b)
+            fix: 'Div($1){Div($2){'
+        },
+        {
+            pattern: /^Tag\(([\w-\s]+?),(.+)\)$/, // Divs (a,b)
+            fix: 'Div($1){$2}'
+        },
+        {
+            pattern: /^(Form\(.*?\))$/, // Form ()
+            fix: '$1{'
+        },
+        {
+            pattern: /^PageEnd:$/,
+            fix: ''
+        },
+        {
+            pattern: /^.+End:$/, // *End:
+            fix: '}'
+        },
+        {
+            pattern: /^If\s*\((.+)\)$/, // If(a)
+            fix: 'If ($1){'
+        },
+        {
+            pattern: /^(Else):$/, // Else(a)
+            fix: '}.$1{'
+        },
+        { // GetRow(prefix, table, colname, [value])
+            pattern: /GetRow\(\s*(["\w-]+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"?([\w-]+?)"?\s*,\s*([#\w-]+?)\)/,
+            fix: 'DBFind(Name: $2, Source: src_$2).Where("$3=$4").Vars($1)'
+        },
+        { // GetRow(prefix, table, cols)
+            pattern: /GetRow\(\s*(.+?)\s*,\s*#state_id#_([\w]+?)\s*,\s*"(.*?)"\)/,
+            fix: 'DBFind(Name: $2, Source: src_$2).Where("$3").Vars($1)'
+        },
+        { // StateVal(name, [index])
+            pattern: /StateVal\(\s*([\w-]+?)\s*,\s*([#\w-]+)\s*\)/,
+            fix: 'EcosysParam(Name: $1, Index: $2)'
+        },
+        { // StateVal(name)
+            pattern: /StateVal\(([\w-]+?)\)/,
+            fix: 'EcosysParam(Name: $1)'
+        },
+        { // ValueById(table,idval,columns,[aliases])
+            pattern: /ValueById\(\s*#state_id#_([\w]+?)\s*,\s*(.+?),(.*)\)$/,
+            fix: 'DBFind(Name: $1, Source: src_$1).WhereId($2)\n$3'
+        },
+        { // SetVar(a=b)
+            pattern: /SetVar\("?([\w]+?)=([\w]+?)"?\)/,
+            fix: 'SetVar(Name: $1, Value: $2)'
+        },
+        { // Input(idname,[class],[placeholder],[type],[value])
+            pattern: /Input\((\w+?)\s*,\s*("[\w\s-]+?")\s*,\s*(\w+?)\s*,\s*(\w+?)\s*,\s*([#\w]+?)\)/,
+            fix: 'Input(Name: $1, Class: $2, Placeholder: $3, Type: $4, Value: $5)'
+        },
+        {
+            pattern: /^Title:([\w\s]+)$/,
+            fix: 'SetTitle($1)'
+        },
+        {
+            pattern: /^Navigation\((.+)\)$/,
+            fix: 'Div(breadcrumb){Div(){$1}}'
+        },
+        {
+            pattern: /^Title:([\w\s$]+)$/,
+            fix: 'SetTitle($1)'
+        },
+        { //BtnPage
+            pattern: /BtnPage\s*\(([\s\w$"]+?),([\s\w$"]+?),([\s\w$"]+?),([\s\w$"-]+?)\)/,
+            fix: 'Button(Page: $1, Body: $2, PageParams: $3, Class: $4)'
+        },
+        { //BtnContract(contract, name, message, params, [class], [onsuccess], [pageparams])
+            pattern: /BtnContract\s*\(([\s\w$"]+?),([\s\w$")(-]+?),([\s\w$"]+?),([\s\w$"#:]+?),([\s\w$"'-]+?),([\s\w$"]+?),([\s\w$"]+?)\)/,
+            fix: 'Button(Contract: $1, Body: $2, Params: $4, Class: $5, Page: $6, PageParams: $7).Alert($3, confirm, cancel)'
+        },
+        // { 
+        //     pattern: /(\.Alert.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?\))$/g,
+        //     fix: '$1LangRes($2)$3LangRes($4)$5LangRes($6)$7'
+        // },
+        { // fix langres on  button alert
+            pattern: /(\.Alert.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?\))$/g,
+            fix: '$1$$$2$$$3$$$4$$$5$$$6$$$7'
+        },
         ]
     }
 }
