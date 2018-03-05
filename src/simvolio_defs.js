@@ -83,6 +83,12 @@ const functionDefs = {
         insertText: 'Join(',
         params: []
     },
+    JSONToMap: {
+        label: 'JSONToMap',
+        documentation: 'JSONToMap(json string) map',
+        insertText: 'JSONToMap(',
+        params: []
+    },
     Split: {
         label: 'Split',
         documentation: 'Split(s, sep string) array',
