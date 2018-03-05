@@ -1,6 +1,7 @@
 const vscode = require('vscode')
 const protypoCompletions = require('../protypo_defs').completions
 const simvolioCompletions = require('../simvolio_defs').completions
+const getWord = require('../fun/helpers').getWord
 
 class SignatureProvider {
     constructor(type) {
@@ -16,18 +17,13 @@ class SignatureProvider {
     }
     provideSignatureHelp(document, position, token) {
         const text = document.lineAt(position.line).text
-        const currentText = text.substr(0, position.character).trim().replace(/\([^\(]+?\)/, "")
-
-        if (currentText.match(/^\d+$/)) {
-            return []
-        }
-        const paramsMatch = currentText.match(this.completionPattern)
+        const currentText = text.substring(0, position.character).replace(/[A-Z]\w+\([^\(]+?\)/, "")
+        const word = getWord(currentText)
         const items = []
-        let match = false
-        if (paramsMatch && paramsMatch[1]) {
-            let el = paramsMatch[1]
+        if (word) {
+            let match = false
             this.completionsKeys.forEach(key => {
-                if (key === el) {
+                if (key === word) {
                     match = true
                     const it = this.completions[key]
                     const sign = new vscode.SignatureInformation(it.label)
@@ -38,7 +34,7 @@ class SignatureProvider {
                 }
             })
             this.completionsKeys.forEach(key => {
-                if (!match && key.indexOf(el) > -1) {
+                if (!match && key.indexOf(word) > -1) {
                     const it = this.completions[key]
                     const sign = new vscode.SignatureInformation(it.label)
                     if (it.documentation) {

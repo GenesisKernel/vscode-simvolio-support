@@ -1,6 +1,7 @@
 const vscode = require('vscode')
 const protypoCompletions = require('../protypo_defs').completions
 const simvolioCompletions = require('../simvolio_defs').completions
+const getWord = require('../fun/helpers').getWord
 
 class CompleteProvider {
     constructor(type) {
@@ -23,7 +24,7 @@ class CompleteProvider {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
             items = []
-        const tag = this.getTag(currentText)
+        const tag = getWord(currentText)
         const word = this.getWord(currentText)
         const scope = currentText.substring(currentText.indexOf(tag), position.character)
 
@@ -73,25 +74,6 @@ class CompleteProvider {
         return new vscode.CompletionList(items)
     }
 
-    getTag(line) {
-        line = line.replace(/\([^\(]+?\)/, "").trim()
-        let res,
-            i = line.length - 1,
-            right = i
-        while (i > 0 && '('.indexOf(line.charAt(i)) === -1) {
-            right = --i
-        }
-        if (right > 0) {
-            let left = --i
-            while (i > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
-                left = --i
-            }
-            let res = line.substring(left, right)
-        } else {
-            res = null
-        }
-        return res
-    }
     getWord(line) {
         let res,
             i = line.length - 1,
