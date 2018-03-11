@@ -9,18 +9,22 @@ class SimpleFormatProvider {
         return this.format(range.start.line, range.end.line, document, options)
     }
     format(start, end, text, options) {
+        this.offset = 0
+        this.tabs = 0
         const countLines = text.lineCount
-        
+
         const hasClosedBrace = /^\s*([})\]]).*/
-        const hasOpenBrace = /[{([]\s*$/
+        const hasOpenBrace = /[{([](:?\s|\/\/.*)*$/
 
         const spaceCloseBrace = /\s*(\))(\s)*/g
         const spaceOpenBrace = /(\s)+(\()\s*/g
         const commaSpace = /\s*(,)(\s)*/g
         const commentLine = /^\s*\/\/.*$/
         const doubleSpaces = /(\s)+/g
+        const notClosedBrace = /[^}]*\}$/
+        const strings = /".*?"/g
 
-        const newLineBlock = /([)}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBfind)/g
+        const newLineBlock = /([)}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBFind)/g
         const newLineBlock2 = /([({])(If)/g
 
         if (text.lineAt(0).text.match(/^\s*\{/)) return // do not format export.sim
@@ -46,7 +50,7 @@ class SimpleFormatProvider {
                 line = this.fixSyntax(line)
                 // console.log(i, lastWord, isCode, bracesStack)
 
-                let testLine = line.replace(/".*?"/g, '')
+                let testLine = line.replace(strings, '')
                 if (!commentLine.test(testLine)) {
                     if (hasClosedBrace.test(testLine)) {
                         this.tabs--
@@ -60,11 +64,11 @@ class SimpleFormatProvider {
                 line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
                 line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
 
-                testLine = line.replace(/".*?"/g, '')
+                testLine = line.replace(strings, '')
                 if (!commentLine.test(testLine)) {
                     if (hasOpenBrace.test(testLine)) {
                         ++this.tabs
-                        if (/[^}]*\}$/.test(testLine)) {
+                        if (notClosedBrace.test(testLine)) {
                             ++this.tabs
                         }
                     }
