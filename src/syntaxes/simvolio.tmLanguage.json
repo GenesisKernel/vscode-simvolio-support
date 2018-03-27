@@ -17,11 +17,11 @@
 		},
 		"control-statement": {
 			"name": "keyword.control.simvolio",
-			"match": "(?<!\\.|\\$)\\b(contract|data|conditions|action|return|var|if|while|func|else|break|continue)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(true|false|nil|contract|data|conditions|action|return|var|if|while|func|else|break|continue)\\b(?!\\$|\\.)"
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
-			"match": "(?<!\\.|\\$)\\b(JSONToMap|Split|Join|info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|IdToAddress|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt|DBRow|DBIntExt|DBStringExt|GetContractById|GetContractByName)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(JSONToMap|Split|Join|info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|IdToAddress|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt|DBUpdateSysParam|DBRow|DBIntExt|DBStringExt|GetContractById|GetContractByName)\\b(?!\\$|\\.)"
 		},
 		"simvolio-ext": {
 			"name": "entity.name.function.simvolio",

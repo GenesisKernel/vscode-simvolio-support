@@ -215,6 +215,12 @@ const functionDefs = {
         insertText: 'DBUpdateExt(',
         params: []
     },
+    DBUpdateSysParam: {
+        label: 'DBUpdateSysParam',
+        documentation: 'DBUpdateSysParam(name, value, conditions string)',
+        insertText: 'DBUpdateSysParam(',
+        params: []
+    },
     DateTime: {
         label: 'DateTime',
         documentation: '',
