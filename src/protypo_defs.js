@@ -53,6 +53,16 @@ const functionDefs = {
         documentation: 'And(parameters)',
         insertText: 'And('
     },
+    JsonToSource: {
+        label: 'JsonToSource',
+        documentation: 'JsonToSource(Source, Data)',
+        insertText: 'JsonToSource('
+    },
+    Range:{
+        label: 'Range',
+        documentation: 'Range(Source,From,To,Step)',
+        insertText: 'Range('
+    },
     DBFind: {
         label: 'DBFind(Name, Source)',
         documentation: '.Columns(columns)\n.Where(conditions)\n.WhereId(id)\n.Order(name)\n.Limit(limit)\n.Offset(offset)\n.Ecosystem(id)\n.Custom(Column,Body)\n.Vars(prefix)',

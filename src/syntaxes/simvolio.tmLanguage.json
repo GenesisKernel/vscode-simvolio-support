@@ -29,7 +29,7 @@
 		},
 		"autodefined": {
 			"name": "variable.language.simvolio",
-			"match": "(?<!\\.|\\$)\\b$(key_id|ecosystem_id|type|time|block|block_time|block_key_id)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b$(key_id|ecosystem_id|time|block|block_time|block_key_id|original_contract|this_contract|result)\\b(?!\\$|\\.)"
 		},
 		"defined-var": {
 			"name": "variable.other.simvolio",
