@@ -37,7 +37,7 @@
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
-			"match": "\\b(From|To|Step|Hmap|Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For|Prec|Exp|MapType|Text|ConfirmButton|CancelButton)(?=:)"
+			"match": "\\b(Data|Table|Column|From|To|Step|Hmap|Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For|Prec|Exp|MapType|Text|ConfirmButton|CancelButton)(?=:)"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",

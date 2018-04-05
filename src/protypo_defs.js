@@ -58,7 +58,7 @@ const functionDefs = {
         documentation: 'JsonToSource(Source, Data)',
         insertText: 'JsonToSource('
     },
-    Range:{
+    Range: {
         label: 'Range',
         documentation: 'Range(Source,From,To,Step)',
         insertText: 'Range('
@@ -77,6 +77,13 @@ const functionDefs = {
             documentation: 'Source identificator to bind results',
             insertText: 'Source: '
         }
+        ]
+    },
+    GetColumnType: {
+        label: 'GetColumnType(Table, Column)',
+        documentation: '',
+        insertText: 'GetColumnType(',
+        params: [
         ]
     },
     Button: {

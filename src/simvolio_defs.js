@@ -221,6 +221,12 @@ const functionDefs = {
         insertText: 'DBUpdateSysParam(',
         params: []
     },
+    DecodeBase64: {
+        label: 'DecodeBase64(text string) string',
+        documentation: '',
+        insertText: 'DecodeBase64(',
+        params: []
+    },
     DateTime: {
         label: 'DateTime',
         documentation: '',
