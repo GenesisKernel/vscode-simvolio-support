@@ -12,7 +12,7 @@ const functionDefs = {
         params: []
     },
     CallContract: {
-        label: 'CallContract',
+        label: 'CallContract(name string, params map)',
         documentation: '',
         insertText: 'CallContract(',
         params: []
@@ -42,32 +42,32 @@ const functionDefs = {
         params: []
     },
     AddressToId: {
-        label: 'AddressToId',
-        documentation: 'AddressToId(address string) int',
+        label: 'AddressToId(address string) int',
+        documentation: '',
         insertText: 'AddressToId(',
         params: []
     },
     IdToAddress: {
-        label: 'IdToAddress',
-        documentation: 'IdToAddress(id int) string',
+        label: 'IdToAddress(id int) string',
+        documentation: '',
         insertText: 'IdToAddress(',
         params: []
     },
     Contains: {
-        label: 'Contains',
-        documentation: 'Contains(s string, substr string) bool',
+        label: 'Contains(in, find string) bool',
+        documentation: '',
         insertText: 'Contains(',
         params: []
     },
     Float: {
-        label: 'Float',
-        documentation: 'Float(val int|string) float',
+        label: 'Float(val int|string) float',
+        documentation: '',
         insertText: 'Float(',
         params: []
     },
     HasPrefix: {
         label: 'HasPrefix',
-        documentation: 'HasPrefix(s string, prefix string) bool',
+        documentation: 'HasPrefix(in, prefix string) bool',
         insertText: 'HasPrefix(',
         params: []
     },
@@ -181,19 +181,19 @@ const functionDefs = {
     },
     DBInsert: {
         label: 'DBInsert',
-        documentation: 'DBInsert(tblname string, params string, val ...)',
+        documentation: 'DBInsert(table, params string, val ...)',
         insertText: 'DBInsert(',
         params: []
     },
     DBFind: {
         label: 'DBRow(table string)',
-        documentation: '[.Columns(columns string)][.Where(where string, params ...)][.WhereId(id int)][.Order(order string)][.Limit(limit int)][.Offset(offset int)][.Ecosystem(ecosystemid int)][.Row()][.One(field)]',
+        documentation: '.Columns(columns string) .Where(where string, params ...) .WhereId(id int) .Order(order string) .Limit(limit int) .Offset(offset int) .Ecosystem(id int) .Row() .One(col string) .Count()',
         insertText: 'DBFind(',
         params: []
     },
     DBRow: {
         label: 'DBFind(table string)',
-        documentation: '[.Columns(columns string)] [.Where(where string, params ...)] [.WhereId(id int)] [.Order(order string)] [.Ecosystem(ecosystemid int)]',
+        documentation: '.Columns(columns string) .Where(where string, params ...) .WhereId(id int) .Order(order string) .Ecosystem(id int)',
         insertText: 'DBFind(',
         params: []
     },
@@ -205,7 +205,7 @@ const functionDefs = {
     },
     DBUpdate: {
         label: 'DBUpdate',
-        documentation: 'DBUpdate(tblname string, id int, params string, val...)',
+        documentation: 'DBUpdate(table string, id int, params string, val...)',
         insertText: 'DBUpdate(',
         params: []
     },

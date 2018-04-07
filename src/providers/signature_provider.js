@@ -20,6 +20,7 @@ class SignatureProvider {
         const currentText = text.substring(0, position.character).replace(/[A-Z]\w+\([^(]+?\)/, '')
         const word = getWord(currentText)
         const items = []
+        // console.log(word)
         if (word) {
             let match = false
             this.completionsKeys.forEach(key => {

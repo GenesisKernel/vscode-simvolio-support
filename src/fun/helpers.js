@@ -9,7 +9,8 @@ function getWord(line) {
     if (right > 0) {
         left = --i
         while (i > 0 && ' ,}({)'.indexOf(line.charAt(i)) === -1) {
-            left = --i
+            left = i
+            i--
         }
         res = line.substring(left, right).trim()
     } else {
