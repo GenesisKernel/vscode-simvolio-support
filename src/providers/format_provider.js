@@ -164,7 +164,7 @@ class SimpleFormatProvider {
         },
         {
             pattern: /^If\s*\((.+)\)$/, // If(a)
-            fix: 'If ($1){'
+            fix: 'If($1){'
         },
         {
             pattern: /^(Else):$/, // Else(a)
@@ -218,10 +218,6 @@ class SimpleFormatProvider {
             pattern: /BtnContract\s*\(([\s\w$"]+?),([\s\w$")(-]+?),([\s\w$"]+?),([\s\w$"#:]+?),([\s\w$"'-]+?),([\s\w$"]+?),([\s\w$"]+?)\)/,
             fix: 'Button(Contract: $1, Body: $2, Params: $4, Class: $5, Page: $6, PageParams: $7).Alert($3, confirm, cancel)'
         },
-        // { 
-        //     pattern: /(\.Alert.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?)\$(\w+)\$(.*?\))$/g,
-        //     fix: '$1LangRes($2)$3LangRes($4)$5LangRes($6)$7'
-        // },
         { // fix langres on  button alert
             pattern: /(\.Alert.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?\))$/g,
             fix: '$1$$$2$$$3$$$4$$$5$$$6$$$7'
