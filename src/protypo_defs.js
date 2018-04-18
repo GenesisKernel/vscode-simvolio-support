@@ -115,6 +115,24 @@ const functionDefs = {
             }
         ]
     },
+    CompositeContract: {
+        label: '.CompositeContract(Contract, Data)',
+        documentation: '',
+        insertText: 'CompositeContract(',
+        params: [
+            {
+                label: 'Contract',
+                documentation: '',
+                insertText: 'Contract: '
+            },
+            {
+                label: 'Data',
+                documentation: '',
+                insertText: 'Data: '
+            }
+        ]
+    },
+    
     Data: {
         label: 'Data(Source,Columns,Data)',
         documentation: '.Custom(Column,Body)',
