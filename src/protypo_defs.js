@@ -634,6 +634,11 @@ const functionDefs = {
         documentation: '',
         insertText: 'Code(',
     },
+    AppParam: {
+        label: 'AppParam(App, Name, Index, Source)',
+        documentation: '',
+        insertText: 'AppParam(',
+    },
     Chart: {
         label: 'Chart(Type, Source, FieldLabel, FieldValue, Colors)',
         documentation: '',

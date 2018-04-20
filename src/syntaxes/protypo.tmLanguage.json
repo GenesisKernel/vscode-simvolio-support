@@ -37,11 +37,11 @@
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
-			"match": "\\b(Data|Table|Column|From|To|Step|Hmap|Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For|Prec|Exp|MapType|Text|ConfirmButton|CancelButton)(?=:)"
+			"match": "\\b(App|Data|Table|Column|From|To|Step|Hmap|Icon|FieldLabel|FieldValue|Colors|Class|Body|Source|Name|Contract|Wallet|Title|Value|Disabled|Placeholder|Format|Width|Ratio|Alt|Src|Condition|Source|PageParams|Page|Params|Type|NameColumn|ValueColumn|Columns|Index|For|Prec|Exp|MapType|Text|ConfirmButton|CancelButton)(?=:)"
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",
-			"match": "\\b(Range|JsonToSource|SysParam|Calculate|Code|Val|Include|LangRes|EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)(?=\\()|\\.(ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns|Count)(?=\\()|\\.(Else)(?=\\{)"
+			"match": "\\b(AppParam|Range|JsonToSource|SysParam|Calculate|Code|Val|Include|LangRes|EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)(?=\\()|\\.(ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns|Count)(?=\\()|\\.(Else)(?=\\{)"
 		},
 		"removed": {
 			"name": "invalid.illegal.protypo",

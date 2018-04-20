@@ -197,6 +197,12 @@ const functionDefs = {
         insertText: 'DBFind(',
         params: []
     },
+    AppParam: {
+        label: 'AppParam(app int, name string) string',
+        documentation: '',
+        insertText: 'AppParam(',
+        params: []
+    },
     DBInsertReport: {
         label: 'DBInsertReport',
         documentation: '',
