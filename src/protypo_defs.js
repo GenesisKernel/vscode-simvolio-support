@@ -83,8 +83,6 @@ const functionDefs = {
         label: 'GetColumnType(Table, Column)',
         documentation: '',
         insertText: 'GetColumnType(',
-        params: [
-        ]
     },
     Button: {
         label: 'Button(Body, Page, Class, Contract, Params, PageParams)',
