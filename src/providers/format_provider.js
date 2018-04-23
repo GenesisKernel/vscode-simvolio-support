@@ -23,6 +23,7 @@ class SimpleFormatProvider {
         const doubleSpaces = /(\s)+/g
         const notClosedBrace = /[^}]*\}$/
         const strings = /".*?"/g
+        const emptyLine = /^\s+$/
 
         const newLineBlock = /([)}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBFind)/g
         const newLineBlock2 = /([({])(If)/g
@@ -59,10 +60,10 @@ class SimpleFormatProvider {
 
 
                 let spaceLength = (this.tabs - this.offset) * options.tabSize + 1
-                let spaces = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
-                line = spaces + line
-                line = line.replace(newLineBlock, '$1\n' + spaces + '$2')
-                line = line.replace(newLineBlock2, '$1\n' + spaces + '$2')
+                let padLeft = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
+                line = padLeft + line
+                line = line.replace(newLineBlock, '$1\n' + padLeft + '$2')
+                line = line.replace(newLineBlock2, '$1\n' + padLeft + '$2')
 
                 testLine = line.replace(strings, '')
                 if (!commentLine.test(testLine)) {
@@ -76,6 +77,9 @@ class SimpleFormatProvider {
                 // }
                 isCode = this.checkIsCode(line, bracesStack, isCode)
                 if (i >= start && i <= end) {
+                    if (emptyLine.test(line)) {
+                        line = ''
+                    }
                     lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
                 }
             }
