@@ -424,6 +424,12 @@ const functionDefs = {
         insertText: 'BytesToString(',
         params: []
     },
+    Println: {
+        label: 'Println(... any)',
+        documentation: '',
+        insertText: 'Println(',
+        params: []
+    },
 
 }
 
