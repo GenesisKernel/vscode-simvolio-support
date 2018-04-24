@@ -412,6 +412,18 @@ const functionDefs = {
         insertText: 'GetContractByName(',
         params: []
     },
+    StringToBytes: {
+        label: 'StringToBytes(s string) bytes',
+        documentation: '',
+        insertText: 'StringToBytes(',
+        params: []
+    },
+    BytesToString: {
+        label: 'BytesToString(s bytes) string',
+        documentation: '',
+        insertText: 'BytesToString(',
+        params: []
+    },
 
 }
 
