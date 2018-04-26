@@ -1,19 +1,19 @@
 const vscode = require('vscode')
 const protypoCompletions = require('../protypo_defs').completions
 const simvolioCompletions = require('../simvolio_defs').completions
-const getWord = require('../fun/helpers').getWord
+const getTag = require('../fun/helpers').getTag
+const getLastWord = require('../fun/helpers').getLastWord
+const getParams = require('../fun/helpers').getParams
 
 class CompleteProvider {
     constructor(type) {
         this.type = type
         if (type === 'simvolio') {
             this.completions = simvolioCompletions
-            this.isSimvolio = true
             this.varMatch = /\$(\w+)[\s,]|var\s/g
         }
         if (type === 'protypo') {
             this.completions = protypoCompletions
-            this.isProtypo = true
             this.varMatch = /#\w+#/g
         }
         this.completionsKeys = Object.keys(this.completions)
@@ -24,16 +24,15 @@ class CompleteProvider {
         const text = document.lineAt(position.line).text,
             currentText = text.substr(0, position.character),
             items = []
-        const tag = getWord(currentText)
-        const word = this.getWord(currentText)
-        const scope = currentText.substring(currentText.indexOf(tag), position.character)
+        const tag = getTag(currentText)
+        const word = getLastWord(currentText)
 
-        // console.log("tag:", tag, "word:", word)
         if (tag) {
+            const params = getParams(tag, text)
             this.completionsKeys.forEach(key => {
-                if (key.toLowerCase() === tag) { // Element complete - params helper
+                if (key === tag) { // Element complete - params helper
                     this.completions[key].params.forEach(it => {
-                        if (scope.indexOf(it.insertText) < 0) { // not repeat params
+                        if (params.indexOf(it.label) < 0) { // not repeat params
                             items.push(new vscode.CompletionItem(it.insertText))
                         }
                     })
@@ -43,23 +42,22 @@ class CompleteProvider {
         }
         if (word) {
             this.completionsKeys.forEach(key => {
-                if (key.toLowerCase().indexOf(word) > -1) { // Element NOT complete - element helper
+                if (key.indexOf(word) > -1) { // Element NOT complete - element helper
                     items.push(new vscode.CompletionItem(this.completions[key].insertText))
                 }
             })
         }
 
 
-        const vars = document.getText(document.getWordRangeAtPosition(position))
+        document.getText(document.getWordRangeAtPosition(position))
             .split(/[\s,:"'`\][(><)=]+/) // get str tokens
-            .map(w => w.match(this.varMatch) ? w.substr(1, w.length - 1) : null)
+            .map(w => w.match(this.varMatch) ? w : null)
             .filter(w => w)
-
-        vars.forEach(v => {
-            if (this.completes.indexOf(v) < 0) {
-                this.completes.push(v)
-            }
-        })
+            .forEach(v => {
+                if (this.completes.indexOf(v) < 0) {
+                    this.completes.push(v)
+                }
+            })
         this.completes.forEach(c => {
             if (c.length > 3) {
                 let item = new vscode.CompletionItem(c)
@@ -72,18 +70,6 @@ class CompleteProvider {
 
 
         return new vscode.CompletionList(items)
-    }
-
-    getWord(line) {
-        let res,
-            i = line.length - 1,
-            right = i + 1,
-            left = i
-        while (i-- > 0 && ' <>,.(){}"[]`'.indexOf(line.charAt(i)) === -1) {
-            left = i
-        }
-        res = line.substring(left, right).toLowerCase()
-        return res
     }
 }
 

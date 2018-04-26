@@ -1,7 +1,7 @@
 const vscode = require('vscode')
 const protypoCompletions = require('../protypo_defs').completions
 const simvolioCompletions = require('../simvolio_defs').completions
-const getWord = require('../fun/helpers').getWord
+const getTag = require('../fun/helpers').getTag
 
 class SignatureProvider {
     constructor(type) {
@@ -18,7 +18,7 @@ class SignatureProvider {
     provideSignatureHelp(document, position) {
         const text = document.lineAt(position.line).text
         const currentText = text.substring(0, position.character).replace(/[A-Z]\w+\([^(]+?\)/, '')
-        const word = getWord(currentText)
+        const word = getTag(currentText)
         const items = []
         // console.log(word)
         if (word) {

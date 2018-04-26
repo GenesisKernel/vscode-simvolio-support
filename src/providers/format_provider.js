@@ -1,4 +1,5 @@
 const vscode = require('vscode')
+const getLastWord = require('../fun/helpers').getLastWord
 
 class SimpleFormatProvider {
     provideDocumentFormattingEdits(document, options) {
@@ -94,7 +95,7 @@ class SimpleFormatProvider {
             let c = line.charAt(l)
             if (c === '(') {
                 if (!isCode) {
-                    let lastWord = this.getLastWord(line.substring(0, l))
+                    let lastWord = getLastWord(line.substring(0, l))
                     isCode = lastWord === 'Code'
                     if (isCode) {
                         this.offset = this.tabs
@@ -116,20 +117,6 @@ class SimpleFormatProvider {
             this.offset = 0
         }
         return isCode
-    }
-
-    getLastWord(line) {
-        const notWordChars = ' <>,.(){}"[]`'
-        line = line.trim()
-        let last = line.length - 1
-        let i
-        for (i = last; i >= 0; i--) {
-            let ch = line.charAt(i)
-            if (notWordChars.indexOf(ch) != -1) {
-                return line.substring(i + 1)
-            }
-        }
-        return line.substring(i)
     }
 
     fixSyntax(line) {
