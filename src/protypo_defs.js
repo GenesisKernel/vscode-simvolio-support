@@ -716,6 +716,18 @@ const functionDefs = {
             }
         ]
     },
+    QRcode: {
+        label: 'QRcode(Text)',
+        documentation: '',
+        insertText: 'QRcode(',
+        params: [
+            {
+                label: 'Text',
+                documentation: '',
+                insertText: 'Text:'
+            }
+        ]
+    },
 }
 
 exports.completions = functionDefs

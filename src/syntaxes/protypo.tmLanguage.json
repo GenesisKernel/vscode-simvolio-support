@@ -12,7 +12,7 @@
 		"tag-code": {
 			"name": "string.html.protypo",
 			"begin": "Code\\s*\\(",
-			"end": "^\\)\\s*$",
+			"end": "^\\s*\\)\\s*$",
 			"pattern": "(.*?)"
 		},
 		"comparsion-operator": {
@@ -33,7 +33,7 @@
 		},
 		"protypo": {
 			"name": "entity.name.class.protypo",
-			"match": "\\b(GetColumnType|Button|Map|InputMap|Chart|Div|Span|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)(?=\\()|\\.(Alert|Style|CompositeContract)(?=\\()"
+			"match": "\\b(QRcode|GetColumnType|Button|Map|InputMap|Chart|Div|Span|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)(?=\\()|\\.(Alert|Style|CompositeContract)(?=\\()"
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
