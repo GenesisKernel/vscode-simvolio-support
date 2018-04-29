@@ -430,6 +430,18 @@ const functionDefs = {
         insertText: 'Println(',
         params: []
     },
+    JSONEncode: {
+        label: 'JSONEncode(src int|float|string|map|array) string',
+        documentation: '',
+        insertText: 'JSONEncode(',
+        params: []
+    },
+    JSONDecode: {
+        label: 'JSONDecode(src string) int|float|string|map|array',
+        documentation: '',
+        insertText: 'JSONDecode(',
+        params: []
+    },
 
 }
 
