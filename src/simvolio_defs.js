@@ -442,6 +442,12 @@ const functionDefs = {
         insertText: 'JSONDecode(',
         params: []
     },
+    UploadBinary: {
+        label: 'UploadBinary(ApplicationId int, Name string, Data bytes "file", DataMimeType string "optional")',
+        documentation: '',
+        insertText: 'UploadBinary("ApplicationId,Name,Data,DataMimeType", ',
+        params: []
+    },
 
 }
 

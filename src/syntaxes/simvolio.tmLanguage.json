@@ -21,7 +21,7 @@
 		},
 		"simvolio": {
 			"name": "entity.name.function.simvolio",
-			"match": "(?<!\\.|\\$)\\b(JSONEncode|JSONDecode|Println|StringToBytes|BytesToString|AppParam|DecodeBase64|JSONToMap|Split|Join|info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|IdToAddress|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt|DBUpdateSysParam|DBRow|DBIntExt|DBStringExt|GetContractById|GetContractByName)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(UploadBinary|JSONEncode|JSONDecode|Println|StringToBytes|BytesToString|AppParam|DecodeBase64|JSONToMap|Split|Join|info|warning|error|LangRes|FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|IdToAddress|Money|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam|EcosysParam|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt|DBUpdateSysParam|DBRow|DBIntExt|DBStringExt|GetContractById|GetContractByName)\\b(?!\\$|\\.)"
 		},
 		"simvolio-ext": {
 			"name": "entity.name.function.simvolio",
