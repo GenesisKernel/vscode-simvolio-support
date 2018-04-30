@@ -728,6 +728,12 @@ const functionDefs = {
             }
         ]
     },
+    Binary: {
+        label: 'Binary(Name, AppID, MemberID)[.ById(ID)]',
+        documentation: 'Binary().ById(ID)',
+        insertText: 'Binary().ById(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
