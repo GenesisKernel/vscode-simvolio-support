@@ -186,14 +186,8 @@ const functionDefs = {
         params: []
     },
     DBFind: {
-        label: 'DBRow(table string)',
-        documentation: '.Columns(columns string) .Where(where string, params ...) .WhereId(id int) .Order(order string) .Limit(limit int) .Offset(offset int) .Ecosystem(id int) .Row() .One(col string) .Count()',
-        insertText: 'DBFind(',
-        params: []
-    },
-    DBRow: {
         label: 'DBFind(table string)',
-        documentation: '.Columns(columns string) .Where(where string, params ...) .WhereId(id int) .Order(order string) .Ecosystem(id int)',
+        documentation: '.Columns(columns string) .Where(where string, params ...) .WhereId(id int) .Order(order string) .Limit(limit int) .Offset(offset int) .Ecosystem(id int) .Row() .One(col string) .Count()',
         insertText: 'DBFind(',
         params: []
     },
