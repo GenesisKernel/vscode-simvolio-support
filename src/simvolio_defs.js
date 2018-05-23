@@ -1,14 +1,8 @@
 const functionDefs = {
     LangRes: {
-        label: 'LangRes',
+        label: 'LangRes(appID int64, name, lang string) string',
         documention: '',
         insertText: 'LangRes(',
-        params: []
-    },
-    FindEcosystem: {
-        label: 'FindEcosystem',
-        documentation: '',
-        insertText: 'FindEcosystem(',
         params: []
     },
     CallContract: {
@@ -18,25 +12,25 @@ const functionDefs = {
         params: []
     },
     ContractAccess: {
-        label: 'ContractAccess',
+        label: 'ContractAccess(name [,name] string) bool',
         documentation: '',
         insertText: 'ContractAccess(',
         params: []
     },
     ContractConditions: {
-        label: 'ContractConditions',
+        label: 'ContractConditions(name [,name] string) bool',
         documentation: '',
         insertText: 'ContractConditions(',
         params: []
     },
     EvalCondition: {
-        label: 'EvalCondition',
+        label: 'EvalCondition(table, name, condfield string)',
         documentation: '',
         insertText: 'EvalCondition(',
         params: []
     },
     ValidateCondition: {
-        label: 'ValidateCondition',
+        label: 'ValidateCondition(condition string, ecosystemid int)',
         documentation: '',
         insertText: 'ValidateCondition(',
         params: []
@@ -66,91 +60,91 @@ const functionDefs = {
         params: []
     },
     HasPrefix: {
-        label: 'HasPrefix',
-        documentation: 'HasPrefix(in, prefix string) bool',
+        label: 'HasPrefix(in, prefix string) bool',
+        documentation: '',
         insertText: 'HasPrefix(',
         params: []
     },
     HexToBytes: {
-        label: 'HexToBytes',
-        documentation: 'HexToBytes(hexdata string) bytes',
+        label: 'HexToBytes(hexdata string) bytes',
+        documentation: '',
         insertText: 'HexToBytes(',
         params: []
     },
     Join: {
-        label: 'Join',
-        documentation: 'Join(in array, sep string) string',
+        label: 'Join(in array, sep string) string',
+        documentation: '',
         insertText: 'Join(',
         params: []
     },
     JSONToMap: {
-        label: 'JSONToMap',
-        documentation: 'JSONToMap(json string) map',
+        label: 'JSONToMap(json string) map',
+        documentation: 'deprecated. Better using JSONEncode',
         insertText: 'JSONToMap(',
         params: []
     },
     Split: {
-        label: 'Split',
-        documentation: 'Split(s, sep string) array',
+        label: 'Split(s, sep string) array',
+        documentation: '',
         insertText: 'Split(',
         params: []
     },
     Int: {
-        label: 'Int',
+        label: 'Int(n string|nil|int) int',
         documentation: '',
         insertText: 'Int(',
         params: []
     },
     Len: {
-        label: 'Len',
+        label: 'Len(a array) int',
         documentation: '',
         insertText: 'Len(',
         params: []
     },
     PubToID: {
-        label: 'PubToID',
+        label: 'PubToID(hexkey string) int',
         documentation: '',
         insertText: 'PubToID(',
         params: []
     },
     Replace: {
-        label: 'Replace',
+        label: 'Replace(s, old, new string) string',
         documentation: '',
         insertText: 'Replace(',
         params: []
     },
     Size: {
-        label: 'Size',
+        label: 'Size(s string) int',
         documentation: '',
         insertText: 'Size(',
         params: []
     },
     Sha256: {
-        label: 'Sha256',
+        label: 'Sha256(s string) string',
         documentation: '',
         insertText: 'Sha256(',
         params: []
     },
     Sprintf: {
-        label: 'Sprintf',
-        documentation: '',
+        label: 'Sprintf(pattern string, vals...) string',
+        documentation: '%d int, %s string, %f float, %v any, %T type value',
         insertText: 'Sprintf(',
         params: []
     },
     Str: {
-        label: 'Str',
+        label: 'Str(s int|float) string',
         documentation: '',
         insertText: 'Str(',
         params: []
     },
     Substr: {
-        label: 'Substr',
+        label: 'Substr(s string, offset, length int) string',
         documentation: '',
         insertText: 'Substr(',
         params: []
     },
     UpdateLang: {
-        label: 'UpdateLang',
+        label: 'UpdateLang(appID int, name, trans string)',
         documentation: '',
         insertText: 'UpdateLang(',
         params: []
@@ -162,26 +156,26 @@ const functionDefs = {
         params: []
     },
     SysParamInt: {
-        label: 'SysParamInt',
+        label: 'SysParamInt(name string) int',
         documentation: '',
         insertText: 'SysParamInt(',
         params: []
     },
     UpdateSysParam: {
-        label: 'UpdateSysParam(Name, Value string, Conditions string "optional")',
+        label: 'UpdateSysParam(Name, Value, Conditions "optional" string)',
         documentation: '',
         insertText: 'UpdateSysParam("Name,Value,Conditions", ',
         params: []
     },
     EcosysParam: {
-        label: 'EcosysParam',
-        documentation: 'EcosysParam(name string) string',
+        label: 'EcosysParam(name string) string',
+        documentation: '',
         insertText: 'EcosysParam(',
         params: []
     },
     DBInsert: {
-        label: 'DBInsert',
-        documentation: 'DBInsert(table, params string, val ...)',
+        label: 'DBInsert(table, params string, vals...)',
+        documentation: '',
         insertText: 'DBInsert(',
         params: []
     },
@@ -197,27 +191,21 @@ const functionDefs = {
         insertText: 'AppParam(',
         params: []
     },
-    DBInsertReport: {
-        label: 'DBInsertReport',
-        documentation: '',
-        insertText: 'DBInsertReport(',
-        params: []
-    },
     DBUpdate: {
-        label: 'DBUpdate',
-        documentation: 'DBUpdate(table string, id int, params string, val...)',
+        label: 'DBUpdate(table string, id int, params string, vals...)',
+        documentation: '',
         insertText: 'DBUpdate(',
         params: []
     },
     DBUpdateExt: {
-        label: 'DBUpdateExt',
+        label: 'DBUpdateExt(table, column string, val (int|string), params string, vals...)',
         documentation: '',
         insertText: 'DBUpdateExt(',
         params: []
     },
     DBUpdateSysParam: {
-        label: 'DBUpdateSysParam',
-        documentation: 'DBUpdateSysParam(name, value, conditions string)',
+        label: 'DBUpdateSysParam(name, value, conditions string)',
+        documentation: '',
         insertText: 'DBUpdateSysParam(',
         params: []
     },
@@ -227,37 +215,20 @@ const functionDefs = {
         insertText: 'DecodeBase64(',
         params: []
     },
-    DateTime: {
-        label: 'DateTime',
-        documentation: '',
-        insertText: 'DateTime(',
-        params: [
-            {
-                label: 'DateTime',
-                documentation: '',
-                insertText: 'DateTime: '
-            },
-            {
-                label: 'Format',
-                documentation: '',
-                insertText: 'Format: YYYY-MM-DD HH:MI:SS'
-            }
-        ]
-    },
     MoneyTransfer: {
-        label: 'MoneyTransfer(Recipient, Amount string, Comment string "optional")',
+        label: 'MoneyTransfer(Recipient, Amount, Comment "optional" string)',
         documentation: '',
         insertText: 'MoneyTransfer("Recipient,Amount,Comment", ',
         params: []
     },
     NewContract: {
-        label: 'NewContract(Value, Conditions string, Wallet string "optional", TokenEcosystem int "optional")',
+        label: 'NewContract(Value, Conditions, Wallet "optional" string, TokenEcosystem int "optional")',
         documentation: '',
         insertText: 'NewContract("Value,Conditions,Wallet,TokenEcosystem", ',
         params: []
     },
     EditContract: {
-        label: 'EditContract(Id int, Value, Conditions string, WalletId string "optional")',
+        label: 'EditContract(Id int, Value, Conditions, WalletId "optional" string)',
         documentation: '',
         insertText: 'EditContract("Id,Value,Conditions,WalletId",',
         params: []
@@ -401,7 +372,7 @@ const functionDefs = {
         params: []
     },
     GetContractByName: {
-        label: 'GetContractByName(name string) int',
+        label: 'GetContractByName(s string) int',
         documentation: '',
         insertText: 'GetContractByName(',
         params: []
@@ -425,13 +396,13 @@ const functionDefs = {
         params: []
     },
     JSONEncode: {
-        label: 'JSONEncode(src int|float|string|map|array) string',
+        label: 'JSONEncode(n int|float|string|map|array) string',
         documentation: '',
         insertText: 'JSONEncode(',
         params: []
     },
     JSONDecode: {
-        label: 'JSONDecode(src string) int|float|string|map|array',
+        label: 'JSONDecode(s string) int|float|string|map|array',
         documentation: '',
         insertText: 'JSONDecode(',
         params: []
