@@ -1,6 +1,6 @@
 const functionDefs = {
     LangRes: {
-        label: 'LangRes(appID int64, name, lang string) string',
+        label: 'LangRes(appID int, name, lang string) string',
         documention: '',
         insertText: 'LangRes(',
         params: []
@@ -12,7 +12,7 @@ const functionDefs = {
         params: []
     },
     ContractAccess: {
-        label: 'ContractAccess(name [,name] string) bool',
+        label: 'ContractAccess(...name string) bool',
         documentation: '',
         insertText: 'ContractAccess(',
         params: []
@@ -425,7 +425,234 @@ const functionDefs = {
         insertText: 'SortedKeys(',
         params: []
     },
-
+    ColumnCondition: {
+        label: 'ColumnCondition(table, name, type, permissions string)',
+        documentation: '',
+        insertText: 'ColumnCondition(',
+        params: []
+    },
+    ContractName: {
+        label: 'ContractName(code string) string',
+        documentation: '',
+        insertText: 'ContractName(',
+        params: []
+    },
+    ValidateEditContractNewValue: {
+        label: 'ValidateEditContractNewValue(newValue, oldValue string)',
+        documentation: '',
+        insertText: 'ValidateEditContractNewValue(',
+        params: []
+    },
+    CreateColumn: {
+        label: 'CreateColumn(table, name, type, permissions string)',
+        documentation: '',
+        insertText: 'CreateColumn(',
+        params: []
+    },
+    CreateTable: {
+        label: 'CreateTable(name, columns, permissions string, applicationID int)',
+        documentation: '',
+        insertText: 'CreateTable(',
+        params: []
+    },
+    DBSelect: {
+        label: 'DBSelect(table, columns string, id int, order string, offset, limit, ecosystem int, where string, params array) array',
+        documentation: 'it is better to use the wrapper: DBFind',
+        insertText: 'DBSelect(',
+        params: []
+    },
+    HMac: {
+        label: 'HMac(key, data string, raw bool) string',
+        documentation: '',
+        insertText: 'HMac(',
+        params: []
+    },
+    Money: {
+        label: 'Money(v any) money',
+        documentation: '',
+        insertText: 'Money(',
+        params: []
+    },
+    NewMoney: {
+        label: 'NewMoney(id int, amount, comment string)',
+        documentation: 'can be only called from @1NewUser',
+        insertText: '',
+        params: []
+    },
+    PermColumn: {
+        label: 'PermColumn(table, name, permissions string)',
+        documentation: 'can be only called from @1EditColumn',
+        insertText: '',
+        params: []
+    },
+    PermTable: {
+        label: 'PermTable(name, permissions string)',
+        documentation: 'can be only called from @1EditTable',
+        insertText: '',
+        params: []
+    },
+    Random: {
+        label: 'Random(min, max int) int',
+        documentation: '',
+        insertText: 'Random(',
+        params: []
+    },
+    TrimSpace: {
+        label: 'TrimSpace(s string) string',
+        documentation: '',
+        insertText: '',
+        params: []
+    },
+    ToLower: {
+        label: 'ToLower(s string) string',
+        documentation: '',
+        insertText: 'ToLower(',
+        params: []
+    },
+    CreateEcosystem: {
+        label: 'CreateEcosystem(wallet int, name string) int',
+        documentation: 'can be only called from @1NewEcosystem',
+        insertText: 'CreateEcosystem(',
+        params: []
+    },
+    RollbackEcosystem: {
+        label: 'RollbackEcosystem()',
+        documentation: 'can be only called from @1NewEcosystem',
+        insertText: 'RollbackEcosystem(',
+        params: []
+    },
+    CreateContract: {
+        label: 'CreateContract(name, value, conditions string, wallet, token, appID int)',
+        documentation: 'can be only called from @1NewContract',
+        insertText: 'CreateContract(',
+        params: []
+    },
+    UpdateContract: {
+        label: 'UpdateContract(id int, value, conditions, walletID string, recipient int, active, token string)',
+        documentation: 'can be only called from @1EditContract',
+        insertText: '',
+        params: []
+    },
+    RollbackTable: {
+        label: 'RollbackTable(name string)',
+        documentation: 'can be only called from @1NewTable',
+        insertText: 'RollbackTable(',
+        params: []
+    },
+    TableConditions: {
+        label: 'TableConditions(name, columns, permissions string)',
+        documentation: 'can be only called from: @1NewTable, @1Import, @1EditTable',
+        insertText: 'TableConditions(',
+        params: []
+    },
+    RollbackColumn: {
+        label: 'RollbackColumn(table, name string)',
+        documentation: 'can be only called from @1NewColumn',
+        insertText: 'RollbackColumn(',
+        params: []
+    },
+    CreateLanguage: {
+        label: 'CreateLanguage(name, trans string, appID int) int',
+        documentation: 'can be only called from @1NewLang',
+        insertText: 'CreateLanguage(',
+        params: []
+    },
+    EditLanguage: {
+        label: 'EditLanguage(id int, name, trans string, appID int)',
+        documentation: 'can be only called from @1EditLang or @1Import',
+        insertText: 'EditLanguage(',
+        params: []
+    },
+    Activate: {
+        label: 'Activate(tableId int, state int)',
+        documentation: 'can be only called from @1ActivateContract or @1DeactivateContract',
+        insertText: 'Activate(',
+        params: []
+    },
+    Deactivate: {
+        label: 'Deactivate(tableId int, state int)',
+        documentation: 'can be only called from @1ActivateContract or @1DeactivateContract',
+        insertText: 'Deactivate(',
+        params: []
+    },
+    RollbackContract: {
+        label: 'RollbackContract(name string)',
+        documentation: '',
+        insertText: 'RollbackContract(',
+        params: []
+    },
+    RollbackEditContract: {
+        label: 'RollbackEditContract()',
+        documentation: 'can be only called from @1EditContract',
+        insertText: 'RollbackEditContract()',
+        params: []
+    },
+    RollbackNewContract: {
+        label: 'RollbackNewContract(value string)',
+        documentation: '',
+        insertText: 'RollbackNewContract(',
+        params: []
+    },
+    RowConditions: {
+        label: 'RowConditions(table string, id int, conditionOnly bool)',
+        documentation: '',
+        insertText: 'RowConditions(',
+        params: []
+    },
+    UUID: {
+        label: 'UUID() string',
+        documentation: '',
+        insertText: 'UUID()',
+        params: []
+    },
+    EncodeBase64: {
+        label: 'EncodeBase64(in string) string',
+        documentation: '',
+        insertText: 'EncodeBase64(',
+        params: []
+    },
+    MD5: {
+        label: 'MD5(val any) string',
+        documentation: '',
+        insertText: 'MD5(',
+        params: []
+    },
+    EditEcosysName: {
+        label: 'EditEcosysName(sysID int, newName string)',
+        documentation: 'can be only called from @1EditEcosystemName',
+        insertText: 'EditEcosysName(',
+        params: []
+    },
+    GetColumnType: {
+        label: 'GetColumnType(table, column string) string',
+        documentation: '',
+        insertText: 'GetColumnType(',
+        params: []
+    },
+    GetType: {
+        label: 'GetType(val any) string',
+        documentation: '',
+        insertText: 'GetType(',
+        params: []
+    },
+    AllowChangeCondition: {
+        label: 'AllowChangeCondition(table string)',
+        documentation: '',
+        insertText: 'AllowChangeCondition(',
+        params: []
+    },
+    SetPubKey: {
+        label: 'SetPubKey(id int, pubKey bytes) int',
+        documentation: 'can be only called from NewUser contract',
+        insertText: 'SetPubKey(',
+        params: []
+    },
+    Append: {
+        label: 'Append(ar array, val any) array ',
+        documentation: '',
+        insertText: 'Append(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
