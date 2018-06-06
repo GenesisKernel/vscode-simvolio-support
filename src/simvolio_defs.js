@@ -413,6 +413,18 @@ const functionDefs = {
         insertText: 'UploadBinary("ApplicationId,Name,Data,DataMimeType", ',
         params: []
     },
+    GetMapKeys: {
+        label: 'GetMapKeys(m map) array',
+        documentation: '',
+        insertText: 'GetMapKeys(',
+        params: []
+    },
+    SortedKeys: {
+        label: 'SortedKeys(m map) array',
+        documentation: '',
+        insertText: 'SortedKeys(',
+        params: []
+    },
 
 }
 
