@@ -58,6 +58,11 @@ const functionDefs = {
         documentation: 'JsonToSource(Source, Data)',
         insertText: 'JsonToSource('
     },
+    ArrayToSource: {
+        label: 'ArrayToSource',
+        documentation: 'ArrayToSource(Source, Data)',
+        insertText: 'ArrayToSource('
+    },
     Range: {
         label: 'Range',
         documentation: 'Range(Source,From,To,Step)',

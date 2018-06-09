@@ -41,7 +41,7 @@
 		},
 		"protypo-func": {
 			"name": "entity.name.function.protypo",
-			"match": "\\b(Binary\\(\\)\\.ById)(?=\\()|\\b(Binary|AppParam|Range|JsonToSource|SysParam|Calculate|Code|Val|Include|LangRes|EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)(?=\\()|\\.(ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns|Count)(?=\\()|\\.(Else)(?=\\{)"
+			"match": "\\b(Binary\\(\\)\\.ById)(?=\\()|\\b(Binary|AppParam|Range|ArrayToSource|JsonToSource|SysParam|Calculate|Code|Val|Include|LangRes|EcosysParam|ForList|Or|And|Address|SetVar|CmpTime|Data|DateTime|SetTitle|GetVar|If|DBAmount|DBString|DBFind|DBInsert|DBInsertReport|DBUpdate|DBUpdateExt)(?=\\()|\\.(ElseIf|Where|WhereId|Order|Limit|Offset|Ecosystem|Custom|Vars|Columns|Count)(?=\\()|\\.(Else)(?=\\{)"
 		},
 		"removed": {
 			"name": "invalid.illegal.protypo",
