@@ -25,7 +25,7 @@
 		},
 		"error-simvolio": {
 			"name": "invalid.illegal.protypo",
-			"match": "\\b(FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam)\\b(?=\\()"
+			"match": "\\b(FindEcosystem|CallContract|ContractAccess|ContractConditions|EvalCondition|ValidateCondition|AddressToId|Contains|Float|HasPrefix|HexToBytes|Money|Int|Len|PubToID|Replace|Size|Sha256|Sprintf|Str|Substr|UpdateLang|SysParamString|SysParamInt|UpdateSysParam)\\b(?=\\()"
 		},
 		"autodefined": {
 			"name": "variable.language.protypo",

@@ -739,6 +739,12 @@ const functionDefs = {
         insertText: 'Binary().ById(',
         params: []
     },
+    Money: {
+        label: 'Money(Exp, Digit)  Exp/10^Digit',
+        documentation: '',
+        insertText: 'Money(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
