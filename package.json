@@ -17,7 +17,7 @@
     "vscode": "^1.18.0"
   },
   "categories": [
-    "Languages"
+    "Programming Languages"
   ],
   "keywords": [
     "protypo",
@@ -94,6 +94,7 @@
   },
   "dependencies": {
     "jslint": "^0.12.0",
+    "npm": "^6.1.0",
     "vscode": "^1.1.8"
   }
 }
