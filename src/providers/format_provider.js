@@ -46,7 +46,6 @@ class SimpleFormatProvider {
                     .replace(commaSpace, '$1$2')
                     .replace(spaceOpenBrace, '$1$2')
                     .replace(spaceCloseBrace, '$1$2')
-                    .replace(doubleSpaces, '$1')
                     .trim()
 
                 line = this.fixSyntax(line)
