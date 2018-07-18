@@ -509,6 +509,12 @@ const functionDefs = {
         insertText: 'ToLower(',
         params: []
     },
+    ToUpper: {
+        label: 'ToUpper(s string) string',
+        documentation: '',
+        insertText: 'ToUpper(',
+        params: []
+    },
     CreateEcosystem: {
         label: 'CreateEcosystem(wallet int, name string) int',
         documentation: 'can be only called from @1NewEcosystem',
