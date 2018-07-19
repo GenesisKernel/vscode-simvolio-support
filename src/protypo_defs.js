@@ -745,6 +745,12 @@ const functionDefs = {
         insertText: 'Money(',
         params: []
     },
+    Hint: {
+        label: 'Hint(Icon,Title,Text)',
+        documentation: '',
+        insertText: 'Hint(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
