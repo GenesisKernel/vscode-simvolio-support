@@ -65,9 +65,15 @@
 			"end": "'",
 			"pattern": ".*?"
 		},
-		"simvolio-comments": {
+		"comments": {
 			"name": "comment.line.simvolio",
 			"match": "//.*$"
+		},
+		"block-comments": {
+			"name": "comment.block.simvolio",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"pattern": ".*?"
 		},
 		"cyr-text": {
 			"name": "comment.line.simvolio",
@@ -88,7 +94,10 @@
 					"include": "#strings3"
 				},
 				{
-					"include": "#simvolio-comments"
+					"include": "#comments"
+				},
+				{
+					"include": "#block-comments"
 				},
 				{
 					"include": "#DBFind-param"
