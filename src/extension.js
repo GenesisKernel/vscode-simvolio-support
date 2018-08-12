@@ -2,7 +2,6 @@ const vscode = require('vscode')
 const CompleteProvider = require('./providers/completion_provider')
 const FormatProvider = require('./providers/format_provider')
 const SignatureProvider = require('./providers/signature_provider')
-const exportHelpers = require('./fun/exportHelpers')
 
 function activate(context) {
     const active = vscode.window.activeTextEditor
@@ -27,12 +26,5 @@ function activate(context) {
     }
 
     registerProviders()
-
-    vscode.commands.registerCommand('extension.exportFile', () => {
-        exportHelpers.exportFile()
-    })
-    vscode.commands.registerCommand('extension.exportPackage', () => {
-        exportHelpers.exportPackage()
-    })
 }
 exports.activate = activate

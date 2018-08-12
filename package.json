@@ -2,7 +2,7 @@
   "name": "simvolio-support",
   "displayName": "Simvolio support",
   "description": "Simvolio and Protypo support",
-  "version": "0.4.105",
+  "version": "0.5.0",
   "publisher": "hy6",
   "icon": "src/img/apla.png",
   "author": {
@@ -26,28 +26,6 @@
     "genesis"
   ],
   "contributes": {
-    "commands": [
-      {
-        "command": "extension.exportFile",
-        "title": "Export File",
-        "description": "Export file to ecosystems"
-      },
-      {
-        "command": "extension.exportPackage",
-        "title": "Export Package",
-        "description": "Export package to ecosystem"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "extension.exportFile",
-        "key": "Alt+I"
-      },
-      {
-        "command": "extension.exportPackage",
-        "key": "Alt+P"
-      }
-    ],
     "iconThemes": [
       {
         "id": "simvolio-theme",

@@ -14,46 +14,57 @@ class SimpleFormatProvider {
         this.tabs = 0
         const countLines = text.lineCount
 
-        const hasClosedBrace = /^\s*([})\]]).*/
-        const hasOpenBrace = /[{([](:?\s|\/\/.*)*$/
-
-        const spaceCloseBrace = /\s*(\))(\s)*/g
-        const spaceOpenBrace = /(\s)+(\()\s*/g
-        const commaSpace = /\s*(,)(\s)*/g
-        const commentLine = /^\s*\/\/.*$/
-        const doubleSpaces = /(\s)+/g
-        const notClosedBrace = /[^}]*\}$/
-        const strings = /".*?"/g
-        const emptyLine = /^\s+$/
-
-        const newLineBlock = /([)}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBFind)/g
-        const newLineBlock2 = /([({])(If)/g
-
-        if (text.lineAt(0).text.match(/^\s*\{/)) return // do not format export.sim
+        if (text.lineAt(0).text.match(/^\s*\{/)) return // do not format json
         try {
             const lines = []
             let isCode = false
+            let isStringLiteral = false
+            let isStringLiteral2 = false
             let bracesStack = []
             for (let i = 0; i < countLines; i++) {
                 let line = text.lineAt(i).text
-                let lineLength = line.length
-
+                let lineLen = line.length
+                if (this.commentLine.test(line)) continue
                 isCode = this.checkIsCode(line, bracesStack, isCode)
 
-                // if (!isCode) {
                 if (this.tabs < 0) this.tabs = 0
-                line = line
-                    .replace(commaSpace, '$1$2')
-                    .replace(spaceOpenBrace, '$1$2')
-                    .replace(spaceCloseBrace, '$1$2')
-                    .trim()
+                for (let a = 0; a < line.length; a++) {
+                    if (!isStringLiteral2 && line.charAt(a) == '"') {
+                        isStringLiteral = !isStringLiteral
+                    } else if (!isStringLiteral && line.charAt(a) == '`') {
+                        isStringLiteral2 = !isStringLiteral2
+                    }
+
+                    if (!this.commentLine.test(line.substring(a))) {
+                        if (!(isStringLiteral || isStringLiteral2)) {
+                            line = line.substring(0, a) + line.substring(a)
+                                .replace(this.commaSpace, '$1$2')
+                                .replace(this.beforeOpenedBrace, '$1$2')
+                                .replace(this.beforeClosedBrace, '$1$2')
+                                .replace(this.openedSquare, '$1')
+                                .replace(this.closedSquare, '$1')
+                                .replace(this.openedBrace, '$1')
+                                .replace(this.closedBrace, '$1')
+                            if (this.type !== 'protypo') {
+                                line = line.replace(this.mathTokens, '$1 $2 ')
+                                    .replace(this.dTokens, '$1 $2 ')
+                                    .replace(this.sTokens, '$1 $2 $3')
+                                    .replace(this.neqToken, '$1 $2 ')
+                            }
+                            line = line.replace(this.doubleSpaces, '$1')
+                        }
+                    }
+                }
+                if (!(isStringLiteral || isStringLiteral2)) {
+                    line = line.trim()
+                }
 
                 line = this.fixSyntax(line)
-                // console.log(i, lastWord, isCode, bracesStack)
 
-                let testLine = line.replace(strings, '')
-                if (!commentLine.test(testLine)) {
-                    if (hasClosedBrace.test(testLine)) {
+
+                let testLine = line.replace(this.strings, '')
+                if (!this.commentLine.test(testLine)) {
+                    if (this.hasClosedBrace.test(testLine)) {
                         this.tabs--
                     }
                 }
@@ -62,25 +73,24 @@ class SimpleFormatProvider {
                 let spaceLength = (this.tabs - this.offset) * options.tabSize + 1
                 let padLeft = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
                 line = padLeft + line
-                line = line.replace(newLineBlock, '$1\n' + padLeft + '$2')
-                line = line.replace(newLineBlock2, '$1\n' + padLeft + '$2')
+                line = line.replace(this.newLineBlock, '$1\n' + padLeft + '$2')
+                line = line.replace(this.newLineBlock2, '$1\n' + padLeft + '$2')
 
-                testLine = line.replace(strings, '')
-                if (!commentLine.test(testLine)) {
-                    if (hasOpenBrace.test(testLine)) {
+                testLine = line.replace(this.strings, '')
+                // if (!this.commentLine.test(testLine)) {
+                if (this.hasOpenBrace.test(testLine)) {
+                    ++this.tabs
+                    if (this.notClosedBrace.test(testLine)) {
                         ++this.tabs
-                        if (notClosedBrace.test(testLine)) {
-                            ++this.tabs
-                        }
                     }
                 }
                 // }
                 isCode = this.checkIsCode(line, bracesStack, isCode)
                 if (i >= start && i <= end) {
-                    if (emptyLine.test(line)) {
+                    if (this.emptyLine.test(line)) {
                         line = ''
                     }
-                    lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLength), line))
+                    lines.push(new vscode.TextEdit(new vscode.Range(i, 0, i, lineLen), line))
                 }
             }
             return lines
@@ -125,6 +135,27 @@ class SimpleFormatProvider {
         return line
     }
     constructor(type) {
+        this.hasClosedBrace = /^\s*([})\]]).*/
+        this.hasOpenBrace = /[{([](:?\s|\/\/.*)*$/
+
+        this.commaSpace = /^\s*(,)(\s)*/
+        this.beforeOpenedBrace = /^(\s)+(\()\s*/
+        this.beforeClosedBrace = /^\s*(\))(\s)*/
+        this.doubleSpaces = /^(\s)+/
+        this.openedSquare = /^(\[)\s+/
+        this.closedSquare = /^\s+(\])/
+        this.openedBrace = /^(\()\s+/
+        this.closedBrace = /^\s+(\))/
+        this.mathTokens = /^([^\s])([+/*-])/
+        this.dTokens = /^([^\s])(==|<=|>=|!=)/
+        this.sTokens = /^([^\s!=<>])([=<>])([^=])/
+        this.commentLine = /^\s*\/\/.*$/
+        this.notClosedBrace = /[^}]*\}$/
+        this.strings = /".*?"/g
+        this.emptyLine = /^\s+$/
+
+        this.newLineBlock = /([)}])(Div|Button|Table|Form|Image|ImageInput|Input|InputErr|LinkPage|MenuGroup|MenuItem|P|RadioGroup|Select|EcosysParam|DBFind)/g
+        this.newLineBlock2 = /([({])(If)/g
         this.offset = 0
         this.tabs = 0
         this.type = type
