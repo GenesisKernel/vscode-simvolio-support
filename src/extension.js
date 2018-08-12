@@ -10,18 +10,18 @@ function activate(context) {
     function registerProviders() {
         let type = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), ' ', '#', '.', '('),
-            vscode.languages.registerDocumentFormattingEditProvider(type, new FormatProvider(type)),
-            vscode.languages.registerDocumentRangeFormattingEditProvider(type, new FormatProvider()),
-            vscode.languages.registerSignatureHelpProvider(type, new SignatureProvider(type), '(', ' ', '{')
+            vscode.languages.registerCompletionItemProvider({ scheme: 'file', language: type }, new CompleteProvider(type), ' ', '#', '.', '('),
+            vscode.languages.registerDocumentFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider(type)),
+            vscode.languages.registerDocumentRangeFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider()),
+            vscode.languages.registerSignatureHelpProvider({ scheme: 'file', language: type }, new SignatureProvider(type), '(', ' ', '{')
         )
 
         type = 'simvolio'
         context.subscriptions.push(
-            vscode.languages.registerDocumentFormattingEditProvider(type, new FormatProvider()),
-            vscode.languages.registerDocumentRangeFormattingEditProvider(type, new FormatProvider()),
-            vscode.languages.registerCompletionItemProvider(type, new CompleteProvider(type), '$', ' ', '.', '('),
-            vscode.languages.registerSignatureHelpProvider(type, new SignatureProvider(type), '(', ' ', '{')
+            vscode.languages.registerDocumentFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider()),
+            vscode.languages.registerDocumentRangeFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider()),
+            vscode.languages.registerCompletionItemProvider({ scheme: 'file', language: type }, new CompleteProvider(type), '$', ' ', '.', '('),
+            vscode.languages.registerSignatureHelpProvider({ scheme: 'file', language: type }, new SignatureProvider(type), '(', ' ', '{')
         )
     }
 

@@ -1,5 +1,6 @@
 # Changes
 
+* 0.5.1 fixed improvements formatting for separate languages
 * 0.5.0 improvements formatting
 * 0.4.0 basic converter from old protypo format
 * 0.3.0 basic simvolio complete helper

@@ -37,7 +37,7 @@ class SimpleFormatProvider {
 
                     if (!this.commentLine.test(line.substring(a))) {
                         if (!(isStringLiteral || isStringLiteral2)) {
-                            line = line.substring(0, a) + line.substring(a)
+                            let tail = line.substring(a)
                                 .replace(this.commaSpace, '$1$2')
                                 .replace(this.beforeOpenedBrace, '$1$2')
                                 .replace(this.beforeClosedBrace, '$1$2')
@@ -46,12 +46,13 @@ class SimpleFormatProvider {
                                 .replace(this.openedBrace, '$1')
                                 .replace(this.closedBrace, '$1')
                             if (this.type !== 'protypo') {
-                                line = line.replace(this.mathTokens, '$1 $2 ')
+                                tail = tail.replace(this.mathTokens, '$1 $2 ')
                                     .replace(this.dTokens, '$1 $2 ')
                                     .replace(this.sTokens, '$1 $2 $3')
                                     .replace(this.neqToken, '$1 $2 ')
                             }
-                            line = line.replace(this.doubleSpaces, '$1')
+                            tail = tail.replace(this.doubleSpaces, '$1')
+                            line = line.substring(0, a) + tail
                         }
                     }
                 }
