@@ -73,7 +73,7 @@ class SimpleFormatProvider {
 
                 let spaceLength = (this.tabs - this.offset) * options.tabSize + 1
                 let padLeft = spaceLength >= 0 ? new Array(spaceLength).join(' ') : ''
-                line = padLeft + line
+                line = padLeft + line.trim()
                 line = line.replace(this.newLineBlock, '$1\n' + padLeft + '$2')
                 line = line.replace(this.newLineBlock2, '$1\n' + padLeft + '$2')
 
