@@ -396,9 +396,15 @@ const functionDefs = {
         params: []
     },
     JSONEncode: {
-        label: 'JSONEncode(n int|float|string|map|array) string',
+        label: 'JSONEncode(n any) string',
         documentation: '',
         insertText: 'JSONEncode(',
+        params: []
+    },
+    JSONEncodeIndent: {
+        label: 'JSONEncodeIndent(n any, indent string) string',
+        documentation: '',
+        insertText: 'JSONEncodeIndent(',
         params: []
     },
     JSONDecode: {
@@ -603,12 +609,6 @@ const functionDefs = {
         label: 'RowConditions(table string, id int, conditionOnly bool)',
         documentation: '',
         insertText: 'RowConditions(',
-        params: []
-    },
-    UUID: {
-        label: 'UUID() string',
-        documentation: '',
-        insertText: 'UUID()',
         params: []
     },
     EncodeBase64: {
