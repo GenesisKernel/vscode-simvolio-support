@@ -43,26 +43,16 @@
 			"name": "variable.other.simvolio",
 			"match": "([a-zA-Z0-9_-]*#[a-zA-Z0-9_-]*)+"
 		},
-		"class-name": {
-			"name": "string.html.simvolio",
-			"match": "[\\`\\'\\sa-zA-Z0-9_]*-[\\`\\'\\sa-zA-Z0-9_]*"
-		},
 		"strings": {
 			"name": "string.quoted.double.protypo",
-			"begin": "\"",
-			"end": "\"",
+			"begin": "(?<!\\\\)\"",
+			"end": "(?<!\\\\)\"",
 			"pattern": ".*?"
 		},
 		"strings2": {
 			"name": "string.quoted.single.protypo",
-			"begin": "`",
-			"end": "`",
-			"pattern": ".*?"
-		},
-		"strings3": {
-			"name": "string.quoted.single.protypo",
-			"begin": "'",
-			"end": "'",
+			"begin": "(?<!\\\\)`",
+			"end": "(?<!\\\\)`",
 			"pattern": ".*?"
 		},
 		"comments": {
@@ -89,9 +79,6 @@
 				},
 				{
 					"include": "#strings2"
-				},
-				{
-					"include": "#strings3"
 				},
 				{
 					"include": "#comments"
