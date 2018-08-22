@@ -437,12 +437,6 @@ const functionDefs = {
         insertText: 'ColumnCondition(',
         params: []
     },
-    ContractName: {
-        label: 'ContractName(code string) string',
-        documentation: '',
-        insertText: 'ContractName(',
-        params: []
-    },
     ValidateEditContractNewValue: {
         label: 'ValidateEditContractNewValue(newValue, oldValue string)',
         documentation: '',
