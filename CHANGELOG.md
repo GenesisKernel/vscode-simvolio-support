@@ -1,6 +1,6 @@
 # Changes
 
-* 0.5.4 fixed strings highligt
+* 0.5.6 fixed strings highligt
 * 0.5.3 +JSONEncodeIndent
 * 0.5.2 fixed bag indent
 * 0.5.1 fixed improvements formatting for separate languages
