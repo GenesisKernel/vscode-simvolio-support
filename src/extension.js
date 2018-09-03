@@ -8,20 +8,20 @@ function activate(context) {
     if (!active || !active.document) return
 
     function registerProviders() {
-        let type = 'protypo'
+        let typeProtypo = 'protypo'
         context.subscriptions.push(
-            vscode.languages.registerCompletionItemProvider({ scheme: 'file', language: type }, new CompleteProvider(type), ' ', '#', '.', '('),
-            vscode.languages.registerDocumentFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider(type)),
-            vscode.languages.registerDocumentRangeFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider()),
-            vscode.languages.registerSignatureHelpProvider({ scheme: 'file', language: type }, new SignatureProvider(type), '(', ' ', '{')
+            vscode.languages.registerCompletionItemProvider({ scheme: 'file', language: typeProtypo }, new CompleteProvider(typeProtypo), ' ', '#', '.', '('),
+            vscode.languages.registerDocumentFormattingEditProvider({ scheme: 'file', language: typeProtypo }, new FormatProvider(typeProtypo)),
+            vscode.languages.registerDocumentRangeFormattingEditProvider({ scheme: 'file', language: typeProtypo }, new FormatProvider(typeProtypo)),
+            vscode.languages.registerSignatureHelpProvider({ scheme: 'file', language: typeProtypo }, new SignatureProvider(typeProtypo), '(', ' ', '{')
         )
 
-        type = 'simvolio'
+        let typeSimvolio = 'simvolio'
         context.subscriptions.push(
-            vscode.languages.registerDocumentFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider()),
-            vscode.languages.registerDocumentRangeFormattingEditProvider({ scheme: 'file', language: type }, new FormatProvider()),
-            vscode.languages.registerCompletionItemProvider({ scheme: 'file', language: type }, new CompleteProvider(type), '$', ' ', '.', '('),
-            vscode.languages.registerSignatureHelpProvider({ scheme: 'file', language: type }, new SignatureProvider(type), '(', ' ', '{')
+            vscode.languages.registerDocumentFormattingEditProvider({ scheme: 'file', language: typeSimvolio }, new FormatProvider(typeSimvolio)),
+            vscode.languages.registerDocumentRangeFormattingEditProvider({ scheme: 'file', language: typeSimvolio }, new FormatProvider(typeSimvolio)),
+            vscode.languages.registerCompletionItemProvider({ scheme: 'file', language: typeSimvolio }, new CompleteProvider(typeSimvolio), '$', ' ', '.', '('),
+            vscode.languages.registerSignatureHelpProvider({ scheme: 'file', language: typeSimvolio }, new SignatureProvider(typeSimvolio), '(', ' ', '{')
         )
     }
 
