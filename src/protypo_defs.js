@@ -638,7 +638,7 @@ const functionDefs = {
         insertText: 'Code(',
     },
     AppParam: {
-        label: 'AppParam(App, Name, Index, Source)',
+        label: 'AppParam(App, Name, Index, Source, Ecosystem)',
         documentation: '',
         insertText: 'AppParam(',
     },

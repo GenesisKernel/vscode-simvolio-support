@@ -186,7 +186,7 @@ const functionDefs = {
         params: []
     },
     AppParam: {
-        label: 'AppParam(app int, name string) string',
+        label: 'AppParam(app int, name string, ecosystemId int) string',
         documentation: '',
         insertText: 'AppParam(',
         params: []
