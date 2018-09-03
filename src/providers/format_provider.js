@@ -245,7 +245,7 @@ class SimpleFormatProvider {
             fix: '$1$$$2$$$3$$$4$$$5$$$6$$$7'
         },
         { // only first system tables 
-            pattern: /(DBFind|DBUpdate|DBInsert)\((keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems)/,
+            pattern: /(DBFind|DBUpdate|DBInsert)\((keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems|system_parameters)/,
             fix: '$1(@1$2'
         },
         ]
