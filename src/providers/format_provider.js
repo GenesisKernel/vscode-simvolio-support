@@ -244,6 +244,10 @@ class SimpleFormatProvider {
             pattern: /(\.Alert.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?)LangRes\((\w+)\)(.*?\))$/g,
             fix: '$1$$$2$$$3$$$4$$$5$$$6$$$7'
         },
+        { // only first system tables 
+            pattern: /(DBFind|DBUpdate|DBInsert)\((keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data)/,
+            fix: '$1(@1$2'
+        },
         ]
     }
 }
