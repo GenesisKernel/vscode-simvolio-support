@@ -134,7 +134,6 @@ class SimpleFormatProvider {
             this.protypoRules.forEach(rule => line = line.replace(rule.pattern, rule.fix))
         }
         if (this.type === 'simvolio') {
-            console.log('this')
             this.simvolioRules.forEach(rule => line = line.replace(rule.pattern, rule.fix))
         }
         return line
@@ -164,7 +163,8 @@ class SimpleFormatProvider {
         this.offset = 0
         this.tabs = 0
         this.type = type
-        console.log(type, this.type)
+        this.globalTablesPattern = /(DBFind|DBUpdate|DBInsert)\(\s*"?(keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems|system_parameters|voting_templates|votings|votings_participants|votings_subject)"?/
+
         this.protypoRules = [{
             pattern: /^Divs:?\(?([\w-\s]+)\)?$/, // Divs: a | Divs(a)
             fix: 'Div($1){'
@@ -250,13 +250,13 @@ class SimpleFormatProvider {
             fix: '$1$$$2$$$3$$$4$$$5$$$6$$$7'
         },
         { // pages: only first system tables 
-            pattern: /(DBFind|DBUpdate|DBInsert)\((keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems|system_parameters)/,
+            pattern: this.globalTablesPattern,
             fix: '$1(@1$2'
         },
         ]
 
         this.simvolioRules = [{ // contracts: only first system tables 
-            pattern: /(DBFind|DBUpdate|DBInsert)\(\s*"(keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems|system_parameters|voting_templates|votings|votings_participants|votings_subject)"/,
+            pattern: this.globalTablesPattern,
             fix: '$1("@1$2"'
         },
         ]

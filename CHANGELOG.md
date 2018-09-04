@@ -1,5 +1,6 @@
 # Changes
 
+* 0.5.13 reworked find global tables
 * 0.5.12 reworked "ecosystems table"
 * 0.5.6 fixed strings highligt
 * 0.5.3 +JSONEncodeIndent
