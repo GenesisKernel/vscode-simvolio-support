@@ -654,9 +654,21 @@ const functionDefs = {
         params: []
     },
     Append: {
-        label: 'Append(ar array, val any) array ',
+        label: 'Append(ar array, val any) array',
         documentation: '',
         insertText: 'Append(',
+        params: []
+    },
+    DateTime: {
+        label: 'DateTime(unixtime int) string',
+        documentation: '',
+        insertText: 'DateTime(',
+        params: []
+    },
+    UnixDateTime: {
+        label: 'UnixDateTime(datetime string) int',
+        documentation: 'format datetime: "YYYY-MM-DD HH:MI:SS"',
+        insertText: 'DateTime(',
         params: []
     },
 }
