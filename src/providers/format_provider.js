@@ -256,7 +256,7 @@ class SimpleFormatProvider {
         ]
 
         this.simvolioRules = [{ // contracts: only first system tables 
-            pattern: /(DBFind|DBUpdate|DBInsert)\(\s*"(keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems|system_parameters)"/,
+            pattern: /(DBFind|DBUpdate|DBInsert)\(\s*"(keys|history|languages|sections|menu|pages|blocks|signatures|contracts|parameters|tables|app_params|notifications|roles|roles_participants|members|applications|binaries|buffer_data|ecosystems|system_parameters|voting_templates|votings|votings_participants|votings_subject)"/,
             fix: '$1("@1$2"'
         },
         ]
