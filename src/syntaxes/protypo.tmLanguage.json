@@ -53,7 +53,7 @@
 		},
 		"lang-res": {
 			"name": "variable.parameter.protypo",
-			"match": "\\$[\\w.-]+\\$"
+			"match": "\\$[@\\w.-]+\\$"
 		},
 		"class-name": {
 			"name": "string.html.protypo",

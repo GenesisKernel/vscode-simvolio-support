@@ -1,5 +1,6 @@
 # Changes
 
+* 0.5.15 fixed highlight for prefixed language resources
 * 0.5.14 added DateTime funcs
 * 0.5.13 reworked find global tables
 * 0.5.12 reworked "ecosystems table"
