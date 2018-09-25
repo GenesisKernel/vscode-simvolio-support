@@ -671,6 +671,18 @@ const functionDefs = {
         insertText: 'DateTime(',
         params: []
     },
+    RoleAccess: {
+        label: 'RoleAccess(id int, [id int]) bool',
+        documentation: '',
+        insertText: 'RoleAccess(',
+        params: []
+    },
+    TransactionInfo: {
+        label: 'TransactionInfo(hash: string) string',
+        documentation: 'returned: {"contract":ContractName, "params":object, "block": int}',
+        insertText: 'TransactionInfo(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
