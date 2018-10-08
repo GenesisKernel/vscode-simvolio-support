@@ -683,6 +683,18 @@ const functionDefs = {
         insertText: 'TransactionInfo(',
         params: []
     },
+    UpdateRolesNotifications: {
+        label: 'UpdateRolesNotifications(ecosystemID int, roles int ...)',
+        documentation: '',
+        insertText: 'UpdateRolesNotifications(',
+        params: []
+    },
+    UpdateNotifications: {
+        label: 'UpdateNotifications(ecosystemID int, keys int ...)',
+        documentation: '',
+        insertText: 'UpdateNotifications(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
