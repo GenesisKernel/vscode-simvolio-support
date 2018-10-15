@@ -1,5 +1,6 @@
 # Changes
 
+* 0.5.17 added Show/Hide
 * 0.5.16 added TransactionInfo, RoleAccess highlight
 * 0.5.15 fixed highlight for prefixed language resources
 * 0.5.14 added DateTime funcs

@@ -33,7 +33,7 @@
 		},
 		"protypo": {
 			"name": "entity.name.class.protypo",
-			"match": "\\b(Hint|QRcode|GetColumnType|Button|Map|InputMap|Chart|Div|Span|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)(?=\\()|\\.(Popup|Alert|Style|CompositeContract)(?=\\()"
+			"match": "\\b(Hint|QRcode|GetColumnType|Button|Map|InputMap|Chart|Div|Span|Table|AddToolButton|Em|Form|Image|ImageInput|Input|Validate|InputErr|Label|LinkPage|MenuGroup|MenuItem|Now|P|RadioGroup|Select|Strong)(?=\\()|\\.(Popup|Alert|Style|CompositeContract|Show|Hide)(?=\\()"
 		},
 		"protypo-params": {
 			"name": "variable.language.protypo",
