@@ -751,6 +751,12 @@ const functionDefs = {
         insertText: 'Hint(',
         params: []
     },
+    AddressToId: {
+        label: 'AddressToId(Wallet)',
+        documentation: '',
+        insertText: 'AddressToId(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs
