@@ -24,7 +24,7 @@ const functionDefs = {
     },
     AddToolButton: {
         label: 'AddToolButton(Title, Icon, Page, PageParams)',
-        documentation: '',
+        documentation: '.Popup(width, title)',
         insertText: 'AddToolButton',
         params: [{
             label: 'Title',
@@ -70,7 +70,7 @@ const functionDefs = {
     },
     DBFind: {
         label: 'DBFind(Name, Source)',
-        documentation: '.Columns(columns)\n.Where(conditions)\n.WhereId(id)\n.Order(name)\n.Limit(limit)\n.Offset(offset)\n.Ecosystem(id)\n.Custom(Column,Body)\n.Vars(prefix)',
+        documentation: '.Columns(columns)\n.Where(where map)\n.WhereId(id)\n.Order(name)\n.Limit(limit)\n.Offset(offset)\n.Ecosystem(id)\n.Custom(Column,Body)\n.Vars(prefix)\n.Count(count_name)',
         insertText: 'DBFind',
         params: [{
             label: 'Name',
@@ -91,7 +91,7 @@ const functionDefs = {
     },
     Button: {
         label: 'Button(Body, Page, Class, Contract, Params, PageParams)',
-        documentation: '.Alert(Text,ConfirmButton,CancelButton,Icon)\n.Style(style)',
+        documentation: '.Popup(width, title).Alert(Text,ConfirmButton,CancelButton,Icon)\n.Style(style)',
         insertText: 'Button',
         params: [
             staticParamTypes.Body,

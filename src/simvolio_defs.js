@@ -174,14 +174,14 @@ const functionDefs = {
         params: []
     },
     DBInsert: {
-        label: 'DBInsert(table, params string, vals...)',
+        label: 'DBInsert(table string, params map)',
         documentation: '',
         insertText: 'DBInsert(',
         params: []
     },
     DBFind: {
         label: 'DBFind(table string)',
-        documentation: '.Columns(columns string) .Where(where string, params ...) .WhereId(id int) .Order(order string) .Limit(limit int) .Offset(offset int) .Ecosystem(id int) .Row() .One(col string) .Count()',
+        documentation: '.Columns(columns string) .Where(where map) .WhereId(id int) .Order(order string) .Limit(limit int) .Offset(offset int) .Ecosystem(id int) .Row() .One(col string) .Count()',
         insertText: 'DBFind(',
         params: []
     },
@@ -192,13 +192,13 @@ const functionDefs = {
         params: []
     },
     DBUpdate: {
-        label: 'DBUpdate(table string, id int, params string, vals...)',
+        label: 'DBUpdate(table string, id int, params map)',
         documentation: '',
         insertText: 'DBUpdate(',
         params: []
     },
     DBUpdateExt: {
-        label: 'DBUpdateExt(table, column string, val (int|string), params string, vals...)',
+        label: 'DBUpdateExt(table, column string, val (int|string), params map)',
         documentation: '',
         insertText: 'DBUpdateExt(',
         params: []
@@ -459,12 +459,6 @@ const functionDefs = {
         label: 'CreateTable(name, columns, permissions string, applicationID int)',
         documentation: '',
         insertText: 'CreateTable(',
-        params: []
-    },
-    DBSelect: {
-        label: 'DBSelect(table, columns string, id int, order string, offset, limit, ecosystem int, where string, params array) array',
-        documentation: 'it is better to use the wrapper: DBFind',
-        insertText: 'DBSelect(',
         params: []
     },
     HMac: {
