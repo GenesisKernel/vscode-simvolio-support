@@ -1,5 +1,6 @@
 # Changes
 
+* 0.5.23 hl invalid variable
 * 0.5.22 fixed DB funcs definitions
 * 0.5.21 +AddressToId
 * 0.5.17 added Show/Hide
