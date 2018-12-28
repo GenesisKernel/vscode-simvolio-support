@@ -107,6 +107,18 @@ const functionDefs = {
         insertText: 'PubToID(',
         params: []
     },
+    PubToHex: {
+        label: 'PubToHex(pub string|bytes) string',
+        documentation: '',
+        insertText: 'PubToHex(',
+        params: []
+    },
+    HexToPub: {
+        label: 'HexToPub(hexpub string) bytes',
+        documentation: '',
+        insertText: 'HexToPub(',
+        params: []
+    },
     Replace: {
         label: 'Replace(s, old, new string) string',
         documentation: '',
