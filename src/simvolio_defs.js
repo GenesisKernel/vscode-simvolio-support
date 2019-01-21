@@ -701,6 +701,48 @@ const functionDefs = {
         insertText: 'UpdateNotifications(',
         params: []
     },
+    FormatMoney: {
+        label: 'FormatMoney(exp string, digit int)',
+        documentation: '',
+        insertText: 'FormatMoney(',
+        params: []
+    },
+    Log: {
+        label: 'Log(x float|int|string) float',
+        documentation: '',
+        insertText: 'Log(',
+        params: []
+    },
+    Log10: {
+        label: 'Log10(x float|int|string) float',
+        documentation: '',
+        insertText: 'Log10(',
+        params: []
+    },
+    Pow: {
+        label: 'Pow(x float|int|string, y float|int|string) float',
+        documentation: '',
+        insertText: 'Pow(',
+        params: []
+    },
+    Sqrt: {
+        label: 'Sqrt(x float|int|string) float',
+        documentation: '',
+        insertText: 'Sqrt(',
+        params: []
+    },
+    Round: {
+        label: 'Round(x float|int|string) int',
+        documentation: '',
+        insertText: 'Round(',
+        params: []
+    },
+    Floor: {
+        label: 'Floor(x float|int|string) int',
+        documentation: '',
+        insertText: 'Floor(',
+        params: []
+    },
 }
 
 exports.completions = functionDefs

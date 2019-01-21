@@ -1,6 +1,7 @@
 # Changes
 
-* 0.5.23 +: PubToHex, HexToPub
+* 0.5.25 +: math funcs, FormatMoney
+* 0.5.24 +: PubToHex, HexToPub
 * 0.5.23 hl invalid variable
 * 0.5.22 fixed DB funcs definitions
 * 0.5.21 +AddressToId
