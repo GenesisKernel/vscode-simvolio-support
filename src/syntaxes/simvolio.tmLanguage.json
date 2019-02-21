@@ -11,7 +11,7 @@
 	"repository": {
 		"type-literal": {
 			"name": "entity.name.type.simvolio",
-			"match": "(?<!\\.|\\$)\\b(bool|bytes|int|address|array|map|money|float|string)\\b(?!\\$|\\.)"
+			"match": "(?<!\\.|\\$)\\b(file|bool|bytes|int|address|array|map|money|float|string)\\b(?!\\$|\\.)"
 		},
 		"DBFind-param": {
 			"name": "variable.language.simvolio",
